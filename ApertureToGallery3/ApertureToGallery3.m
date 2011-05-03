@@ -188,7 +188,8 @@
 {
     // You must call [_exportManager shouldFinishExport] before Aperture will put away the progress window and complete the export.
 	// NOTE: You should assume that your plug-in will be deallocated immediately following this call. Be sure you have cleaned up
-	// any callbacks or running threads before calling.    
+	// any callbacks or running threads before calling. 
+    [_exportManager shouldFinishExport];
 }
 
 - (void)exportManagerShouldCancelExport
@@ -196,6 +197,7 @@
 	// You must call [_exportManager shouldCancelExport] here or elsewhere before Aperture will cancel the export process
 	// NOTE: You should assume that your plug-in will be deallocated immediately following this call. Be sure you have cleaned up
 	// any callbacks or running threads before calling.
+    [_exportManager shouldCancelExport];
 }
 
 
