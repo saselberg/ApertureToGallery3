@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D2C00EEA136F864D002ADF41 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
+		D2C00EF4136F864D002ADF41 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2C00EF2136F864D002ADF41 /* InfoPlist.strings */; };
+		D2C00F0F136F86E9002ADF41 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */; };
+		D2C00F10136F86E9002ADF41 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F00136F86E9002ADF41 /* SBJsonParser.m */; };
+		D2C00F11136F86E9002ADF41 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */; };
+		D2C00F12136F86E9002ADF41 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */; };
+		D2C00F13136F86E9002ADF41 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */; };
+		D2C00F14136F86E9002ADF41 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */; };
+		D2C00F15136F86E9002ADF41 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */; };
+		D2C00F16136F86E9002ADF41 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */; };
+		D2C00F17136F86E9002ADF41 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */; };
+		D2C00F27136F870B002ADF41 /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; };
+		D2C00F28136F870B002ADF41 /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; };
+		D2C00F29136F870B002ADF41 /* GalleryConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1D136F870B002ADF41 /* GalleryConnection.m */; };
+		D2C00F2A136F870B002ADF41 /* GalleryDirectoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1F136F870B002ADF41 /* GalleryDirectoryController.m */; };
+		D2C00F2B136F870B002ADF41 /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; };
+		D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; };
+		D2C00F2D136F870B002ADF41 /* TutorialAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F25136F870B002ADF41 /* TutorialAppDelegate.m */; };
+		D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */; };
+		D2C00F33136F88F1002ADF41 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00F32136F88F1002ADF41 /* PluginManager.framework */; };
+		D2C00F39136F8CB3002ADF41 /* ApertureToGallery3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D2C00EE6136F864D002ADF41 /* ApertureToGallery3.ApertureExport */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApertureToGallery3.ApertureExport; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2C00EE9136F864D002ADF41 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D2C00EEC136F864D002ADF41 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D2C00EED136F864D002ADF41 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D2C00EEE136F864D002ADF41 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2C00EF1136F864D002ADF41 /* ApertureToGallery3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ApertureToGallery3-Info.plist"; sourceTree = "<group>"; };
+		D2C00EF3136F864D002ADF41 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D2C00EF5136F864D002ADF41 /* ApertureToGallery3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ApertureToGallery3-Prefix.pch"; sourceTree = "<group>"; };
+		D2C00EFC136F86E9002ADF41 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		D2C00EFD136F86E9002ADF41 /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
+		D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
+		D2C00EFF136F86E9002ADF41 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		D2C00F00136F86E9002ADF41 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		D2C00F01136F86E9002ADF41 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		D2C00F03136F86E9002ADF41 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		D2C00F05136F86E9002ADF41 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		D2C00F07136F86E9002ADF41 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		D2C00F09136F86E9002ADF41 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		D2C00F0B136F86E9002ADF41 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		D2C00F0D136F86E9002ADF41 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		D2C00F18136F870B002ADF41 /* AddPhotoQueueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhotoQueueItem.h; sourceTree = "<group>"; };
+		D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhotoQueueItem.m; sourceTree = "<group>"; };
+		D2C00F1A136F870B002ADF41 /* GalleryAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryAlbum.h; sourceTree = "<group>"; };
+		D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryAlbum.m; sourceTree = "<group>"; };
+		D2C00F1C136F870B002ADF41 /* GalleryConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryConnection.h; sourceTree = "<group>"; };
+		D2C00F1D136F870B002ADF41 /* GalleryConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryConnection.m; sourceTree = "<group>"; };
+		D2C00F1E136F870B002ADF41 /* GalleryDirectoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryDirectoryController.h; sourceTree = "<group>"; };
+		D2C00F1F136F870B002ADF41 /* GalleryDirectoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryDirectoryController.m; sourceTree = "<group>"; };
+		D2C00F20136F870B002ADF41 /* GalleryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryInfo.h; sourceTree = "<group>"; };
+		D2C00F21136F870B002ADF41 /* GalleryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryInfo.m; sourceTree = "<group>"; };
+		D2C00F22136F870B002ADF41 /* RestfulGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestfulGallery.h; sourceTree = "<group>"; };
+		D2C00F23136F870B002ADF41 /* RestfulGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestfulGallery.m; sourceTree = "<group>"; };
+		D2C00F24136F870B002ADF41 /* TutorialAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialAppDelegate.h; sourceTree = "<group>"; };
+		D2C00F25136F870B002ADF41 /* TutorialAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialAppDelegate.m; sourceTree = "<group>"; };
+		D2C00F26136F870B002ADF41 /* URLCallDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCallDelegate.h; sourceTree = "<group>"; };
+		D2C00F2F136F873F002ADF41 /* ApertureToGallery3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureToGallery3.h; sourceTree = "<group>"; };
+		D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApertureToGallery3.m; sourceTree = "<group>"; };
+		D2C00F32136F88F1002ADF41 /* PluginManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginManager.framework; path = Library/Frameworks/PluginManager.framework; sourceTree = SDKROOT; };
+		D2C00F35136F8BD7002ADF41 /* ApertureExportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureExportManager.h; sourceTree = "<group>"; };
+		D2C00F36136F8BD7002ADF41 /* ApertureExportPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureExportPlugIn.h; sourceTree = "<group>"; };
+		D2C00F37136F8BD7002ADF41 /* ApertureSDKCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureSDKCommon.h; sourceTree = "<group>"; };
+		D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApertureToGallery3.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2C00EE3136F864D002ADF41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2C00F33136F88F1002ADF41 /* PluginManager.framework in Frameworks */,
+				D2C00EEA136F864D002ADF41 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D2C00EDB136F864D002ADF41 = {
+			isa = PBXGroup;
+			children = (
+				D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */,
+				D2C00EEF136F864D002ADF41 /* ApertureToGallery3 */,
+				D2C00EE8136F864D002ADF41 /* Frameworks */,
+				D2C00EE7136F864D002ADF41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D2C00EE7136F864D002ADF41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2C00EE6136F864D002ADF41 /* ApertureToGallery3.ApertureExport */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2C00EE8136F864D002ADF41 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2C00F32136F88F1002ADF41 /* PluginManager.framework */,
+				D2C00EE9136F864D002ADF41 /* Cocoa.framework */,
+				D2C00EEB136F864D002ADF41 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2C00EEB136F864D002ADF41 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2C00EEC136F864D002ADF41 /* AppKit.framework */,
+				D2C00EED136F864D002ADF41 /* CoreData.framework */,
+				D2C00EEE136F864D002ADF41 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		D2C00EEF136F864D002ADF41 /* ApertureToGallery3 */ = {
+			isa = PBXGroup;
+			children = (
+				D2C00F34136F8BD7002ADF41 /* ApertureHeaders */,
+				D2C00F2F136F873F002ADF41 /* ApertureToGallery3.h */,
+				D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */,
+				D2C00F2E136F8710002ADF41 /* Restful Gallery */,
+				D2C00EFB136F86E9002ADF41 /* JSON */,
+				D2C00F24136F870B002ADF41 /* TutorialAppDelegate.h */,
+				D2C00F25136F870B002ADF41 /* TutorialAppDelegate.m */,
+				D2C00EF0136F864D002ADF41 /* Supporting Files */,
+			);
+			path = ApertureToGallery3;
+			sourceTree = "<group>";
+		};
+		D2C00EF0136F864D002ADF41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D2C00EF1136F864D002ADF41 /* ApertureToGallery3-Info.plist */,
+				D2C00EF2136F864D002ADF41 /* InfoPlist.strings */,
+				D2C00EF5136F864D002ADF41 /* ApertureToGallery3-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2C00EFB136F86E9002ADF41 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				D2C00EFC136F86E9002ADF41 /* JSON.h */,
+				D2C00EFD136F86E9002ADF41 /* NSObject+JSON.h */,
+				D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */,
+				D2C00EFF136F86E9002ADF41 /* SBJsonParser.h */,
+				D2C00F00136F86E9002ADF41 /* SBJsonParser.m */,
+				D2C00F01136F86E9002ADF41 /* SBJsonStreamParser.h */,
+				D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */,
+				D2C00F03136F86E9002ADF41 /* SBJsonStreamParserAdapter.h */,
+				D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */,
+				D2C00F05136F86E9002ADF41 /* SBJsonStreamParserState.h */,
+				D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */,
+				D2C00F07136F86E9002ADF41 /* SBJsonStreamWriter.h */,
+				D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */,
+				D2C00F09136F86E9002ADF41 /* SBJsonStreamWriterState.h */,
+				D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */,
+				D2C00F0B136F86E9002ADF41 /* SBJsonTokeniser.h */,
+				D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */,
+				D2C00F0D136F86E9002ADF41 /* SBJsonWriter.h */,
+				D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		D2C00F2E136F8710002ADF41 /* Restful Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				D2C00F26136F870B002ADF41 /* URLCallDelegate.h */,
+				D2C00F18136F870B002ADF41 /* AddPhotoQueueItem.h */,
+				D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */,
+				D2C00F1A136F870B002ADF41 /* GalleryAlbum.h */,
+				D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */,
+				D2C00F1C136F870B002ADF41 /* GalleryConnection.h */,
+				D2C00F1D136F870B002ADF41 /* GalleryConnection.m */,
+				D2C00F1E136F870B002ADF41 /* GalleryDirectoryController.h */,
+				D2C00F1F136F870B002ADF41 /* GalleryDirectoryController.m */,
+				D2C00F20136F870B002ADF41 /* GalleryInfo.h */,
+				D2C00F21136F870B002ADF41 /* GalleryInfo.m */,
+				D2C00F22136F870B002ADF41 /* RestfulGallery.h */,
+				D2C00F23136F870B002ADF41 /* RestfulGallery.m */,
+			);
+			name = "Restful Gallery";
+			sourceTree = "<group>";
+		};
+		D2C00F34136F8BD7002ADF41 /* ApertureHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				D2C00F35136F8BD7002ADF41 /* ApertureExportManager.h */,
+				D2C00F36136F8BD7002ADF41 /* ApertureExportPlugIn.h */,
+				D2C00F37136F8BD7002ADF41 /* ApertureSDKCommon.h */,
+			);
+			name = ApertureHeaders;
+			path = ../../ApertureExportTemplate/ApertureHeaders;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2C00EE5136F864D002ADF41 /* ApertureToGallery3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2C00EF8136F864D002ADF41 /* Build configuration list for PBXNativeTarget "ApertureToGallery3" */;
+			buildPhases = (
+				D2C00EE2136F864D002ADF41 /* Sources */,
+				D2C00EE3136F864D002ADF41 /* Frameworks */,
+				D2C00EE4136F864D002ADF41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ApertureToGallery3;
+			productName = ApertureToGallery3;
+			productReference = D2C00EE6136F864D002ADF41 /* ApertureToGallery3.ApertureExport */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2C00EDD136F864D002ADF41 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = D2C00EE0136F864D002ADF41 /* Build configuration list for PBXProject "ApertureToGallery3" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D2C00EDB136F864D002ADF41;
+			productRefGroup = D2C00EE7136F864D002ADF41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2C00EE5136F864D002ADF41 /* ApertureToGallery3 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2C00EE4136F864D002ADF41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2C00EF4136F864D002ADF41 /* InfoPlist.strings in Resources */,
+				D2C00F39136F8CB3002ADF41 /* ApertureToGallery3.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2C00EE2136F864D002ADF41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2C00F0F136F86E9002ADF41 /* NSObject+JSON.m in Sources */,
+				D2C00F10136F86E9002ADF41 /* SBJsonParser.m in Sources */,
+				D2C00F11136F86E9002ADF41 /* SBJsonStreamParser.m in Sources */,
+				D2C00F12136F86E9002ADF41 /* SBJsonStreamParserAdapter.m in Sources */,
+				D2C00F13136F86E9002ADF41 /* SBJsonStreamParserState.m in Sources */,
+				D2C00F14136F86E9002ADF41 /* SBJsonStreamWriter.m in Sources */,
+				D2C00F15136F86E9002ADF41 /* SBJsonStreamWriterState.m in Sources */,
+				D2C00F16136F86E9002ADF41 /* SBJsonTokeniser.m in Sources */,
+				D2C00F17136F86E9002ADF41 /* SBJsonWriter.m in Sources */,
+				D2C00F27136F870B002ADF41 /* AddPhotoQueueItem.m in Sources */,
+				D2C00F28136F870B002ADF41 /* GalleryAlbum.m in Sources */,
+				D2C00F29136F870B002ADF41 /* GalleryConnection.m in Sources */,
+				D2C00F2A136F870B002ADF41 /* GalleryDirectoryController.m in Sources */,
+				D2C00F2B136F870B002ADF41 /* GalleryInfo.m in Sources */,
+				D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */,
+				D2C00F2D136F870B002ADF41 /* TutorialAppDelegate.m in Sources */,
+				D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D2C00EF2136F864D002ADF41 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2C00EF3136F864D002ADF41 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D2C00EF6136F864D002ADF41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D2C00EF7136F864D002ADF41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D2C00EF9136F864D002ADF41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ApertureToGallery3/ApertureToGallery3-Prefix.pch";
+				INFOPLIST_FILE = "ApertureToGallery3/ApertureToGallery3-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Application Support/Aperture/Plug-Ins/Export/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = ApertureExport;
+			};
+			name = Debug;
+		};
+		D2C00EFA136F864D002ADF41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ApertureToGallery3/ApertureToGallery3-Prefix.pch";
+				INFOPLIST_FILE = "ApertureToGallery3/ApertureToGallery3-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Application Support/Aperture/Plug-Ins/Export/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = ApertureExport;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2C00EE0136F864D002ADF41 /* Build configuration list for PBXProject "ApertureToGallery3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2C00EF6136F864D002ADF41 /* Debug */,
+				D2C00EF7136F864D002ADF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2C00EF8136F864D002ADF41 /* Build configuration list for PBXNativeTarget "ApertureToGallery3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2C00EF9136F864D002ADF41 /* Debug */,
+				D2C00EFA136F864D002ADF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2C00EDD136F864D002ADF41 /* Project object */;
+}

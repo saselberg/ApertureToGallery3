@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleIdentifier</key>
+	<string>scott.selberg.${PRODUCT_NAME:rfc1034identifier}</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2011 __MyCompanyName__. All rights reserved.</string>
+	<key>NSPrincipalClass</key>
+	<string></string>
+	<key>ProPlugDictionaryVersion</key>
+	<string>1.0</string>
+	<key>ProPlugDynamicRegistration</key>
+	<false/>
+	<key>ProPlugPlugInGroupList</key>
+	<array>
+		<dict>
+			<key>uuid</key>
+			<string>616BA321-B4C2-49DF-8FD8-2E3392D2D241</string>
+			<key>groupName</key>
+			<string>Export</string>
+		</dict>
+	</array>
+	<key>ProPlugPlugInList</key>
+	<array>
+		<dict>
+			<key>className</key>
+			<string>ApertureToGallery3</string>
+			<key>displayName</key>
+			<string>Gallery3</string>
+			<key>group</key>
+			<string>616BA321-B4C2-49DF-8FD8-2E3392D2D241</string>
+			<key>helpUrl</key>
+			<string>http://selberg.homedns.org/</string>
+			<key>protocolNames</key>
+			<array>
+				<string>ApertureExportPlugIn</string>
+			</array>
+			<key>uuid</key>
+			<string>A5C8EE07-C14B-4AEB-9739-AA7D3BC8D5C3</string>
+		</dict>
+	</array>
+	<key>ProPlugProtocolList</key>
+	<array>
+		<dict>
+			<key>protocolName</key>
+			<string>ApertureExportManager</string>
+			<key>versions</key>
+			<array>
+				<integer>1</integer>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
