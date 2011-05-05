@@ -79,7 +79,7 @@
 		D2C00F35136F8BD7002ADF41 /* ApertureExportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureExportManager.h; sourceTree = "<group>"; };
 		D2C00F36136F8BD7002ADF41 /* ApertureExportPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureExportPlugIn.h; sourceTree = "<group>"; };
 		D2C00F37136F8BD7002ADF41 /* ApertureSDKCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureSDKCommon.h; sourceTree = "<group>"; };
-		D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApertureToGallery3.xib; sourceTree = "<group>"; };
+		D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApertureToGallery3.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,6 @@
 		D2C00EDB136F864D002ADF41 = {
 			isa = PBXGroup;
 			children = (
-				D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */,
 				D2C00EEF136F864D002ADF41 /* ApertureToGallery3 */,
 				D2C00EE8136F864D002ADF41 /* Frameworks */,
 				D2C00EE7136F864D002ADF41 /* Products */,
@@ -139,6 +138,7 @@
 				D2C00F34136F8BD7002ADF41 /* ApertureHeaders */,
 				D2C00F2F136F873F002ADF41 /* ApertureToGallery3.h */,
 				D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */,
+				D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */,
 				D2C00F2E136F8710002ADF41 /* Restful Gallery */,
 				D2C00EFB136F86E9002ADF41 /* JSON */,
 				D2C00F24136F870B002ADF41 /* TutorialAppDelegate.h */,
@@ -395,6 +395,7 @@
 				D2C00EFA136F864D002ADF41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

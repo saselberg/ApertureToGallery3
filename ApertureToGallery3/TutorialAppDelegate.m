@@ -73,24 +73,6 @@
 / Gallery actions
 ************************************************************/
 
-- (IBAction)addPhoto:(id)sender
-{
-    GalleryAlbum *selectedAlbum;
-    selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
-
-    [gallery addPhotosAtPath:self.filePath toUrl:selectedAlbum.url];
-
-    
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithCapacity:4];
-//    [parameters setObject:[photoTitle       stringValue] forKey:@"title"];
-//    [parameters setObject:[photoDescription stringValue] forKey:@"description"];
-
-
-//    [parameters setObject:@"TNS_4249.jpg"       forKey:@"title"];
-//    [parameters setObject:@"Test Description" forKey:@"description"];
-//    [gallery addPhotoAtPath:@"/Users/scott/Desktop/TNS_4249.jpg" toUrl:selectedAlbum.url withParameters:parameters ];
-}
-
 - (IBAction)getAlbums:(id)sender
 {
     NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];

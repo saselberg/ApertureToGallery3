@@ -28,6 +28,7 @@
 @property         NSStringEncoding    encoding;
 @property(retain) GalleryConnection   *galleryConnection;
 @property(retain) NSMutableDictionary *results;
+@property(retain) id <URLCallDelegate> callDelegate;
 
 
 - (void)cancel;
@@ -38,9 +39,6 @@
 - (void)getInfoForItem:(NSNumber *)restItem;
 - (void)getInfoForItems:(NSArray *)urls;
 - (void)createAlbumInEntity:(NSNumber *)restItem withParameters:(NSMutableDictionary *)parameters;
-- (void)addPhotosAtPath:(NSString *)imagePath toUrl:(NSString *)restUrl;
-- (void)addPhotoAtPath:(NSString *)imagePath toEntity:(NSNumber *)restItem withParameters:(NSMutableDictionary *)parameters;
 - (void)addPhotoAtPath:(NSString *)imagePath toUrl:(NSString *)restUrl withParameters:(NSMutableDictionary *)parameters;
-- (void) processAddPhotoQueue;
 
 @end

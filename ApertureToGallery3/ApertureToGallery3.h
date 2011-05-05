@@ -14,8 +14,9 @@
 #import "GalleryAlbum.h"
 #import "GalleryInfo.h"
 #import "RestfulGallery.h"
+#import "AddPhotoQueueItem.h"
 
-@interface ApertureToGallery3 : NSObject <ApertureExportPlugIn> 
+@interface ApertureToGallery3 : NSObject <ApertureExportPlugIn, URLCallDelegate>
 {
         // The cached API Manager object, as passed to the -initWithAPIManager: method.
         id _apiManager; 
@@ -55,6 +56,9 @@
     NSDictionary        *userDefaults;
     GalleryAlbum        *selectedGallery;
 
+    NSString *tempDirectoryPath;
+    NSMutableArray *exportedImagePaths;
+    NSMutableArray *addPhotoQueue;
 }
 
 @property (retain) RestfulGallery   *gallery;
@@ -79,6 +83,9 @@
 -(IBAction)hideAddAlbum:(id)sender;
 
 -(void) savePreferences;
+- (void)got:(NSMutableDictionary *)myResults;
+- (void) processAddPhotoQueue;
+
 
 @end
 

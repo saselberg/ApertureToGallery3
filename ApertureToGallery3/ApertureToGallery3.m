@@ -38,7 +38,9 @@
 		
         _progressLock = [[NSLock alloc] init];
 		
-        self.gallery  = [[RestfulGallery alloc] init];        
+        // Stuff for the gallery connection
+        self.gallery  = [[RestfulGallery alloc] init]; 
+        self.gallery.callDelegate = self;
         userDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
         if( userDefaults ){
             preferences = [userDefaults mutableCopy];
@@ -58,6 +60,35 @@
             self.galleryDirectory = [NSMutableArray arrayWithCapacity:5];            
             selectedGalleryIndex = [NSNumber numberWithInteger:0];
         }
+        
+        
+        //Stuff for the export
+        // Create our temporary directory
+		tempDirectoryPath = [[NSString stringWithFormat:@"%@/Gallery3Export/", NSTemporaryDirectory()] retain];
+		
+		// If it doesn't exist, create it
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		BOOL isDirectory;
+		if (![fileManager fileExistsAtPath:tempDirectoryPath isDirectory:&isDirectory])
+		{
+            [fileManager createDirectoryAtPath:tempDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
+		}
+		else if (isDirectory) // If a folder already exists, empty it.
+		{
+            NSArray *contents = [fileManager contentsOfDirectoryAtPath:tempDirectoryPath error:nil];
+			int i;
+			for (i = 0; i < [contents count]; i++)
+			{
+				NSString *tempFilePath = [NSString stringWithFormat:@"%@%@", tempDirectoryPath, [contents objectAtIndex:i]];
+                [fileManager removeItemAtPath:tempFilePath error:nil];
+			}
+		}
+		else // Delete the old file and create a new directory
+		{
+            [fileManager removeItemAtPath:tempDirectoryPath error:nil];
+            [fileManager createDirectoryAtPath:tempDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
+		}
+        addPhotoQueue = [[NSMutableArray alloc] init];
 	}	
     
 	return self;
@@ -74,10 +105,15 @@
     self.rootGalleryAlbum         = nil;
     self.galleryApiKey            = nil;
     self.galleryDirectory         = nil;
+    [addPhotoQueue release];
     
     [preferences release];
     preferences = nil;
 
+    // Clean up the temporary files
+    [[NSFileManager defaultManager] removeItemAtPath:tempDirectoryPath error:nil];
+	[tempDirectoryPath release];
+    
 	[_progressLock release];
 	[_exportManager release];
     
@@ -174,7 +210,7 @@
 
 - (NSString *)destinationPath
 {
-    return nil;
+	return tempDirectoryPath;
 }
 
 - (NSString *)defaultDirectory
@@ -192,6 +228,8 @@
 - (void)exportManagerShouldBeginExport
 {
 	// Before telling Aperture to begin generating image data, test the connection using the user-entered values
+//    [self _beginConnectionTest];
+    [_exportManager shouldBeginExport];
 }
 
 - (void)exportManagerWillBeginExportToPath:(NSString *)path
@@ -219,7 +257,19 @@
 
 - (void)exportManagerDidWriteImageDataToRelativePath:(NSString *)relativePath forImageAtIndex:(unsigned)index
 {
-    
+    if (!exportedImagePaths)
+	{
+		exportedImagePaths = [[NSMutableArray alloc] initWithCapacity:[_exportManager imageCount]];
+	}
+	
+	// Save the paths of all the images that Aperture has exported
+	NSString *imagePath = [NSString stringWithFormat:@"%@%@", tempDirectoryPath, relativePath];
+	[exportedImagePaths addObject:imagePath];
+	
+	// Increment the current progress
+	[self lockProgress];
+	exportProgress.currentValue++;
+	[self unlockProgress];    
 }
 
 - (void)exportManagerDidFinishExport
@@ -227,7 +277,30 @@
     // You must call [_exportManager shouldFinishExport] before Aperture will put away the progress window and complete the export.
 	// NOTE: You should assume that your plug-in will be deallocated immediately following this call. Be sure you have cleaned up
 	// any callbacks or running threads before calling. 
-    [_exportManager shouldFinishExport];
+    
+    GalleryAlbum *selectedAlbum;
+    selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDirectory;
+    [fileManager fileExistsAtPath:tempDirectoryPath isDirectory:&isDirectory];
+    if (isDirectory)
+    {
+        NSArray *contents = [fileManager contentsOfDirectoryAtPath:tempDirectoryPath error:nil];
+        int i;
+        for (i = 0; i < [contents count]; i++)
+        {
+            NSString *tempFilePath = [NSString stringWithFormat:@"%@%@", tempDirectoryPath, [contents objectAtIndex:i]];
+            AddPhotoQueueItem *item = [[AddPhotoQueueItem alloc] initWithUrl:selectedAlbum.url andPath:tempFilePath 
+                                                                 andParameters:[NSMutableDictionary 
+                                                                              dictionaryWithObjects:[NSArray arrayWithObjects:[tempFilePath lastPathComponent], @"", nil] 
+                                                                              forKeys:[NSArray arrayWithObjects:@"title", @"description", nil ]]];
+            [addPhotoQueue addObject:item];
+            [item release];
+        }
+        
+        [self processAddPhotoQueue];
+    }
 }
 
 - (void)exportManagerShouldCancelExport
@@ -238,6 +311,27 @@
     [_exportManager shouldCancelExport];
 }
 
+- (void)got:(NSMutableDictionary *)myResults;
+{
+//    NSLog( @"%@",myResults );
+    //    NSLog( @"Done!" );
+    
+    [self processAddPhotoQueue];
+}
+
+- (void) processAddPhotoQueue
+{
+    if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+    {
+        AddPhotoQueueItem *currentItem = [[[addPhotoQueue objectAtIndex:0] retain] autorelease];
+        [addPhotoQueue removeObjectAtIndex:0];
+        [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+    }
+    else
+    {
+        [_exportManager shouldFinishExport];        
+    }
+}
 
 #pragma mark -
 // Progress Methods
@@ -265,14 +359,6 @@
 /************************************************************
  / Gallery actions
  ************************************************************/
-
-- (IBAction)addPhoto:(id)sender
-{
-    GalleryAlbum *selectedAlbum;
-    selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
-    
-    [gallery addPhotosAtPath:self.filePath toUrl:selectedAlbum.url];
-}
 
 - (IBAction)makeAlbum:(id)sender
 {
@@ -316,7 +402,6 @@
     for( int i = 0; i < [albumChildren count]; i++ )
     {
         GalleryAlbum *album = (GalleryAlbum *)[browser itemAtRow:i inColumn:[newColumn integerValue]];
-        NSLog( @"%d:%@ => %@", i, newColumn, album.url );
         if( [newAlbumUrl isEqualToString:[album url]] )
         {
             [browser selectRow:i inColumn:[newColumn integerValue]];
