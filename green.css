@@ -1,0 +1,25 @@
+.background      { background-color:#E1F5FF; }
+
+.navbar          { color:#FFFFCC; }
+a.navbar:visited { color:#FFFFCC; text-decoration:none}
+a.navbar:active  { color:#FFFFCC; text-decoration:none}
+a.navbar:link    { color:#FFFFCC; text-decoration:none}
+a.navbar:hover   { color:#CCFFFF; text-decoration:none}
+
+a:visited { color:#669999;}
+a:active  { color:#669999;}
+a:link    { color:#669999;}
+a:hover   { color:#3399CC;}
+
+ul.navbar {list-style-type: none; margin-left:0; margin:0; padding:0; margin-left:10px }
+ul.navbar ul.navbar {list-style-type: none; margin:0; padding:0; margin-left:15px }
+
+h1{ color:#006633; }
+h2{ color:#006633; }
+h3{ color:#006633; }
+h4{ color:#006633; }
+h5{ color:#006633; }
+h6{ color:#006633; }
+.highlight { color: #3399CC; font-size: large; }
+.text {color: #3399CC;}
+
