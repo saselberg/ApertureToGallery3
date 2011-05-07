@@ -29,6 +29,7 @@
 @property(retain) GalleryConnection   *galleryConnection;
 @property(retain) NSMutableDictionary *results;
 @property(retain) id <URLCallDelegate> callDelegate;
+@property         BOOL                bGalleryValid;
 
 
 - (void)cancel;
@@ -40,5 +41,5 @@
 - (void)getInfoForItems:(NSArray *)urls;
 - (void)createAlbumInEntity:(NSNumber *)restItem withParameters:(NSMutableDictionary *)parameters;
 - (void)addPhotoAtPath:(NSString *)imagePath toUrl:(NSString *)restUrl withParameters:(NSMutableDictionary *)parameters;
-
+- (BOOL)galleryValid;
 @end

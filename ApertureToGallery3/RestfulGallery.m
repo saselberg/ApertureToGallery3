@@ -11,13 +11,14 @@
 
 @implementation RestfulGallery
 @synthesize url;
-@synthesize userAgent;
 @synthesize galleryApiKey;
+@synthesize userAgent;
 @synthesize beVerbose;
 @synthesize encoding;
 @synthesize galleryConnection;
 @synthesize results;
 @synthesize callDelegate;
+@synthesize bGalleryValid;
 
 - (RestfulGallery *)init;
 {
@@ -29,6 +30,7 @@
         self.galleryConnection = [GalleryConnection alloc];
         self.beVerbose = false;
         self.callDelegate = self;
+        self.bGalleryValid = false;
         addPhotoQueue = [[NSMutableArray alloc] init];
     }
     
@@ -87,158 +89,188 @@
     [self parseSynchronousRequest:data];
 }
 
+- (BOOL)galleryValid
+{
+    if( !self.bGalleryValid )
+    {
+        if( [self beVerbose] ){ NSLog( @"Testing Gallery Validity" ); }
+        results = nil;
+        NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/1", self.url]] autorelease];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
+                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                            timeoutInterval:10.0];
+        [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
+        [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
+        [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
+        [request setHTTPMethod:@"POST"];
+        
+        NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:self.encoding allowLossyConversion:YES];
+        [request setHTTPBody:requestData];
+        
+        data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        [self parseSynchronousRequest:data];
+        
+        if( [[self.results objectForKey:@"RESPONSE_TYPE"] isEqualToString:@"JSON"] )
+        {
+            self.bGalleryValid = true;
+        }
+    }
+    return self.bGalleryValid;
+}
 
 - (void)getApiKeyforUsername:(NSString *)username AndPassword:(NSString *)password;
 {    
-    if( [self beVerbose] ){ NSLog( @"getting API" ); }
-    results = nil;
-    //build the request
-    NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest", self.url]] autorelease];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
-                                    cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                    timeoutInterval:60.0];
-	[request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
-    [request setValue:@"post"        forHTTPHeaderField:@"X-Gallery-Request-Method"];
-	[request setHTTPMethod:@"POST"];
+    if( [self galleryValid] )
+    {
+       if( [self beVerbose] ){ NSLog( @"getting API" ); }
+       results = nil;
+       //build the request
+       NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest", self.url]] autorelease];
+       NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
+                                       cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                       timeoutInterval:60.0];
+	   [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+       [request setValue:@"post"        forHTTPHeaderField:@"X-Gallery-Request-Method"];
+	   [request setHTTPMethod:@"POST"];
 
-    NSString *requestString = [NSString stringWithFormat:@"user=%@&password=%@", username, password];
-    NSData   *requestData   = [requestString dataUsingEncoding:self.encoding allowLossyConversion:YES];
-	[request setHTTPBody:requestData];
-    
-//    [galleryConnection initWithRequest:request andDelegate:self];
-//    [galleryConnection start];
-    
-    data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    [self parseSynchronousRequest:data];
+       NSString *requestString = [NSString stringWithFormat:@"user=%@&password=%@", username, password];
+       NSData   *requestData   = [requestString dataUsingEncoding:self.encoding allowLossyConversion:YES];
+	   [request setHTTPBody:requestData];
+        
+       data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+       [self parseSynchronousRequest:data];
+    }
 }
 
 - (void)getInfoForItem:(NSNumber *)restItem
 {
-    if( [self beVerbose] ){ NSLog( @"getting albums for item" ); }
-    results = nil;
-    NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%d", self.url, [restItem integerValue]]] autorelease];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
-                                                        cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                        timeoutInterval:60.0];
-	[request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
-	[request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
-	[request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
-	[request setHTTPMethod:@"POST"];
+    if( [self galleryValid] )
+    {
+       if( [self beVerbose] ){ NSLog( @"getting albums for item" ); }
+       results = nil;
+       NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%d", self.url, [restItem integerValue]]] autorelease];
+       NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
+                                                           cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                           timeoutInterval:60.0];
+	   [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
+	   [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
+	   [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
+	   [request setHTTPMethod:@"POST"];
 	
-    NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:self.encoding allowLossyConversion:YES];
-	[request setHTTPBody:requestData];
+       NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:self.encoding allowLossyConversion:YES];
+	   [request setHTTPBody:requestData];
     
-    data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    [self parseSynchronousRequest:data];
+       data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+       [self parseSynchronousRequest:data];
+    }
 }
 
 - (void)getInfoForItems:(NSArray *)urls
 {
-    if( [self beVerbose] ){ NSLog( @"getting items" ); }
-    results = nil;
-    
-    NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/items", self.url]] autorelease];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
+    if( [self galleryValid] )
+    {
+       if( [self beVerbose] ){ NSLog( @"getting items" ); }
+       results = nil;
+       NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/items", self.url]] autorelease];
+       NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                       timeoutInterval:60.0];
-    [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
-    [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
-    [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
-    [request setHTTPMethod:@"POST"];
+                                                           timeoutInterval:60.0];
+       [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
+       [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
+       [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
+       [request setHTTPMethod:@"POST"];
 	
-    NSData *requestData = [ [NSString stringWithFormat:@"urls=[\"%@\"]",[urls componentsJoinedByString:@"\",\""]] dataUsingEncoding:self.encoding allowLossyConversion:YES];
-    [request setHTTPBody:requestData];
+       NSData *requestData = [ [NSString stringWithFormat:@"urls=[\"%@\"]",[urls componentsJoinedByString:@"\",\""]] dataUsingEncoding:self.encoding allowLossyConversion:YES];
+       [request setHTTPBody:requestData];
     
-    data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    [self parseSynchronousRequest:data];
+       data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+       [self parseSynchronousRequest:data];
+    }
 }
 
 - (void)createAlbumInEntity:(NSNumber *)restItem withParameters:(NSMutableDictionary *)parameters
 {
-    if( [self beVerbose] ){ NSLog( @"creating album" ); }
-    results = nil;
-    SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease ];
+    if( [self galleryValid] )
+    {
+       if( [self beVerbose] ){ NSLog( @"creating album" ); }
+       results = nil;
+       SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease ];
     
-    // Required parameters
-    //[parameters setObject:@"json"  forKey:@"name"];
-    //[parameters setObject:@"album" forKey:@"title"];
-    
-     [parameters setObject:@"json"  forKey:@"output"];
-     [parameters setObject:@"album" forKey:@"type"];
+       [parameters setObject:@"json"  forKey:@"output"];
+       [parameters setObject:@"album" forKey:@"type"];
      
-    NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%d", self.url, [restItem integerValue]]] autorelease];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
-                                                        cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                        timeoutInterval:60.0];
-	[request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
-	[request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
-	[request setValue:@"post"               forHTTPHeaderField:@"X-Gallery-Request-Method"];
-	[request setHTTPMethod:@"POST"];
+       NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%d", self.url, [restItem integerValue]]] autorelease];
+       NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
+                                                           cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                           timeoutInterval:60.0];
+	   [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
+	   [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
+	   [request setValue:@"post"               forHTTPHeaderField:@"X-Gallery-Request-Method"];
+	   [request setHTTPMethod:@"POST"];
     
-    NSString *requestString = [[NSString stringWithFormat:@"%@%@", @"entity=",[jsonWriter stringWithObject:parameters]] stringByAddingPercentEscapesUsingEncoding:self.encoding];
-    NSData *requestData = [requestString dataUsingEncoding:self.encoding allowLossyConversion:YES];     
-    [request setHTTPBody:requestData];
+       NSString *requestString = [[NSString stringWithFormat:@"%@%@", @"entity=",[jsonWriter stringWithObject:parameters]] stringByAddingPercentEscapesUsingEncoding:self.encoding];
+       NSData *requestData = [requestString dataUsingEncoding:self.encoding allowLossyConversion:YES];     
+       [request setHTTPBody:requestData];
     
-    data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    [self parseSynchronousRequest:data];
-
+       data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+       [self parseSynchronousRequest:data];
+   }
 }
 
 - (void)addPhotoAtPath:(NSString *)imagePath toUrl:(NSString *)restUrl withParameters:(NSMutableDictionary *)parameters
 {
-    if( [self beVerbose] ){ NSLog( @"adding photo" ); }
-    self.results = nil;
+    if( [self galleryValid] )
+    {
+       if( [self beVerbose] ){ NSLog( @"adding photo" ); }
+       self.results = nil;
     
-    SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease ];
-    [parameters setObject:@"photo"                      forKey:@"type"];
-    [parameters setObject:[imagePath lastPathComponent] forKey:@"name"];   
+       SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease ];
+       [parameters setObject:@"photo"                      forKey:@"type"];
+       [parameters setObject:[imagePath lastPathComponent] forKey:@"name"];   
     
-    NSMutableData *requestData = [[[NSMutableData alloc] init] autorelease]; 
+       NSMutableData *requestData = [[[NSMutableData alloc] init] autorelease]; 
+       NSData   *imageData = [[[NSData alloc] initWithContentsOfFile:imagePath] autorelease];
     
-    NSData   *imageData = [[[NSData alloc] initWithContentsOfFile:imagePath] autorelease];
+       // Make a unique string for the boundary. Leveraged from Zach Wiley in iPhotoToGallery
+       NSString *boundary = [NSString stringWithFormat:@"%@", [[NSProcessInfo processInfo] globallyUniqueString]];
     
-    // Make a unique string for the boundary. Leveraged from Zach Wiley in iPhotoToGallery
-    NSString *boundary = [NSString stringWithFormat:@"%@", [[NSProcessInfo processInfo] globallyUniqueString]];
+       //build the request    
+       NSURL *localURL = [[[NSURL alloc] initWithString:restUrl] autorelease];
     
-    
-    //build the request    
-    NSURL *localURL = [[[NSURL alloc] initWithString:restUrl] autorelease];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
+       NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                       timeoutInterval:60.0];
-    [request setHTTPMethod:@"POST"];
-	[request setValue:self.userAgent                                                                forHTTPHeaderField:@"User-Agent"];
-	[request setValue:self.galleryApiKey                                                            forHTTPHeaderField:@"X-Gallery-Request-Key"];
-	[request setValue:@"post"                                                                       forHTTPHeaderField:@"X-Gallery-Request-Method"];
-    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=\"%@\"", boundary] forHTTPHeaderField:@"Content-Type"];
+                                                           timeoutInterval:60.0];
+       [request setHTTPMethod:@"POST"];
+	   [request setValue:self.userAgent                                                                forHTTPHeaderField:@"User-Agent"];
+	   [request setValue:self.galleryApiKey                                                            forHTTPHeaderField:@"X-Gallery-Request-Key"];
+	   [request setValue:@"post"                                                                       forHTTPHeaderField:@"X-Gallery-Request-Method"];
+       [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=\"%@\"", boundary] forHTTPHeaderField:@"Content-Type"];
 	
-    NSString *requestString = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@",
-                               @"--", boundary, @"\n",
-                               @"Content-Disposition: form-data; name=\"entity\"\n",
-                               @"Content-Type: text/plain; charset=UTF-8\n",
-                               @"Content-Transfer-Encoding: 8bit\n",
-                               @"\n",
-                               [jsonWriter stringWithObject:parameters],@"\n",
-                               @"--", boundary, @"\n",
-                               @"Content-Disposition: form-data; name=\"file\"; filename=\"",[imagePath lastPathComponent],@"\"\n",
-                               @"Content-Type: application/octet-stream\n",
-                               @"Content-Transfer-Encoding: binary\n",
-                               @"\n"];
+       NSString *requestString = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@",
+                                  @"--", boundary, @"\n",
+                                  @"Content-Disposition: form-data; name=\"entity\"\n",
+                                  @"Content-Type: text/plain; charset=UTF-8\n",
+                                  @"Content-Transfer-Encoding: 8bit\n",
+                                  @"\n",
+                                  [jsonWriter stringWithObject:parameters],@"\n",
+                                  @"--", boundary, @"\n",
+                                  @"Content-Disposition: form-data; name=\"file\"; filename=\"",[imagePath lastPathComponent],@"\"\n",
+                                  @"Content-Type: application/octet-stream\n",
+                                  @"Content-Transfer-Encoding: binary\n",
+                                  @"\n"];
     
-    if( [self beVerbose ] ){ NSLog( @"%@<data>\n--%@--", requestString, boundary ); }
+       if( [self beVerbose ] ){ NSLog( @"%@<data>\n--%@--", requestString, boundary ); }
     
-    [requestData appendData:[requestString dataUsingEncoding:self.encoding allowLossyConversion:YES]];
-    [requestData appendData:imageData];
-    [requestData appendData:[[NSString stringWithFormat:@"\n--%@--\n", boundary ] dataUsingEncoding:self.encoding]];    
+       [requestData appendData:[requestString dataUsingEncoding:self.encoding allowLossyConversion:YES]];
+       [requestData appendData:imageData];
+       [requestData appendData:[[NSString stringWithFormat:@"\n--%@--\n", boundary ] dataUsingEncoding:self.encoding]];    
     
-	[request setHTTPBody:requestData];
+	   [request setHTTPBody:requestData];
     
-    [galleryConnection initWithRequest:request andDelegate:self.callDelegate];
-    [galleryConnection start];
+       [galleryConnection initWithRequest:request andDelegate:self.callDelegate];
+       [galleryConnection start];
+    }
 }
-
 
 -(void)parseSynchronousRequest:(NSData *)myData
 {

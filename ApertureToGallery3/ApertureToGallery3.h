@@ -50,6 +50,7 @@
     IBOutlet NSWindow *manageGalleriesWindow;
     IBOutlet NSWindow *galleryInformationWindow;
     IBOutlet NSWindow *addAlbumWindow;
+    IBOutlet NSWindow *aboutWindow;
     
     NSMutableDictionary *preferences;
     NSNumber            *selectedGalleryIndex;
@@ -68,12 +69,16 @@
 @property (retain) NSString         *filePath;
 
 
--(IBAction)addPhoto:(id)sender;
 -(IBAction)makeAlbum:(id)sender;
 -(IBAction)getApiKey:(id)sender;
+-(IBAction)clickDonate:(id)sender;
+-(IBAction)clickGoGitHub:(id)sender;
 
 -(IBAction)showManageGalleries:(id)sender;
 -(IBAction)hideManageGalleries:(id)sender;
+
+-(IBAction)showAbout:(id)sender;
+-(IBAction)hideAbout:(id)sender;
 
 -(IBAction)addGalleryInformation:(id)sender;
 -(IBAction)showGalleryInformation:(id)sender;
@@ -85,7 +90,6 @@
 -(void) savePreferences;
 - (void)got:(NSMutableDictionary *)myResults;
 - (void) processAddPhotoQueue;
-
 
 @end
 

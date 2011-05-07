@@ -140,7 +140,7 @@
             selectedGallery            = [[galleryDirectoryController selectedObjects] objectAtIndex:0];
             self.gallery.galleryApiKey = selectedGallery.key;
             self.gallery.url           = selectedGallery.url;
-
+            self.gallery.bGalleryValid = false;
 		}
         [myNib release];        
 	}
@@ -422,9 +422,18 @@
     GalleryInfo *galleryInfo = [[galleryDirectoryController selectedObjects] objectAtIndex:0];
     [gallery getApiKeyforGallery:galleryInfo.url AndUsername:galleryInfo.username AndPassword:[newGalleryPassword stringValue]];
     galleryInfo.key = [gallery.results objectForKey:@"GALLERY_RESPONSE"];
-    
-    [NSAlert alertWithMessageText:[NSString stringWithFormat:@"Key %@", galleryInfo.key] defaultButton:@"OK" alternateButton:@"Also OK" otherButton:@"Yup" informativeTextWithFormat:@"informative text"];
 }
+
+- (IBAction)clickDonate:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8XJS7R8SCZMVU"]];
+}
+
+- (IBAction)clickGoGitHub:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://saselberg.github.com/ApertureToGallery3"]];
+}
+
 
 /************************************************************
  /  Manage window sheets
@@ -438,6 +447,7 @@
     selectedGallery = [[galleryDirectoryController selectedObjects] objectAtIndex:0];
     self.gallery.galleryApiKey = selectedGallery.key;
     self.gallery.url           = selectedGallery.url;
+    self.gallery.bGalleryValid = false;
     
     if( ![selectedGalleryIndex isEqualToNumber:[NSNumber numberWithInteger:[galleryDirectoryController selectionIndex]]] )
     {
@@ -481,6 +491,16 @@
 {
     [addAlbumWindow orderOut:nil];
     [NSApp endSheet:addAlbumWindow];     
+}
+
+-(IBAction)showAbout:(id)sender
+{
+    [NSApp beginSheet:aboutWindow modalForWindow:[_exportManager window] modalDelegate:self didEndSelector:NULL contextInfo:nil];    
+}
+-(IBAction)hideAbout:(id)sender
+{
+    [aboutWindow orderOut:nil];
+    [NSApp endSheet:aboutWindow];     
 }
 
 /************************************************************
