@@ -329,6 +329,10 @@
     }
     else
     {
+        GalleryAlbum *selectedAlbum;
+        selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
+
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
         [_exportManager shouldFinishExport];        
     }
 }

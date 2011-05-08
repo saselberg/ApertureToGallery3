@@ -39,5 +39,6 @@
 - (void) loadChildren;
 - (void) load;
 - (NSNumber *) entityId;
+- (NSString *) webUrl;
 
 @end

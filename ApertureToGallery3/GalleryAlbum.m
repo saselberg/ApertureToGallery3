@@ -167,6 +167,11 @@
     return myId;
 }
 
+- (NSString *) webUrl
+{
+    return [[info objectForKey:@"entity"] objectForKey:@"web_url"];
+}
+
 - (void)invalidateChildren {
     childrenAreStale = true;
     dataIsStale      = true;
