@@ -47,7 +47,7 @@
             if( [preferences objectForKey:@"GALLERY_DIRECTORY"] ){
                 self.galleryDirectory =  [[NSKeyedUnarchiver unarchiveObjectWithData:[preferences objectForKey:@"GALLERY_DIRECTORY"]] mutableCopy];                
             } else {
-                self.galleryDirectory = [NSMutableArray arrayWithCapacity:0];                            
+                self.galleryDirectory = [NSMutableArray arrayWithCapacity:0];
             }
             
             if( [preferences objectForKey:@"SELECTED_GALLERY_INDEX"] ){
@@ -57,7 +57,7 @@
             }
         } else {
             preferences = [[NSMutableDictionary alloc] init];
-            self.galleryDirectory = [NSMutableArray arrayWithCapacity:5];            
+            self.galleryDirectory = [NSMutableArray arrayWithCapacity:0];
             selectedGalleryIndex = [NSNumber numberWithInteger:0];
         }
         
@@ -136,11 +136,14 @@
 		if ([myNib instantiateNibWithOwner:self topLevelObjects:&_topLevelNibObjects])
 		{
 			[_topLevelNibObjects retain];
-            [galleryDirectoryController setSelectionIndex:[selectedGalleryIndex integerValue]];
-            selectedGallery            = [[galleryDirectoryController selectedObjects] objectAtIndex:0];
-            self.gallery.galleryApiKey = selectedGallery.key;
-            self.gallery.url           = selectedGallery.url;
-            self.gallery.bGalleryValid = false;
+            if( [galleryDirectory count] > 0 )
+            {
+                [galleryDirectoryController setSelectionIndex:[selectedGalleryIndex integerValue]];
+                selectedGallery            = [[galleryDirectoryController selectedObjects] objectAtIndex:0];
+                self.gallery.galleryApiKey = selectedGallery.key;
+                self.gallery.url           = selectedGallery.url;
+                self.gallery.bGalleryValid = false;
+            }
 		}
         [myNib release];        
 	}
@@ -228,8 +231,10 @@
 - (void)exportManagerShouldBeginExport
 {
 	// Before telling Aperture to begin generating image data, test the connection using the user-entered values
-//    [self _beginConnectionTest];
-    [_exportManager shouldBeginExport];
+    if( gallery.bGalleryValid )
+    {
+        [_exportManager shouldBeginExport];
+    }
 }
 
 - (void)exportManagerWillBeginExportToPath:(NSString *)path

@@ -94,25 +94,29 @@
     if( !self.bGalleryValid )
     {
         if( [self beVerbose] ){ NSLog( @"Testing Gallery Validity" ); }
-        results = nil;
-        NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/1", self.url]] autorelease];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
-                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                            timeoutInterval:10.0];
-        [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
-        [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
-        [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
-        [request setHTTPMethod:@"POST"];
-        
-        NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:self.encoding allowLossyConversion:YES];
-        [request setHTTPBody:requestData];
-        
-        data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        [self parseSynchronousRequest:data];
-        
-        if( [[self.results objectForKey:@"RESPONSE_TYPE"] isEqualToString:@"JSON"] )
+        if( [self.galleryApiKey length] > 0 )
         {
-            self.bGalleryValid = true;
+            results = nil;
+        
+            NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/1", self.url]] autorelease];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
+                                                                cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                                timeoutInterval:10.0];
+            [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
+            [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
+            [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
+            [request setHTTPMethod:@"POST"];
+        
+            NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:self.encoding allowLossyConversion:YES];
+            [request setHTTPBody:requestData];
+        
+            data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            [self parseSynchronousRequest:data];
+        
+            if( [[self.results objectForKey:@"RESPONSE_TYPE"] isEqualToString:@"JSON"] )
+            {
+                self.bGalleryValid = true;
+            }
         }
     }
     return self.bGalleryValid;

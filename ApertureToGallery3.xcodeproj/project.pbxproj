@@ -24,7 +24,6 @@
 		D2C00F2A136F870B002ADF41 /* GalleryDirectoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1F136F870B002ADF41 /* GalleryDirectoryController.m */; };
 		D2C00F2B136F870B002ADF41 /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; };
 		D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; };
-		D2C00F2D136F870B002ADF41 /* TutorialAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F25136F870B002ADF41 /* TutorialAppDelegate.m */; };
 		D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */; };
 		D2C00F33136F88F1002ADF41 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00F32136F88F1002ADF41 /* PluginManager.framework */; };
 		D2C00F39136F8CB3002ADF41 /* ApertureToGallery3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */; };
@@ -70,8 +69,6 @@
 		D2C00F21136F870B002ADF41 /* GalleryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryInfo.m; sourceTree = "<group>"; };
 		D2C00F22136F870B002ADF41 /* RestfulGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestfulGallery.h; sourceTree = "<group>"; };
 		D2C00F23136F870B002ADF41 /* RestfulGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestfulGallery.m; sourceTree = "<group>"; };
-		D2C00F24136F870B002ADF41 /* TutorialAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialAppDelegate.h; sourceTree = "<group>"; };
-		D2C00F25136F870B002ADF41 /* TutorialAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialAppDelegate.m; sourceTree = "<group>"; };
 		D2C00F26136F870B002ADF41 /* URLCallDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCallDelegate.h; sourceTree = "<group>"; };
 		D2C00F2F136F873F002ADF41 /* ApertureToGallery3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureToGallery3.h; sourceTree = "<group>"; };
 		D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApertureToGallery3.m; sourceTree = "<group>"; };
@@ -141,8 +138,6 @@
 				D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */,
 				D2C00F2E136F8710002ADF41 /* Restful Gallery */,
 				D2C00EFB136F86E9002ADF41 /* JSON */,
-				D2C00F24136F870B002ADF41 /* TutorialAppDelegate.h */,
-				D2C00F25136F870B002ADF41 /* TutorialAppDelegate.m */,
 				D2C00EF0136F864D002ADF41 /* Supporting Files */,
 			);
 			path = ApertureToGallery3;
@@ -289,7 +284,6 @@
 				D2C00F2A136F870B002ADF41 /* GalleryDirectoryController.m in Sources */,
 				D2C00F2B136F870B002ADF41 /* GalleryInfo.m in Sources */,
 				D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */,
-				D2C00F2D136F870B002ADF41 /* TutorialAppDelegate.m in Sources */,
 				D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
