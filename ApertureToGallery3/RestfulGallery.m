@@ -12,12 +12,9 @@
 @implementation RestfulGallery
 @synthesize url;
 @synthesize galleryApiKey;
-@synthesize userAgent;
-@synthesize beVerbose;
-@synthesize encoding;
-@synthesize galleryConnection;
+@synthesize bVerbose;
 @synthesize results;
-@synthesize callDelegate;
+@synthesize delegate;
 @synthesize bGalleryValid;
 
 - (RestfulGallery *)init;
@@ -25,13 +22,15 @@
     self = [super init];
     if( self )
     { 
-        self.userAgent         = @"ApertureToGallery3ExportPlugin";
-        self.encoding          = NSASCIIStringEncoding;
-        self.galleryConnection = [GalleryConnection alloc];
-        self.beVerbose = false;
-        self.callDelegate = self;
+        _userAgent         = @"ApertureToGallery3ExportPlugin";
+        _encoding          = NSASCIIStringEncoding;
+        _galleryConnection = [GalleryConnection alloc];
+        _addPhotoQueue     = [[NSMutableArray alloc] init];
+        _standardTimeout   = 20;
+        _shortTimeout      = 5;
+        self.bVerbose = false;
+        self.delegate = self;
         self.bGalleryValid = false;
-        addPhotoQueue = [[NSMutableArray alloc] init];
     }
     
     return self;    
@@ -39,21 +38,21 @@
 
 - (void)dealloc
 {
-    self.userAgent         = nil;
+    [_galleryConnection release];
+    [_addPhotoQueue release];
+    _galleryConnection = nil;
+    _addPhotoQueue = nil;
+    
     self.galleryApiKey     = nil;
     self.url               = nil;
-    self.galleryConnection = nil;
     self.results           = nil;
 
-    [addPhotoQueue release];
-    addPhotoQueue = nil;
-    
     [super dealloc];
 }
 
 - (void)cancel
 {
-    [galleryConnection cancel];
+    [_galleryConnection cancel];
 }
 
 
@@ -67,51 +66,51 @@
 
 - (void)getApiKeyforGallery:(NSString *)myGallery AndUsername:(NSString *)username AndPassword:(NSString *)password;
 {    
-    if( [self beVerbose] ){ NSLog( @"getting API" ); }
+    if( [self bVerbose] ){ NSLog( @"getting API" ); }
     results = nil;
     //build the request
     NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest", myGallery]] autorelease];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                         cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                        timeoutInterval:60.0];
-	[request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
-    [request setValue:@"post"        forHTTPHeaderField:@"X-Gallery-Request-Method"];
+                                                        timeoutInterval:_standardTimeout];
+	[request setValue:_userAgent forHTTPHeaderField:@"User-Agent"];
+    [request setValue:@"post"    forHTTPHeaderField:@"X-Gallery-Request-Method"];
 	[request setHTTPMethod:@"POST"];
     
     NSString *requestString = [NSString stringWithFormat:@"user=%@&password=%@", username, password];
-    NSData   *requestData   = [requestString dataUsingEncoding:self.encoding allowLossyConversion:YES];
+    NSData   *requestData   = [requestString dataUsingEncoding:_encoding allowLossyConversion:YES];
 	[request setHTTPBody:requestData];
     
     //    [galleryConnection initWithRequest:request andDelegate:self];
     //    [galleryConnection start];
     
-    data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    [self parseSynchronousRequest:data];
+    _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
+    [self parseSynchronousRequest:_data];
 }
 
 - (BOOL)galleryValid
 {
     if( !self.bGalleryValid )
     {
-        if( [self beVerbose] ){ NSLog( @"Testing Gallery Validity" ); }
+        if( [self bVerbose] ){ NSLog( @"Testing Gallery Validity" ); }
         if( [self.galleryApiKey length] > 0 )
         {
-            results = nil;
+            self.results = nil;
         
             NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/1", self.url]] autorelease];
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                                 cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                                timeoutInterval:10.0];
-            [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
-            [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
-            [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
+                                                                timeoutInterval:_shortTimeout];
+            [request setValue:_userAgent         forHTTPHeaderField:@"User-Agent"];
+            [request setValue:self.galleryApiKey forHTTPHeaderField:@"X-Gallery-Request-Key"];
+            [request setValue:@"get"             forHTTPHeaderField:@"X-Gallery-Request-Method"];
             [request setHTTPMethod:@"POST"];
         
-            NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:self.encoding allowLossyConversion:YES];
+            NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:_encoding allowLossyConversion:YES];
             [request setHTTPBody:requestData];
         
-            data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            [self parseSynchronousRequest:data];
+            _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
+            [self parseSynchronousRequest:_data];
         
             if( [[self.results objectForKey:@"RESPONSE_TYPE"] isEqualToString:@"JSON"] )
             {
@@ -126,23 +125,23 @@
 {    
     if( [self galleryValid] )
     {
-       if( [self beVerbose] ){ NSLog( @"getting API" ); }
+       if( [self bVerbose] ){ NSLog( @"getting API" ); }
        results = nil;
        //build the request
        NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest", self.url]] autorelease];
        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                        cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                       timeoutInterval:60.0];
-	   [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
-       [request setValue:@"post"        forHTTPHeaderField:@"X-Gallery-Request-Method"];
+                                       timeoutInterval:_standardTimeout];
+	   [request setValue:_userAgent forHTTPHeaderField:@"User-Agent"];
+       [request setValue:@"post"    forHTTPHeaderField:@"X-Gallery-Request-Method"];
 	   [request setHTTPMethod:@"POST"];
 
        NSString *requestString = [NSString stringWithFormat:@"user=%@&password=%@", username, password];
-       NSData   *requestData   = [requestString dataUsingEncoding:self.encoding allowLossyConversion:YES];
+       NSData   *requestData   = [requestString dataUsingEncoding:_encoding allowLossyConversion:YES];
 	   [request setHTTPBody:requestData];
         
-       data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-       [self parseSynchronousRequest:data];
+       _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
+       [self parseSynchronousRequest:_data];
     }
 }
 
@@ -150,22 +149,22 @@
 {
     if( [self galleryValid] )
     {
-       if( [self beVerbose] ){ NSLog( @"getting albums for item" ); }
+       if( [self bVerbose] ){ NSLog( @"getting albums for item" ); }
        results = nil;
        NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%d", self.url, [restItem integerValue]]] autorelease];
        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                           timeoutInterval:60.0];
-	   [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
-	   [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
-	   [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
+                                                           timeoutInterval:_standardTimeout];
+	   [request setValue:_userAgent         forHTTPHeaderField:@"User-Agent"];
+	   [request setValue:self.galleryApiKey forHTTPHeaderField:@"X-Gallery-Request-Key"];
+	   [request setValue:@"get"             forHTTPHeaderField:@"X-Gallery-Request-Method"];
 	   [request setHTTPMethod:@"POST"];
 	
-       NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:self.encoding allowLossyConversion:YES];
+       NSData *requestData = [@"ouput=json&type=album" dataUsingEncoding:_encoding allowLossyConversion:YES];
 	   [request setHTTPBody:requestData];
     
-       data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-       [self parseSynchronousRequest:data];
+       _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
+       [self parseSynchronousRequest:_data];
     }
 }
 
@@ -173,22 +172,22 @@
 {
     if( [self galleryValid] )
     {
-       if( [self beVerbose] ){ NSLog( @"getting items" ); }
+       if( [self bVerbose] ){ NSLog( @"getting items" ); }
        results = nil;
        NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/items", self.url]] autorelease];
        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                           timeoutInterval:60.0];
-       [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
-       [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
-       [request setValue:@"get"                forHTTPHeaderField:@"X-Gallery-Request-Method"];
+                                                           timeoutInterval:_standardTimeout];
+       [request setValue:_userAgent         forHTTPHeaderField:@"User-Agent"];
+       [request setValue:self.galleryApiKey forHTTPHeaderField:@"X-Gallery-Request-Key"];
+       [request setValue:@"get"             forHTTPHeaderField:@"X-Gallery-Request-Method"];
        [request setHTTPMethod:@"POST"];
 	
-       NSData *requestData = [ [NSString stringWithFormat:@"urls=[\"%@\"]",[urls componentsJoinedByString:@"\",\""]] dataUsingEncoding:self.encoding allowLossyConversion:YES];
+       NSData *requestData = [ [NSString stringWithFormat:@"urls=[\"%@\"]",[urls componentsJoinedByString:@"\",\""]] dataUsingEncoding:_encoding allowLossyConversion:YES];
        [request setHTTPBody:requestData];
     
-       data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-       [self parseSynchronousRequest:data];
+       _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
+       [self parseSynchronousRequest:_data];
     }
 }
 
@@ -196,7 +195,7 @@
 {
     if( [self galleryValid] )
     {
-       if( [self beVerbose] ){ NSLog( @"creating album" ); }
+       if( [self bVerbose] ){ NSLog( @"creating album" ); }
        results = nil;
        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease ];
     
@@ -206,18 +205,18 @@
        NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%d", self.url, [restItem integerValue]]] autorelease];
        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                           timeoutInterval:60.0];
-	   [request setValue:self.userAgent        forHTTPHeaderField:@"User-Agent"];
-	   [request setValue:self.galleryApiKey    forHTTPHeaderField:@"X-Gallery-Request-Key"];
-	   [request setValue:@"post"               forHTTPHeaderField:@"X-Gallery-Request-Method"];
+                                                           timeoutInterval:_standardTimeout];
+	   [request setValue:_userAgent         forHTTPHeaderField:@"User-Agent"];
+	   [request setValue:self.galleryApiKey forHTTPHeaderField:@"X-Gallery-Request-Key"];
+	   [request setValue:@"post"            forHTTPHeaderField:@"X-Gallery-Request-Method"];
 	   [request setHTTPMethod:@"POST"];
     
-       NSString *requestString = [[NSString stringWithFormat:@"%@%@", @"entity=",[jsonWriter stringWithObject:parameters]] stringByAddingPercentEscapesUsingEncoding:self.encoding];
-       NSData *requestData = [requestString dataUsingEncoding:self.encoding allowLossyConversion:YES];     
+       NSString *requestString = [[NSString stringWithFormat:@"%@%@", @"entity=",[jsonWriter stringWithObject:parameters]] stringByAddingPercentEscapesUsingEncoding:_encoding];
+       NSData *requestData = [requestString dataUsingEncoding:_encoding allowLossyConversion:YES];     
        [request setHTTPBody:requestData];
     
-       data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-       [self parseSynchronousRequest:data];
+       _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
+       [self parseSynchronousRequest:_data];
    }
 }
 
@@ -225,7 +224,7 @@
 {
     if( [self galleryValid] )
     {
-       if( [self beVerbose] ){ NSLog( @"adding photo" ); }
+       if( [self bVerbose] ){ NSLog( @"adding photo" ); }
        self.results = nil;
     
        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease ];
@@ -245,7 +244,7 @@
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                            timeoutInterval:60.0];
        [request setHTTPMethod:@"POST"];
-	   [request setValue:self.userAgent                                                                forHTTPHeaderField:@"User-Agent"];
+	   [request setValue:_userAgent                                                                    forHTTPHeaderField:@"User-Agent"];
 	   [request setValue:self.galleryApiKey                                                            forHTTPHeaderField:@"X-Gallery-Request-Key"];
 	   [request setValue:@"post"                                                                       forHTTPHeaderField:@"X-Gallery-Request-Method"];
        [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=\"%@\"", boundary] forHTTPHeaderField:@"Content-Type"];
@@ -263,16 +262,16 @@
                                   @"Content-Transfer-Encoding: binary\n",
                                   @"\n"];
     
-       if( [self beVerbose ] ){ NSLog( @"%@<data>\n--%@--", requestString, boundary ); }
+       if( [self bVerbose ] ){ NSLog( @"%@<data>\n--%@--", requestString, boundary ); }
     
-       [requestData appendData:[requestString dataUsingEncoding:self.encoding allowLossyConversion:YES]];
+       [requestData appendData:[requestString dataUsingEncoding:_encoding allowLossyConversion:YES]];
        [requestData appendData:imageData];
-       [requestData appendData:[[NSString stringWithFormat:@"\n--%@--\n", boundary ] dataUsingEncoding:self.encoding]];    
+       [requestData appendData:[[NSString stringWithFormat:@"\n--%@--\n", boundary ] dataUsingEncoding:_encoding]];    
     
 	   [request setHTTPBody:requestData];
     
-       [galleryConnection initWithRequest:request andDelegate:self.callDelegate];
-       [galleryConnection start];
+       [_galleryConnection initWithRequest:request andDelegate:self.delegate];
+       [_galleryConnection start];
     }
 }
 
@@ -327,7 +326,7 @@
         
     }
     
-    [newResults setValue:error forKey:@"ERROR"];
+    [newResults setValue:_error forKey:@"ERROR"];
     
     self.results = newResults;
 }

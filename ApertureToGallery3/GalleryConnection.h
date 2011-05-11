@@ -11,14 +11,14 @@
 #import "JSON.h"
 
 @interface GalleryConnection : NSObject {
-    NSMutableData        *data;
-    NSMutableURLRequest  *request;
-    NSURLResponse        *response;
-    NSURLConnection      *connection;
-    NSError              *error;
-    NSMutableDictionary  *results;
-    BOOL                 isRunning;
-    BOOL                 beVerbose;
+    NSMutableData        *_mutableData;
+    NSMutableURLRequest  *_request;
+    NSURLResponse        *_response;
+    NSURLConnection      *_connection;
+    NSError              *_error;
+    NSStringEncoding     _encoding;
+    BOOL                 _isRunning;
+    
     id <URLCallDelegate> delegate;
 }
 
@@ -26,14 +26,8 @@
 - (void)start;
 - (void)cancel;
 
-@property(retain)             NSMutableData        *data;
-@property(retain)             NSMutableURLRequest  *request;
-@property(retain)             NSURLResponse        *response;
-@property(retain)             NSURLConnection      *connection;
 @property(retain)             NSMutableDictionary  *results;
-@property(retain)             NSError              *error;
-@property                     BOOL                 isRunning;
-@property                     BOOL                 beVerbose;
+@property                     BOOL                 bVerbose;
 @property (retain, nonatomic) id <URLCallDelegate> delegate;
 
 @end

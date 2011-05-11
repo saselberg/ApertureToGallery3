@@ -13,23 +13,23 @@
 #import "AddPhotoQueueItem.h"
 
 @interface RestfulGallery : NSObject <URLCallDelegate> {
-    NSMutableURLRequest *browser;
-@private
-    NSError        *error;
-    NSURLResponse  *response;
-    NSData         *data;
-    NSMutableArray *addPhotoQueue;
+    NSError*             _error;
+    NSURLResponse*       _response;
+    NSData*              _data;
+    NSMutableArray*      _addPhotoQueue;
+    NSString*            _userAgent;
+    NSStringEncoding     _encoding;
+    GalleryConnection*   _galleryConnection;
+    NSInteger            _standardTimeout;
+    NSInteger            _shortTimeout;
 }
 
-@property(retain) NSString            *userAgent;
-@property(retain) NSString            *url;
-@property(retain) NSString            *galleryApiKey;
-@property         BOOL                beVerbose;
-@property         NSStringEncoding    encoding;
-@property(retain) GalleryConnection   *galleryConnection;
-@property(retain) NSMutableDictionary *results;
-@property(retain) id <URLCallDelegate> callDelegate;
-@property         BOOL                bGalleryValid;
+@property(retain) NSString             *url;
+@property(retain) NSString             *galleryApiKey;
+@property         BOOL                 bVerbose;
+@property(retain) NSMutableDictionary  *results;
+@property(retain) id <URLCallDelegate> delegate;
+@property         BOOL                 bGalleryValid;
 
 
 - (void)cancel;

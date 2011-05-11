@@ -40,7 +40,7 @@
 		
         // Stuff for the gallery connection
         self.gallery  = [[RestfulGallery alloc] init]; 
-        self.gallery.callDelegate = self;
+        self.gallery.delegate = self;
         userDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
         if( userDefaults ){
             preferences = [userDefaults mutableCopy];

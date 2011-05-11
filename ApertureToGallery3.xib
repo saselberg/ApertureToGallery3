@@ -1109,7 +1109,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="795168600">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">272761856</int>
-								<string key="NSContents">Version 0.51</string>
+								<string key="NSContents">Version 0.52</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="796466020"/>
 								<reference key="NSBackgroundColor" ref="779195697"/>
