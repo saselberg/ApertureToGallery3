@@ -10,7 +10,6 @@
 #import <Foundation/Foundation.h>
 #import "ApertureExportManager.h"
 #import "ApertureExportPlugIn.h"
-#import "GalleryDirectoryController.h"
 #import "GalleryAlbum.h"
 #import "GalleryInfo.h"
 #import "RestfulGallery.h"
@@ -43,9 +42,9 @@
     IBOutlet NSTextField *albumTitle;
     IBOutlet NSTextField *newGalleryPassword;
     
-    IBOutlet NSBrowser                  *browser;
-    IBOutlet NSTableView                *galleryDirectoryTableView;    
-    IBOutlet GalleryDirectoryController *galleryDirectoryController;
+    IBOutlet NSBrowser         *browser;
+    IBOutlet NSTableView       *galleryDirectoryTableView;    
+    IBOutlet NSArrayController *galleryDirectoryController;
 
     IBOutlet NSWindow *manageGalleriesWindow;
     IBOutlet NSWindow *galleryInformationWindow;
@@ -66,7 +65,6 @@
 @property (retain) GalleryAlbum     *rootGalleryAlbum;
 @property (retain) NSMutableArray   *galleryDirectory;
 @property (retain) NSString         *galleryApiKey;
-@property (retain) NSString         *filePath;
 
 
 -(IBAction)makeAlbum:(id)sender;

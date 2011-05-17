@@ -14,7 +14,6 @@
 @synthesize galleryDirectory;
 @synthesize rootGalleryAlbum;
 @synthesize galleryApiKey;
-@synthesize filePath;
 
 //---------------------------------------------------------
 // initWithAPIManager:
