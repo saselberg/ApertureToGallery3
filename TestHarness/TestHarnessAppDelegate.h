@@ -13,10 +13,12 @@
 
 @interface TestHarnessAppDelegate : NSObject <NSApplicationDelegate, URLCallDelegate> {
 
-    IBOutlet NSTextField *albumName;
-    IBOutlet NSTextField *albumTitle;
-    IBOutlet NSTextField *newGalleryPassword;
-    IBOutlet NSTextField *progress;
+    IBOutlet NSTextField         *albumName;
+    IBOutlet NSTextField         *albumTitle;
+    IBOutlet NSTextField         *newGalleryPassword;
+    IBOutlet NSTextField         *progress;
+    IBOutlet NSProgressIndicator *currentProgresssIndicator;
+    IBOutlet NSProgressIndicator *totalProgresssIndicator;
     
     IBOutlet NSBrowser         *browser;
     IBOutlet NSTableView       *galleryDirectoryTableView;    
@@ -30,7 +32,8 @@
     IBOutlet NSWindow *progressWindow;
     
     
-    NSNumber            *photoCount;    
+    NSNumber            *photoCount; 
+    NSNumber            *uploadedPhotos;
     NSMutableDictionary *preferences;
     NSNumber            *selectedGalleryIndex;
     NSDictionary        *userDefaults;
@@ -48,6 +51,7 @@
 
 - (void) processAddPhotoQueue;
 - (void) got:(NSMutableDictionary *)results;
+- (void) updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 - (IBAction) getApiKey:(id)sender;
 - (IBAction)makeAlbum:(id)sender;
 - (IBAction)clickDonate:(id)sender;

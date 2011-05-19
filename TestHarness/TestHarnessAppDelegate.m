@@ -23,6 +23,7 @@
     self = [super init];
     if( self )
     { 
+
         addPhotoQueue = [[NSMutableArray alloc] init];
         self.gallery  = [[RestfulGallery alloc] init]; 
         self.gallery.delegate = self;
@@ -72,6 +73,11 @@
         self.gallery.galleryApiKey = selectedGallery.key;
         self.gallery.url           = selectedGallery.url;
         self.gallery.bGalleryValid = false;
+        
+        [currentProgresssIndicator setMinValue:0.0];
+        [currentProgresssIndicator setMaxValue:1.0];
+        [totalProgresssIndicator setMinValue:0.0];
+        [totalProgresssIndicator setMaxValue:1.0];
     }
 }
 
@@ -263,9 +269,12 @@
                                                                           dictionaryWithObjects:[NSArray arrayWithObjects:[fileNode lastPathComponent], @"", nil] 
                                                                           forKeys:[NSArray arrayWithObjects:@"title", @"description", nil ]]];
         [addPhotoQueue addObject:item];
+        [item release];
     }
     
     photoCount = [NSNumber numberWithInteger:[addPhotoQueue count]];
+    uploadedPhotos = [NSNumber numberWithInteger:0];
+    [totalProgresssIndicator setMaxValue:[photoCount doubleValue]];
     [NSApp beginSheet:progressWindow modalForWindow:mainWindow modalDelegate:self didEndSelector:NULL contextInfo:nil];    
     [self processAddPhotoQueue];
 }
@@ -274,8 +283,14 @@
 {
     //    NSLog( @"%@",myResults );
     //    NSLog( @"Done!" );
-    
+    uploadedPhotos = [NSNumber numberWithInteger:1+[uploadedPhotos integerValue]];
     [self processAddPhotoQueue];
+}
+
+- (void) updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+    [currentProgresssIndicator setDoubleValue:((double)totalBytesWritten)/((double)totalBytesExpectedToWrite) ];
+    [totalProgresssIndicator setDoubleValue:[uploadedPhotos doubleValue] + ((double)totalBytesWritten)/((double)totalBytesExpectedToWrite) ];
 }
 
 - (void) processAddPhotoQueue

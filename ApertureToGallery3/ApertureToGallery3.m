@@ -14,6 +14,7 @@
 @synthesize galleryDirectory;
 @synthesize rootGalleryAlbum;
 @synthesize galleryApiKey;
+@synthesize cancel;
 
 //---------------------------------------------------------
 // initWithAPIManager:
@@ -38,6 +39,7 @@
         _progressLock = [[NSLock alloc] init];
 		
         // Stuff for the gallery connection
+        self.cancel   = false;
         self.gallery  = [[RestfulGallery alloc] init]; 
         self.gallery.delegate = self;
         userDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
@@ -112,6 +114,8 @@
     // Clean up the temporary files
     [[NSFileManager defaultManager] removeItemAtPath:tempDirectoryPath error:nil];
 	[tempDirectoryPath release];
+    
+    [exportProgress.message autorelease];
     
 	[_progressLock release];
 	[_exportManager release];
@@ -232,6 +236,16 @@
 	// Before telling Aperture to begin generating image data, test the connection using the user-entered values
     if( gallery.bGalleryValid )
     {
+        self.cancel = false;
+        [self lockProgress];
+        exportProgress.totalValue = [_exportManager imageCount];
+        exportProgress.currentValue = 1;
+        exportProgress.indeterminateProgress = NO;
+        [exportProgress.message autorelease];
+        exportProgress.message = [[NSString stringWithFormat:@"Step 1 of 2: Preparing Images..."] retain];
+        [self unlockProgress];
+                
+        // The test was successful, we have set the progress correctly, and are ready for Aperture to begin generating image data.
         [_exportManager shouldBeginExport];
     }
 }
@@ -255,7 +269,6 @@
 
 - (BOOL)exportManagerShouldWriteImageData:(NSData *)imageData toRelativePath:(NSString *)path forImageAtIndex:(unsigned)index
 {
-	// Add to the total bytes we have to upload so we can properly indicate progress.
 	return YES;	
 }
 
@@ -302,7 +315,9 @@
             [addPhotoQueue addObject:item];
             [item release];
         }
-        
+        photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
+        uploadedPhotos = [NSNumber numberWithInteger:0];
+
         [self processAddPhotoQueue];
     }
 }
@@ -312,32 +327,46 @@
 	// You must call [_exportManager shouldCancelExport] here or elsewhere before Aperture will cancel the export process
 	// NOTE: You should assume that your plug-in will be deallocated immediately following this call. Be sure you have cleaned up
 	// any callbacks or running threads before calling.
+  
+    self.cancel = true;
+    [gallery cancel];    
     [_exportManager shouldCancelExport];
 }
 
 - (void)got:(NSMutableDictionary *)myResults;
 {
-//    NSLog( @"%@",myResults );
-    //    NSLog( @"Done!" );
-    
+    uploadedPhotos = [NSNumber numberWithInteger:1+[uploadedPhotos integerValue]];
     [self processAddPhotoQueue];
+}
+
+- (void) updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+    [self lockProgress];
+	exportProgress.currentValue = totalBytesWritten;
+	exportProgress.totalValue = totalBytesExpectedToWrite;
+    [exportProgress.message autorelease];
+	exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", [uploadedPhotos intValue] + 1, [photoCount intValue]] retain];
+	[self unlockProgress];
 }
 
 - (void) processAddPhotoQueue
 {
-    if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+    if( !self.cancel )
     {
-        AddPhotoQueueItem *currentItem = [[[addPhotoQueue objectAtIndex:0] retain] autorelease];
-        [addPhotoQueue removeObjectAtIndex:0];
-        [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
-    }
-    else
-    {
-        GalleryAlbum *selectedAlbum;
-        selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
+        if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+        {
+            AddPhotoQueueItem *currentItem = [[[addPhotoQueue objectAtIndex:0] retain] autorelease];
+            [addPhotoQueue removeObjectAtIndex:0];
+            [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+        }
+        else
+        {
+            GalleryAlbum *selectedAlbum;
+            selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
 
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
-        [_exportManager shouldFinishExport];        
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
+            [_exportManager shouldFinishExport];        
+        }
     }
 }
 

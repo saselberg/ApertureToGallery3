@@ -50,6 +50,7 @@
     IBOutlet NSWindow *galleryInformationWindow;
     IBOutlet NSWindow *addAlbumWindow;
     IBOutlet NSWindow *aboutWindow;
+    IBOutlet NSWindow *progressWindow;
     
     NSMutableDictionary *preferences;
     NSNumber            *selectedGalleryIndex;
@@ -59,12 +60,17 @@
     NSString *tempDirectoryPath;
     NSMutableArray *exportedImagePaths;
     NSMutableArray *addPhotoQueue;
+
+   	// For measuring progress - as Aperture writes data to disk, keep count of the bytes we need to upload.
+    NSNumber            *photoCount; 
+    NSNumber            *uploadedPhotos;
 }
 
 @property (retain) RestfulGallery   *gallery;
 @property (retain) GalleryAlbum     *rootGalleryAlbum;
 @property (retain) NSMutableArray   *galleryDirectory;
 @property (retain) NSString         *galleryApiKey;
+@property          BOOL             cancel;
 
 
 -(IBAction)makeAlbum:(id)sender;
@@ -85,9 +91,10 @@
 -(IBAction)showAddAlbum:(id)sender;
 -(IBAction)hideAddAlbum:(id)sender;
 
--(void) savePreferences;
-- (void)got:(NSMutableDictionary *)myResults;
-- (void) processAddPhotoQueue;
+-(void)savePreferences;
+-(void)got:(NSMutableDictionary *)myResults;
+-(void)updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
+-(void)processAddPhotoQueue;
 
 @end
 

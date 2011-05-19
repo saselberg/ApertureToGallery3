@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol URLCallDelegate
--(void) got:(NSMutableDictionary *)results;
+- (void) got:(NSMutableDictionary *)results;
+- (void) updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 @end

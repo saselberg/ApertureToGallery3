@@ -64,6 +64,10 @@
 //    NSLog( @"Restful Gallery Done!" );
 }
 
+- (void) updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+}
+
 - (void)getApiKeyforGallery:(NSString *)myGallery AndUsername:(NSString *)username AndPassword:(NSString *)password;
 {    
     if( [self bVerbose] ){ NSLog( @"getting API" ); }

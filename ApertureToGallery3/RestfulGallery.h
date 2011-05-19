@@ -34,6 +34,7 @@
 
 - (void)cancel;
 - (void)got:(NSMutableDictionary *)myResults;
+- (void)updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 - (void)parseSynchronousRequest:(NSData *)myData;
 - (void)getApiKeyforUsername:(NSString *)username AndPassword:(NSString *)password;
 - (void)getApiKeyforGallery:(NSString *)myGallery AndUsername:(NSString *)username AndPassword:(NSString *)password;
