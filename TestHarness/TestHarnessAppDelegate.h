@@ -42,6 +42,8 @@
     NSString *tempDirectoryPath;
     NSMutableArray *exportedImagePaths;
     NSMutableArray *addPhotoQueue;  
+    BOOL           running;
+    BOOL           cancel;
 }
 
 @property (retain) RestfulGallery   *gallery;
@@ -75,6 +77,8 @@
 - (void)savePreferences;
 -(IBAction)selectImageDirectory:(id)sender;
 - (void)exportPhotos:(NSString*)fileNode;
+- (void)done;
+- (void)startExportInNewThread;
 
 @end
 

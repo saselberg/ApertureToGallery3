@@ -89,6 +89,7 @@
 
 - (IBAction)cancel:(id)sender
 {
+    cancel = YES;
     [gallery cancel];
     [progressWindow orderOut:nil];
     [NSApp endSheet:progressWindow];     
@@ -242,6 +243,8 @@
 
 - (void)exportPhotos:(NSString*)fileNode
 {
+    cancel = NO;
+    
     GalleryAlbum *selectedAlbum;
     selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
     
@@ -275,9 +278,27 @@
     photoCount = [NSNumber numberWithInteger:[addPhotoQueue count]];
     uploadedPhotos = [NSNumber numberWithInteger:0];
     [totalProgresssIndicator setMaxValue:[photoCount doubleValue]];
-    [NSApp beginSheet:progressWindow modalForWindow:mainWindow modalDelegate:self didEndSelector:NULL contextInfo:nil];    
-    [self processAddPhotoQueue];
+    [NSApp beginSheet:progressWindow modalForWindow:mainWindow modalDelegate:self didEndSelector:NULL contextInfo:nil];  
+
+    [NSThread detachNewThreadSelector:@selector(startExportInNewThread) toTarget:self withObject:nil];
 }
+
+// this is necessary as the NSURLConnection does not work well except in NSDefaultRunLoopMode - which is not the modal panel run mode.
+-(void)startExportInNewThread
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    [self processAddPhotoQueue];
+    running = YES;
+    while(running) {
+        if( ![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:100000]] )
+        {
+            break;
+        }
+    }    
+    [pool release];    
+}
+
+
 
 - (void)got:(NSMutableDictionary *)myResults;
 {
@@ -295,23 +316,33 @@
 
 - (void) processAddPhotoQueue
 {
-    if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+    if( !cancel )
     {
-        AddPhotoQueueItem *currentItem = [[[addPhotoQueue objectAtIndex:0] retain] autorelease];
-        [addPhotoQueue removeObjectAtIndex:0];
-        [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %d of %d\n\n%@", ([photoCount intValue]- [addPhotoQueue count]), [photoCount intValue], currentItem.path ]];
-        [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+        if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+        {
+            AddPhotoQueueItem *currentItem = [[[addPhotoQueue objectAtIndex:0] retain] autorelease];
+            [addPhotoQueue removeObjectAtIndex:0];
+            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %d of %d\n\n%@", ([photoCount intValue]- [addPhotoQueue count]), [photoCount intValue], currentItem.path ]];
+            [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+        }
+        else
+        {
+            [self performSelectorOnMainThread:@selector(done) withObject:nil waitUntilDone:YES];
+            running = NO;
+        }
     }
-    else
-    {
-        [progressWindow orderOut:nil];
-        [NSApp endSheet:progressWindow];     
+}
 
-        GalleryAlbum *selectedAlbum;
-        selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
-        
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
-    }
+- (void) done
+{
+    [progressWindow orderOut:nil];
+    [NSApp endSheet:progressWindow];     
+    
+    GalleryAlbum *selectedAlbum;
+    selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
+    
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
+    
 }
 
 -(IBAction)showAbout:(id)sender
