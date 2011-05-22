@@ -18,7 +18,8 @@
     NSError              *_error;
     NSStringEncoding     _encoding;
     BOOL                 _isRunning;
-    
+    NSMutableDictionary  *results;
+    BOOL                 bVerbose;    
     id <URLCallDelegate> delegate;
 }
 

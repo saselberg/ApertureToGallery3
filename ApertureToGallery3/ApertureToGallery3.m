@@ -318,9 +318,26 @@
         photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
         uploadedPhotos = [NSNumber numberWithInteger:0];
 
-        [self processAddPhotoQueue];
+        [NSThread detachNewThreadSelector:@selector(startExportInNewThread) toTarget:self withObject:nil];
     }
 }
+// this is necessary as the NSURLConnection does not work well except in NSDefaultRunLoopMode - which is not the modal panel run mode.
+-(void)startExportInNewThread
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    [self processAddPhotoQueue];
+    running = YES;
+    while(running) {
+        if( ![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:100000]] )
+        {
+            break;
+        }
+    }    
+    [pool release];    
+}
+
+
+
 
 - (void)exportManagerShouldCancelExport
 {
@@ -361,13 +378,20 @@
         }
         else
         {
-            GalleryAlbum *selectedAlbum;
-            selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
-
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
-            [_exportManager shouldFinishExport];        
+            [self performSelectorOnMainThread:@selector(done) withObject:nil waitUntilDone:YES];
+            running = NO;
         }
     }
+}
+
+- (void) done
+{
+    GalleryAlbum *selectedAlbum;
+    selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
+    
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
+    [_exportManager shouldFinishExport];        
+    
 }
 
 #pragma mark -

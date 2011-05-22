@@ -10,8 +10,10 @@
 
 
 @interface GalleryInfo : NSObject {
-@private
-    
+    NSString *name;
+    NSString *url;
+    NSString *key;
+    NSString *username;
 }
 
 - (id)initWithName:(NSString*)myName andUrl:(NSString*)myUrl andUsername:(NSString*)myUsername andKey:(NSString*)myKey;

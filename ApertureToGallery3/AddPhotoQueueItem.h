@@ -10,7 +10,9 @@
 
 
 @interface AddPhotoQueueItem : NSObject {
-@private
+    NSString            *path;
+    NSString            *url;
+    NSMutableDictionary *parameters;
     
 }
 

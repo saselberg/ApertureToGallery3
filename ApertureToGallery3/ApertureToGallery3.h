@@ -64,6 +64,7 @@
    	// For measuring progress - as Aperture writes data to disk, keep count of the bytes we need to upload.
     NSNumber            *photoCount; 
     NSNumber            *uploadedPhotos;
+    BOOL                running;
 }
 
 @property (retain) RestfulGallery   *gallery;
@@ -95,6 +96,8 @@
 -(void)got:(NSMutableDictionary *)myResults;
 -(void)updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 -(void)processAddPhotoQueue;
+-(void)startExportInNewThread;
+-(void)done;
 
 @end
 

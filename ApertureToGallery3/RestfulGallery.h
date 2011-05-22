@@ -22,6 +22,12 @@
     GalleryConnection*   _galleryConnection;
     NSInteger            _standardTimeout;
     NSInteger            _shortTimeout;
+    NSString*            url;
+    NSString*            galleryApiKey;
+    BOOL                 bVerbose;
+    NSMutableDictionary* results;
+    id <URLCallDelegate> delegate;
+    BOOL                 bGalleryValid;
 }
 
 @property(retain) NSString             *url;

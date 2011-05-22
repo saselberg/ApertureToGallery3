@@ -159,7 +159,7 @@
 }
 - (IBAction)clickDonate:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8XJS7R8SCZMVU"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WAWEU2MMXXY4Q"]];
 }
 
 - (IBAction)clickGoGitHub:(id)sender

@@ -27,6 +27,21 @@
 		D20DDC551381ED8200EDF8E9 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */; };
 		D20DDC571381ED8200EDF8E9 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */; };
 		D20DDC591381ED8200EDF8E9 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */; };
+		D2BA094C13879456006250A8 /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; };
+		D2BA094D13879456006250A8 /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; };
+		D2BA094E13879456006250A8 /* GalleryConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1D136F870B002ADF41 /* GalleryConnection.m */; };
+		D2BA094F13879456006250A8 /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; };
+		D2BA095013879456006250A8 /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; };
+		D2BA095213879463006250A8 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */; };
+		D2BA095313879463006250A8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F00136F86E9002ADF41 /* SBJsonParser.m */; };
+		D2BA095413879463006250A8 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */; };
+		D2BA095513879463006250A8 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */; };
+		D2BA095613879463006250A8 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */; };
+		D2BA095713879463006250A8 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */; };
+		D2BA095813879463006250A8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */; };
+		D2BA095913879463006250A8 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */; };
+		D2BA095A13879463006250A8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */; };
+		D2BA095C1388347D006250A8 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BA095B1388347D006250A8 /* QuickTime.framework */; };
 		D2C00EEA136F864D002ADF41 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
 		D2C00EF4136F864D002ADF41 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2C00EF2136F864D002ADF41 /* InfoPlist.strings */; };
 		D2C00F0F136F86E9002ADF41 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */; };
@@ -46,6 +61,11 @@
 		D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */; };
 		D2C00F33136F88F1002ADF41 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00F32136F88F1002ADF41 /* PluginManager.framework */; };
 		D2C00F39136F8CB3002ADF41 /* ApertureToGallery3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */; };
+		D2D00ED413856512006E199E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
+		D2D00EDA13856513006E199E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D00ED813856513006E199E /* InfoPlist.strings */; };
+		D2D00EEC13856805006E199E /* iPhotoToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D00EEB13856805006E199E /* iPhotoToGallery3.m */; };
+		D2D00EEF138568BF006E199E /* iPhotoToGallery3ExportBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D00EEE138568BF006E199E /* iPhotoToGallery3ExportBox.m */; };
+		D2D1C623138621CE00662456 /* iPhotoToGallery3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D1C622138621CE00662456 /* iPhotoToGallery3.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +78,7 @@
 		D20DDC1C1381D92100EDF8E9 /* TestHarnessAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHarnessAppDelegate.h; sourceTree = "<group>"; };
 		D20DDC1D1381D92100EDF8E9 /* TestHarnessAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHarnessAppDelegate.m; sourceTree = "<group>"; };
 		D20DDC201381D92100EDF8E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D2BA095B1388347D006250A8 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
 		D2C00EE6136F864D002ADF41 /* ApertureToGallery3.ApertureExport */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApertureToGallery3.ApertureExport; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C00EE9136F864D002ADF41 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D2C00EEC136F864D002ADF41 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -103,6 +124,18 @@
 		D2C00F36136F8BD7002ADF41 /* ApertureExportPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureExportPlugIn.h; sourceTree = "<group>"; };
 		D2C00F37136F8BD7002ADF41 /* ApertureSDKCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureSDKCommon.h; sourceTree = "<group>"; };
 		D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApertureToGallery3.xib; sourceTree = SOURCE_ROOT; };
+		D2D00ED313856512006E199E /* iPhotoToGallery3.iPhotoExporter */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPhotoToGallery3.iPhotoExporter; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2D00ED713856513006E199E /* iPhotoToGallery3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPhotoToGallery3-Info.plist"; sourceTree = "<group>"; };
+		D2D00ED913856513006E199E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D2D00EDB13856513006E199E /* iPhotoToGallery3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iPhotoToGallery3-Prefix.pch"; sourceTree = "<group>"; };
+		D2D00EEA13856805006E199E /* iPhotoToGallery3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhotoToGallery3.h; sourceTree = "<group>"; };
+		D2D00EEB13856805006E199E /* iPhotoToGallery3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhotoToGallery3.m; sourceTree = "<group>"; };
+		D2D00EED138568BF006E199E /* iPhotoToGallery3ExportBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhotoToGallery3ExportBox.h; sourceTree = "<group>"; };
+		D2D00EEE138568BF006E199E /* iPhotoToGallery3ExportBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhotoToGallery3ExportBox.m; sourceTree = "<group>"; };
+		D2D00EF013856B94006E199E /* ExportImageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportImageProtocol.h; path = ../../../Desktop/Interface/ExportImageProtocol.h; sourceTree = "<group>"; };
+		D2D00EF113856B94006E199E /* ExportPluginBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportPluginBoxProtocol.h; path = ../../../Desktop/Interface/ExportPluginBoxProtocol.h; sourceTree = "<group>"; };
+		D2D00EF213856B94006E199E /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportPluginProtocol.h; path = ../../../Desktop/Interface/ExportPluginProtocol.h; sourceTree = "<group>"; };
+		D2D1C622138621CE00662456 /* iPhotoToGallery3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhotoToGallery3.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +153,15 @@
 			files = (
 				D2C00F33136F88F1002ADF41 /* PluginManager.framework in Frameworks */,
 				D2C00EEA136F864D002ADF41 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2D00ED013856512006E199E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2BA095C1388347D006250A8 /* QuickTime.framework in Frameworks */,
+				D2D00ED413856512006E199E /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,8 +194,11 @@
 		D2C00EDB136F864D002ADF41 = {
 			isa = PBXGroup;
 			children = (
+				D2C00F2E136F8710002ADF41 /* Restful Gallery */,
+				D2C00EFB136F86E9002ADF41 /* JSON */,
 				D2C00EEF136F864D002ADF41 /* ApertureToGallery3 */,
 				D20DDC101381D92100EDF8E9 /* TestHarness */,
+				D2D00ED513856512006E199E /* iPhotoToGallery3 */,
 				D2C00EE8136F864D002ADF41 /* Frameworks */,
 				D2C00EE7136F864D002ADF41 /* Products */,
 			);
@@ -164,6 +209,7 @@
 			children = (
 				D2C00EE6136F864D002ADF41 /* ApertureToGallery3.ApertureExport */,
 				D20DDC0D1381D92100EDF8E9 /* TestHarness.app */,
+				D2D00ED313856512006E199E /* iPhotoToGallery3.iPhotoExporter */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +217,7 @@
 		D2C00EE8136F864D002ADF41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2BA095B1388347D006250A8 /* QuickTime.framework */,
 				D2C00F32136F88F1002ADF41 /* PluginManager.framework */,
 				D2C00EE9136F864D002ADF41 /* Cocoa.framework */,
 				D2C00EEB136F864D002ADF41 /* Other Frameworks */,
@@ -195,8 +242,6 @@
 				D2C00F2F136F873F002ADF41 /* ApertureToGallery3.h */,
 				D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */,
 				D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */,
-				D2C00F2E136F8710002ADF41 /* Restful Gallery */,
-				D2C00EFB136F86E9002ADF41 /* JSON */,
 				D2C00EF0136F864D002ADF41 /* Supporting Files */,
 			);
 			path = ApertureToGallery3;
@@ -235,7 +280,8 @@
 				D2C00F0D136F86E9002ADF41 /* SBJsonWriter.h */,
 				D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */,
 			);
-			path = JSON;
+			name = JSON;
+			path = ApertureToGallery3/JSON;
 			sourceTree = "<group>";
 		};
 		D2C00F2E136F8710002ADF41 /* Restful Gallery */ = {
@@ -254,6 +300,7 @@
 				D2C00F23136F870B002ADF41 /* RestfulGallery.m */,
 			);
 			name = "Restful Gallery";
+			path = ApertureToGallery3;
 			sourceTree = "<group>";
 		};
 		D2C00F34136F8BD7002ADF41 /* ApertureHeaders */ = {
@@ -265,6 +312,40 @@
 			);
 			name = ApertureHeaders;
 			path = ../../ApertureExportTemplate/ApertureHeaders;
+			sourceTree = "<group>";
+		};
+		D2D00ED513856512006E199E /* iPhotoToGallery3 */ = {
+			isa = PBXGroup;
+			children = (
+				D2D00EEA13856805006E199E /* iPhotoToGallery3.h */,
+				D2D00EEB13856805006E199E /* iPhotoToGallery3.m */,
+				D2D00EED138568BF006E199E /* iPhotoToGallery3ExportBox.h */,
+				D2D00EEE138568BF006E199E /* iPhotoToGallery3ExportBox.m */,
+				D2D1C622138621CE00662456 /* iPhotoToGallery3.xib */,
+				D2D00ED613856513006E199E /* Supporting Files */,
+				D2D00EE913856791006E199E /* iPhotoHeaders */,
+			);
+			path = iPhotoToGallery3;
+			sourceTree = "<group>";
+		};
+		D2D00ED613856513006E199E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D2D00ED713856513006E199E /* iPhotoToGallery3-Info.plist */,
+				D2D00ED813856513006E199E /* InfoPlist.strings */,
+				D2D00EDB13856513006E199E /* iPhotoToGallery3-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2D00EE913856791006E199E /* iPhotoHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				D2D00EF013856B94006E199E /* ExportImageProtocol.h */,
+				D2D00EF113856B94006E199E /* ExportPluginBoxProtocol.h */,
+				D2D00EF213856B94006E199E /* ExportPluginProtocol.h */,
+			);
+			name = iPhotoHeaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +385,23 @@
 			productReference = D2C00EE6136F864D002ADF41 /* ApertureToGallery3.ApertureExport */;
 			productType = "com.apple.product-type.bundle";
 		};
+		D2D00ED213856512006E199E /* iPhotoToGallery3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2D00EDE13856513006E199E /* Build configuration list for PBXNativeTarget "iPhotoToGallery3" */;
+			buildPhases = (
+				D2D00ECF13856512006E199E /* Sources */,
+				D2D00ED013856512006E199E /* Frameworks */,
+				D2D00ED113856512006E199E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iPhotoToGallery3;
+			productName = iPhotoToGallery3;
+			productReference = D2D00ED313856512006E199E /* iPhotoToGallery3.iPhotoExporter */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -323,6 +421,7 @@
 			targets = (
 				D2C00EE5136F864D002ADF41 /* ApertureToGallery3 */,
 				D20DDC0C1381D92100EDF8E9 /* TestHarness */,
+				D2D00ED213856512006E199E /* iPhotoToGallery3 */,
 			);
 		};
 /* End PBXProject section */
@@ -344,6 +443,15 @@
 			files = (
 				D2C00EF4136F864D002ADF41 /* InfoPlist.strings in Resources */,
 				D2C00F39136F8CB3002ADF41 /* ApertureToGallery3.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2D00ED113856512006E199E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2D00EDA13856513006E199E /* InfoPlist.strings in Resources */,
+				D2D1C623138621CE00662456 /* iPhotoToGallery3.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +503,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2D00ECF13856512006E199E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2D00EEC13856805006E199E /* iPhotoToGallery3.m in Sources */,
+				D2D00EEF138568BF006E199E /* iPhotoToGallery3ExportBox.m in Sources */,
+				D2BA094C13879456006250A8 /* AddPhotoQueueItem.m in Sources */,
+				D2BA094D13879456006250A8 /* GalleryAlbum.m in Sources */,
+				D2BA094E13879456006250A8 /* GalleryConnection.m in Sources */,
+				D2BA094F13879456006250A8 /* GalleryInfo.m in Sources */,
+				D2BA095013879456006250A8 /* RestfulGallery.m in Sources */,
+				D2BA095213879463006250A8 /* NSObject+JSON.m in Sources */,
+				D2BA095313879463006250A8 /* SBJsonParser.m in Sources */,
+				D2BA095413879463006250A8 /* SBJsonStreamParser.m in Sources */,
+				D2BA095513879463006250A8 /* SBJsonStreamParserAdapter.m in Sources */,
+				D2BA095613879463006250A8 /* SBJsonStreamParserState.m in Sources */,
+				D2BA095713879463006250A8 /* SBJsonStreamWriter.m in Sources */,
+				D2BA095813879463006250A8 /* SBJsonStreamWriterState.m in Sources */,
+				D2BA095913879463006250A8 /* SBJsonTokeniser.m in Sources */,
+				D2BA095A13879463006250A8 /* SBJsonWriter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -426,6 +557,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				D2C00EF3136F864D002ADF41 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D2D00ED813856513006E199E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2D00ED913856513006E199E /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -535,6 +674,46 @@
 			};
 			name = Release;
 		};
+		D2D00EDC13856513006E199E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPhotoToGallery3/iPhotoToGallery3-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "iPhotoToGallery3/iPhotoToGallery3-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Application Support/iPhoto/Plugins";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
+				WRAPPER_EXTENSION = iPhotoExporter;
+			};
+			name = Debug;
+		};
+		D2D00EDD13856513006E199E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPhotoToGallery3/iPhotoToGallery3-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "iPhotoToGallery3/iPhotoToGallery3-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Application Support/iPhoto/Plugins";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
+				WRAPPER_EXTENSION = iPhotoExporter;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -545,6 +724,7 @@
 				D20DDC381381D92200EDF8E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2C00EE0136F864D002ADF41 /* Build configuration list for PBXProject "ApertureToGallery3" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +740,15 @@
 			buildConfigurations = (
 				D2C00EF9136F864D002ADF41 /* Debug */,
 				D2C00EFA136F864D002ADF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2D00EDE13856513006E199E /* Build configuration list for PBXNativeTarget "iPhotoToGallery3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2D00EDC13856513006E199E /* Debug */,
+				D2D00EDD13856513006E199E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

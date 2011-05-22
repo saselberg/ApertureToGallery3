@@ -10,6 +10,11 @@
 #import "RestfulGallery.h"
 
 @interface GalleryAlbum : NSObject {
+    RestfulGallery *gallery;
+    NSString       *url;
+    BOOL           dataIsStale;
+    BOOL           childrenAreStale;
+
 @private
     NSMutableDictionary *info;
     NSMutableDictionary *children;

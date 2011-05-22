@@ -1360,7 +1360,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{335, 390}, {600, 400}}</string>
 				<int key="NSWTFlags">1954021376</int>
-				<string key="NSWindowTitle">ApertureToGallery 3 Test Harness</string>
+				<string key="NSWindowTitle">AppleToGallery 3</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<object class="NSView" key="NSWindowView" id="439893737">
@@ -2350,7 +2350,7 @@
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<object class="NSView" key="NSWindowView" id="747776047">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2406,8 +2406,8 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="246408314">
 								<int key="NSCellFlags">68288064</int>
-								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Aperture to Gallery3 Export Test Harness</string>
+								<int key="NSCellFlags2">138413056</int>
+								<string key="NSContents">AppleToGallery3</string>
 								<reference key="NSSupport" ref="207693103"/>
 								<reference key="NSControlView" ref="8765169"/>
 								<reference key="NSBackgroundColor" ref="1038702736"/>
@@ -2423,8 +2423,8 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="923313368">
 								<int key="NSCellFlags">68288064</int>
-								<int key="NSCellFlags2">272761856</int>
-								<string key="NSContents">Version 0.53</string>
+								<int key="NSCellFlags2">138544128</int>
+								<string key="NSContents">Version 0.60</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="274067642"/>
 								<reference key="NSBackgroundColor" ref="1038702736"/>
@@ -2440,7 +2440,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="333199631">
 								<int key="NSCellFlags">68288064</int>
-								<int key="NSCellFlags2">272761856</int>
+								<int key="NSCellFlags2">138544128</int>
 								<string key="NSContents">by Scott Selberg</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="588718165"/>
@@ -2496,6 +2496,7 @@
 						</object>
 					</object>
 					<string key="NSFrame">{{7, 11}, {400, 200}}</string>
+					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="8765169"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
@@ -2542,7 +2543,6 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{152, 12}, {96, 32}}</string>
 							<reference key="NSSuperview" ref="1055147360"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="738686754">
 								<int key="NSCellFlags">67239424</int>
@@ -6331,7 +6331,339 @@
 			<nil key="sourceID"/>
 			<int key="maxID">717</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSDocument</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>printDocument:</string>
+							<string>revertDocumentToSaved:</string>
+							<string>runPageLayout:</string>
+							<string>saveDocument:</string>
+							<string>saveDocumentAs:</string>
+							<string>saveDocumentTo:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>printDocument:</string>
+							<string>revertDocumentToSaved:</string>
+							<string>runPageLayout:</string>
+							<string>saveDocument:</string>
+							<string>saveDocumentAs:</string>
+							<string>saveDocumentTo:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">printDocument:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">revertDocumentToSaved:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">runPageLayout:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">saveDocument:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">saveDocumentAs:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">saveDocumentTo:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NSDocument.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TestHarnessAppDelegate</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addGalleryInformation:</string>
+							<string>cancel:</string>
+							<string>clickDonate:</string>
+							<string>clickGoGitHub:</string>
+							<string>getApiKey:</string>
+							<string>hideAbout:</string>
+							<string>hideAddAlbum:</string>
+							<string>hideGalleryInformation:</string>
+							<string>hideManageGalleries:</string>
+							<string>makeAlbum:</string>
+							<string>quit:</string>
+							<string>selectImageDirectory:</string>
+							<string>showAbout:</string>
+							<string>showAddAlbum:</string>
+							<string>showGalleryInformation:</string>
+							<string>showManageGalleries:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addGalleryInformation:</string>
+							<string>cancel:</string>
+							<string>clickDonate:</string>
+							<string>clickGoGitHub:</string>
+							<string>getApiKey:</string>
+							<string>hideAbout:</string>
+							<string>hideAddAlbum:</string>
+							<string>hideGalleryInformation:</string>
+							<string>hideManageGalleries:</string>
+							<string>makeAlbum:</string>
+							<string>quit:</string>
+							<string>selectImageDirectory:</string>
+							<string>showAbout:</string>
+							<string>showAddAlbum:</string>
+							<string>showGalleryInformation:</string>
+							<string>showManageGalleries:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">addGalleryInformation:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">cancel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clickDonate:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clickGoGitHub:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">getApiKey:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">hideAbout:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">hideAddAlbum:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">hideGalleryInformation:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">hideManageGalleries:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">makeAlbum:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">quit:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectImageDirectory:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showAbout:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showAddAlbum:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showGalleryInformation:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showManageGalleries:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aboutWindow</string>
+							<string>addAlbumWindow</string>
+							<string>albumName</string>
+							<string>albumTitle</string>
+							<string>browser</string>
+							<string>currentProgresssIndicator</string>
+							<string>galleryDirectoryController</string>
+							<string>galleryDirectoryTableView</string>
+							<string>galleryInformationWindow</string>
+							<string>mainWindow</string>
+							<string>manageGalleriesWindow</string>
+							<string>newGalleryPassword</string>
+							<string>progress</string>
+							<string>progressWindow</string>
+							<string>totalProgresssIndicator</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSWindow</string>
+							<string>NSWindow</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSBrowser</string>
+							<string>NSProgressIndicator</string>
+							<string>NSArrayController</string>
+							<string>NSTableView</string>
+							<string>NSWindow</string>
+							<string>NSWindow</string>
+							<string>NSWindow</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSWindow</string>
+							<string>NSProgressIndicator</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aboutWindow</string>
+							<string>addAlbumWindow</string>
+							<string>albumName</string>
+							<string>albumTitle</string>
+							<string>browser</string>
+							<string>currentProgresssIndicator</string>
+							<string>galleryDirectoryController</string>
+							<string>galleryDirectoryTableView</string>
+							<string>galleryInformationWindow</string>
+							<string>mainWindow</string>
+							<string>manageGalleriesWindow</string>
+							<string>newGalleryPassword</string>
+							<string>progress</string>
+							<string>progressWindow</string>
+							<string>totalProgresssIndicator</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">aboutWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">addAlbumWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">albumName</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">albumTitle</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">browser</string>
+								<string key="candidateClassName">NSBrowser</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">currentProgresssIndicator</string>
+								<string key="candidateClassName">NSProgressIndicator</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">galleryDirectoryController</string>
+								<string key="candidateClassName">NSArrayController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">galleryDirectoryTableView</string>
+								<string key="candidateClassName">NSTableView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">galleryInformationWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">mainWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">manageGalleriesWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">newGalleryPassword</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">progress</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">progressWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">totalProgresssIndicator</string>
+								<string key="candidateClassName">NSProgressIndicator</string>
+							</object>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TestHarnessAppDelegate.h</string>
+					</object>
+				</object>
+			</object>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
