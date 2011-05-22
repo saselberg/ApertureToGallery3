@@ -23,12 +23,13 @@
     id <URLCallDelegate> delegate;
 }
 
-- (GalleryConnection *)initWithRequest:(NSMutableURLRequest *)myRequest andDelegate:(id)myDelegate;
-- (void)start;
-- (void)cancel;
-
 @property(retain)             NSMutableDictionary  *results;
 @property                     BOOL                 bVerbose;
 @property (retain, nonatomic) id <URLCallDelegate> delegate;
+
+- (GalleryConnection *)initWithRequest:(NSMutableURLRequest *)myRequest andDelegate:(id)myDelegate;
+- (void)start;
+- (void)cancel;
+- (NSMutableDictionary*)parseRequest:(NSData *)myData;
 
 @end

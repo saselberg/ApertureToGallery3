@@ -92,22 +92,37 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     if( self.bVerbose ){NSLog( @"Gallery Connection Completed Successfully" );}
+    
+    self.results = nil;
+    self.results = [self parseRequest:_mutableData];
 
+    _isRunning = false;    
+    [self.delegate got:self.results];
+}
+
+-(void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+    [self.delegate updateTotalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];
+}
+
+-(NSMutableDictionary*)parseRequest:(NSData *)myData
+{
     // Get UTF8 String as a NSString from NSData response
-    NSString *galleryResponseString = [[NSString alloc] initWithData:_mutableData encoding:_encoding];
-
+    NSString *galleryResponseString = [[[NSString alloc] initWithData:myData encoding:NSUTF8StringEncoding] autorelease];
+    NSMutableDictionary *newResults = [NSMutableDictionary new];
+    
     // Testing is received string is a json object. i.e. bounded by {}
     if( [galleryResponseString length] >= 1 )
     {
-//      char startChar = [galleryResponseString characterAtIndex:0];
-//      char endChar   = [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)];
-//      if( startChar == '{' && endChar == '}' ) -> just saving a few bits of memory.  
+        //      char startChar = [galleryResponseString characterAtIndex:0];
+        //      char endChar   = [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)];
+        //      if( startChar == '{' && endChar == '}' ) -> just saving a few bits of memory.  
         if( [galleryResponseString characterAtIndex:0] == '{' && [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)] == '}' )
         {
             SBJsonParser *parser = [[SBJsonParser alloc] init];
             
-            [self.results addEntriesFromDictionary:[parser objectWithString:galleryResponseString error:nil]];             
-            [self.results setValue:@"JSON" forKey:@"RESPONSE_TYPE"];
+            [newResults addEntriesFromDictionary:[parser objectWithString:galleryResponseString error:nil]];             
+            [newResults setValue:@"JSON" forKey:@"RESPONSE_TYPE"];
             
             [parser release];
             parser = nil;
@@ -115,36 +130,36 @@
         else if( [galleryResponseString characterAtIndex:0] == '[' && [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)] == ']' )
         {
             SBJsonParser *parser = [[SBJsonParser alloc] init];
-        
-            [self.results setValue:[parser objectWithString:galleryResponseString error:nil] forKey:@"RESULTS"];             
-            [self.results setValue:@"JSON" forKey:@"RESPONSE_TYPE"];
-        
+            
+            [newResults setValue:[parser objectWithString:galleryResponseString error:nil] forKey:@"RESULTS"];             
+            [newResults setValue:@"JSON" forKey:@"RESPONSE_TYPE"];
+            
             [parser release];
             parser = nil;
         }
+        else if( [galleryResponseString characterAtIndex:0] == '"' && [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)] == '"' )
+        {
+            [newResults setValue:[galleryResponseString stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]] forKey:@"GALLERY_RESPONSE"];
+            [newResults setValue:@"TEXT" forKey:@"RESPONSE_TYPE"];
+            
+        }   
         else
         {
-            [self.results setValue:galleryResponseString forKey:@"GALLERY_RESPONSE"];
-            [self.results setValue:@"TEXT" forKey:@"RESPONSE_TYPE"];
+            [newResults setValue:galleryResponseString forKey:@"GALLERY_RESPONSE"];
+            [newResults setValue:@"TEXT" forKey:@"RESPONSE_TYPE"];
         }
     }
     else
     {
-        [self.results setValue:galleryResponseString forKey:@"GALLERY_RESPONSE"];
-        [self.results setValue:@"TEXT" forKey:@"RESPONSE_TYPE"];
+        [newResults setValue:galleryResponseString forKey:@"GALLERY_RESPONSE"];
+        [newResults setValue:@"TEXT" forKey:@"RESPONSE_TYPE"];
         
     }
     
-    [self.results setValue:_error forKey:@"ERROR"];
-        
-    _isRunning = false;    
-    [self.delegate got:self.results];
-    [galleryResponseString release];
+    [newResults setValue:_error forKey:@"ERROR"];
+    
+    return newResults;
 }
 
--(void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
-{
-    [self.delegate updateTotalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];
-}
 
 @end

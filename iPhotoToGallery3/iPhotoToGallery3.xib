@@ -885,7 +885,7 @@
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<object class="NSView" key="NSWindowView" id="534921703">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1025,7 +1025,6 @@
 						</object>
 					</object>
 					<string key="NSFrame">{{7, 11}, {400, 200}}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="867126652"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
@@ -1140,7 +1139,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="32826506">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">138544128</int>
-								<string key="NSContents">Version 0.60</string>
+								<string key="NSContents">Version 0.61</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="819918720"/>
 								<reference key="NSBackgroundColor" ref="796026323"/>

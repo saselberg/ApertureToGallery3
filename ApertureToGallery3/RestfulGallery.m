@@ -85,11 +85,8 @@
     NSData   *requestData   = [requestString dataUsingEncoding:_encoding allowLossyConversion:YES];
 	[request setHTTPBody:requestData];
     
-    //    [galleryConnection initWithRequest:request andDelegate:self];
-    //    [galleryConnection start];
-    
     _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
-    [self parseSynchronousRequest:_data];
+    self.results = [_galleryConnection parseRequest:_data];
 }
 
 - (BOOL)galleryValid
@@ -114,8 +111,8 @@
             [request setHTTPBody:requestData];
         
             _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
-            [self parseSynchronousRequest:_data];
-        
+            self.results = [_galleryConnection parseRequest:_data];
+
             if( [[self.results objectForKey:@"RESPONSE_TYPE"] isEqualToString:@"JSON"] )
             {
                 self.bGalleryValid = true;
@@ -145,7 +142,7 @@
 	   [request setHTTPBody:requestData];
         
        _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
-       [self parseSynchronousRequest:_data];
+        self.results = [_galleryConnection parseRequest:_data];
     }
 }
 
@@ -168,7 +165,7 @@
 	   [request setHTTPBody:requestData];
     
        _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
-       [self parseSynchronousRequest:_data];
+        self.results = [_galleryConnection parseRequest:_data];
     }
 }
 
@@ -191,7 +188,8 @@
        [request setHTTPBody:requestData];
     
        _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
-       [self parseSynchronousRequest:_data];
+        self.results = [_galleryConnection parseRequest:_data];
+
     }
 }
 
@@ -220,11 +218,21 @@
        [request setHTTPBody:requestData];
     
        _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
-       [self parseSynchronousRequest:_data];
+        self.results = [_galleryConnection parseRequest:_data];
    }
 }
 
 - (void)addPhotoAtPath:(NSString *)imagePath toUrl:(NSString *)restUrl withParameters:(NSMutableDictionary *)parameters
+{
+    [self addItemIsPhoto:YES AtPath:imagePath toUrl:restUrl withParameters:parameters];
+}
+
+- (void)addMovieAtPath:(NSString *)imagePath toUrl:(NSString *)restUrl withParameters:(NSMutableDictionary *)parameters
+{
+    [self addItemIsPhoto:NO AtPath:imagePath toUrl:restUrl withParameters:parameters];
+}
+
+- (void)addItemIsPhoto:(BOOL)isPhoto AtPath:(NSString *)imagePath toUrl:(NSString *)restUrl withParameters:(NSMutableDictionary *)parameters
 {
     if( [self galleryValid] )
     {
@@ -232,7 +240,11 @@
        self.results = nil;
     
        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease ];
-       [parameters setObject:@"photo"                      forKey:@"type"];
+       if( !isPhoto ){
+           [parameters setObject:@"movie"                      forKey:@"type"];
+       } else {
+           [parameters setObject:@"photo"                      forKey:@"type"];
+       }
        [parameters setObject:[imagePath lastPathComponent] forKey:@"name"];   
     
        NSMutableData *requestData = [[[NSMutableData alloc] init] autorelease]; 
@@ -252,20 +264,20 @@
 	   [request setValue:self.galleryApiKey                                                            forHTTPHeaderField:@"X-Gallery-Request-Key"];
 	   [request setValue:@"post"                                                                       forHTTPHeaderField:@"X-Gallery-Request-Method"];
        [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=\"%@\"", boundary] forHTTPHeaderField:@"Content-Type"];
-	
-       NSString *requestString = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@",
-                                  @"--", boundary, @"\n",
-                                  @"Content-Disposition: form-data; name=\"entity\"\n",
-                                  @"Content-Type: text/plain; charset=UTF-8\n",
-                                  @"Content-Transfer-Encoding: 8bit\n",
-                                  @"\n",
-                                  [jsonWriter stringWithObject:parameters],@"\n",
-                                  @"--", boundary, @"\n",
-                                  @"Content-Disposition: form-data; name=\"file\"; filename=\"",[imagePath lastPathComponent],@"\"\n",
-                                  @"Content-Type: application/octet-stream\n",
-                                  @"Content-Transfer-Encoding: binary\n",
-                                  @"\n"];
-    
+
+        NSString *requestString =  [[NSArray arrayWithObjects:
+                                   @"--", boundary, @"\n",
+                                   @"Content-Disposition: form-data; name=\"entity\"\n",
+                                   @"Content-Type: text/plain; charset=UTF-8\n",
+                                   @"Content-Transfer-Encoding: 8bit\n",
+                                   @"\n",
+                                   [jsonWriter stringWithObject:parameters],@"\n",
+                                   @"--", boundary, @"\n",
+                                   @"Content-Disposition: form-data; name=\"file\"; filename=\"",[imagePath lastPathComponent],@"\"\n",
+                                   @"Content-Type: application/octet-stream\n",
+                                   @"Content-Transfer-Encoding: binary\n",
+                                    @"\n", nil] componentsJoinedByString:@""];
+
        if( [self bVerbose ] ){ NSLog( @"%@<data>\n--%@--", requestString, boundary ); }
     
        [requestData appendData:[requestString dataUsingEncoding:_encoding allowLossyConversion:YES]];
@@ -277,62 +289,6 @@
        [_galleryConnection initWithRequest:request andDelegate:self.delegate];
        [_galleryConnection start];
     }
-}
-
--(void)parseSynchronousRequest:(NSData *)myData
-{
-    // Get UTF8 String as a NSString from NSData response
-    NSString *galleryResponseString = [[[NSString alloc] initWithData:myData encoding:NSUTF8StringEncoding] autorelease];
-    NSMutableDictionary *newResults = [NSMutableDictionary new];
-    
-    // Testing is received string is a json object. i.e. bounded by {}
-    if( [galleryResponseString length] >= 1 )
-    {
-        //      char startChar = [galleryResponseString characterAtIndex:0];
-        //      char endChar   = [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)];
-        //      if( startChar == '{' && endChar == '}' ) -> just saving a few bits of memory.  
-        if( [galleryResponseString characterAtIndex:0] == '{' && [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)] == '}' )
-        {
-            SBJsonParser *parser = [[SBJsonParser alloc] init];
-            
-            [newResults addEntriesFromDictionary:[parser objectWithString:galleryResponseString error:nil]];             
-            [newResults setValue:@"JSON" forKey:@"RESPONSE_TYPE"];
-            
-            [parser release];
-            parser = nil;
-        }
-        else if( [galleryResponseString characterAtIndex:0] == '[' && [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)] == ']' )
-        {
-            SBJsonParser *parser = [[SBJsonParser alloc] init];
-            
-            [newResults setValue:[parser objectWithString:galleryResponseString error:nil] forKey:@"RESULTS"];             
-            [newResults setValue:@"JSON" forKey:@"RESPONSE_TYPE"];
-            
-            [parser release];
-            parser = nil;
-        }
-        else if( [galleryResponseString characterAtIndex:0] == '"' && [galleryResponseString characterAtIndex:( [galleryResponseString length]-1)] == '"' )
-        {
-            [newResults setValue:[galleryResponseString stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]] forKey:@"GALLERY_RESPONSE"];
-            [newResults setValue:@"TEXT" forKey:@"RESPONSE_TYPE"];
-            
-        }   
-        else
-        {
-            [newResults setValue:galleryResponseString forKey:@"GALLERY_RESPONSE"];
-            [newResults setValue:@"TEXT" forKey:@"RESPONSE_TYPE"];
-        }
-    }
-    else
-    {
-        [newResults setValue:galleryResponseString forKey:@"GALLERY_RESPONSE"];
-        [newResults setValue:@"TEXT" forKey:@"RESPONSE_TYPE"];
-        
-    }
-    
-    [newResults setValue:_error forKey:@"ERROR"];
-    
-    self.results = newResults;
 }
 
 @end
