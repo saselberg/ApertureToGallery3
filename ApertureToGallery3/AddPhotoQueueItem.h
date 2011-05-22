@@ -13,13 +13,18 @@
     NSString            *path;
     NSString            *url;
     NSMutableDictionary *parameters;
+    BOOL                isPhoto;
     
 }
 
 @property (retain) NSString            *path;
 @property (retain) NSString            *url;
 @property (retain) NSMutableDictionary *parameters;
+@property          BOOL                isPhoto;
 
+- (void)loadIsPhoto:(BOOL)myIsPhoto withUrl:(NSString *)myUrl andPath:(NSString *)myPath andParameters:(NSMutableDictionary *)myParameters;
 - (id)initWithUrl:(NSString *)myUrl andPath:(NSString *)myPath andParameters:(NSMutableDictionary *)myParameters;
+- (id)initPhotoWithUrl:(NSString *)myUrl andPath:(NSString *)myPath andParameters:(NSMutableDictionary *)myParameters;
+- (id)initMovieWithUrl:(NSString *)myUrl andPath:(NSString *)myPath andParameters:(NSMutableDictionary *)myParameters;
 
 @end

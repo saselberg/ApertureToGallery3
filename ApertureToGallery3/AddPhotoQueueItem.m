@@ -13,6 +13,7 @@
 @synthesize path;
 @synthesize parameters;
 @synthesize url;
+@synthesize isPhoto;
 
 - (id)init
 {
@@ -23,18 +24,42 @@
     return self;
 }
 
+- (id)initPhotoWithUrl:(NSString *)myUrl andPath:(NSString *)myPath andParameters:(NSMutableDictionary *)myParameters
+{
+    self = [super init];
+    if (self) {
+        [self loadIsPhoto:YES withUrl:myUrl andPath:myPath andParameters:myParameters];
+    }
+    return self;
+}
+
+- (id)initMovieWithUrl:(NSString *)myUrl andPath:(NSString *)myPath andParameters:(NSMutableDictionary *)myParameters
+{
+    self = [super init];
+    if (self) {
+        [self loadIsPhoto:NO withUrl:myUrl andPath:myPath andParameters:myParameters];
+    }
+    return self;
+    
+}
+
 - (id)initWithUrl:(NSString *)myUrl andPath:(NSString *)myPath andParameters:(NSMutableDictionary *)myParameters
 {
     self = [super init];
     if (self) {
-        self.url        = myUrl;
-        self.path       = myPath;
-        self.parameters = myParameters;
+        [self loadIsPhoto:YES withUrl:myUrl andPath:myPath andParameters:myParameters];
     }
-    
     return self;
-    
 }
+
+- (void)loadIsPhoto:(BOOL)myIsPhoto withUrl:(NSString *)myUrl andPath:(NSString *)myPath andParameters:(NSMutableDictionary *)myParameters
+{
+    self.isPhoto    = myIsPhoto;
+    self.url        = myUrl;
+    self.path       = myPath;
+    self.parameters = myParameters;
+}
+
 - (void)dealloc
 {
     self.path       = nil;

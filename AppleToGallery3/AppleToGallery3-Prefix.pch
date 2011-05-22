@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'AppleToGallery3' target in the 'AppleToGallery3' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
