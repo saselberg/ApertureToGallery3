@@ -26,7 +26,7 @@
         addPhotoQueue = [[NSMutableArray alloc] init];
         self.gallery  = [[RestfulGallery alloc] init]; 
         self.gallery.delegate = self;
-//        self.gallery.bVerbose = true;
+        //self.gallery.bVerbose = true;
         userDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
         if( userDefaults ){
             preferences = [userDefaults mutableCopy];
@@ -88,7 +88,10 @@
         self.gallery.url           = selectedGallery.url;
         self.gallery.bGalleryValid = false;
     }
-
+    
+    [kindPopupButton selectItemAtIndex:3];
+    [sizePopupButton selectItemAtIndex:5];
+    [namePopupButton selectItemAtIndex:0];
 }
 
 - (void)dealloc
@@ -156,6 +159,9 @@
 }
 - (void)performExport:(NSString *)path
 {    
+    NSSize originalSize;
+    NSString *exportName;
+    
     if( gallery.bGalleryValid )
     {
         cancel = false;
@@ -173,19 +179,56 @@
         
         
         ImageExportOptions imageOptions;
-//        imageOptions.format = kQTFileTypeJPEG;
-//        imageOptions.quality = EQualityLow;
-//        imageOptions.metadata = EMBoth;
-//        imageOptions.width = 640;
-//        imageOptions.height = 640;
+        switch( [kindPopupButton indexOfSelectedItem ] )
+        {
+            case 0: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityLow;  break;
+            case 1: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityMed;  break;
+            case 2: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityHigh; break;
+            case 3: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityMax;  break;
+            case 4: imageOptions.format = kQTFileTypePNG;                                       break;
+            default: imageOptions.format = kQTFileTypeJPEG; break;
+        }
 
+        if( [includeMetaData state] == NSOnState )
+        {
+            imageOptions.metadata = EMBoth;
+        }
 
         for (int imageNum = 0; imageNum < (int)[_exportManager imageCount] && !cancel; imageNum++){
             
             NSString     *imagePath     = [_exportManager imagePathAtIndex:imageNum];
             NSString     *newPath       = [tempDirectoryPath stringByAppendingPathComponent:[imagePath lastPathComponent]];
              
-             //NSDictionary *imageExifDict = [_exportManager imageExifPropertiesAtIndex:imageNum];
+
+            switch( [sizePopupButton indexOfSelectedItem] )
+            {
+                case 0: imageOptions.width = 320;  imageOptions.height = 320;  break;
+                case 1: imageOptions.width = 640;  imageOptions.height = 640;  break;
+                case 2: imageOptions.width = 1280; imageOptions.height = 1280; break;
+                case 3: 
+                    originalSize = [_exportManager imageSizeAtIndex:imageNum];
+                    imageOptions.width  = (int)( ((double)originalSize.width )/4.0 );
+                    imageOptions.height = (int)( ((double)originalSize.height)/4.0 );
+                    break;
+                case 4: 
+                    originalSize = [_exportManager imageSizeAtIndex:imageNum];
+                    imageOptions.width  = (int)( ((double)originalSize.width )/2.0 );
+                    imageOptions.height = (int)( ((double)originalSize.height)/2.0 );
+                    break;
+                case 5: break;
+                case 7: imageOptions.width = [maxWidth intValue]; imageOptions.height = [maxHeight intValue]; break;
+                default: break;
+            }
+
+            switch( [namePopupButton indexOfSelectedItem] )
+            {
+                case 0: exportName = [_exportManager imageTitleAtIndex:imageNum]; break;
+                case 1: exportName = [imagePath lastPathComponent];               break;
+                case 3: exportName = [NSString stringWithFormat:@"%@.%03d", [sequentialPrefix stringValue], imageNum]; break;
+                default: exportName = [_exportManager imageTitleAtIndex:imageNum]; break;
+            }
+            
+            //NSDictionary *imageExifDict = [_exportManager imageExifPropertiesAtIndex:imageNum];
             //NSArray      *imageKeywords = [_exportManager imageKeywordsAtIndex:imageNum];
             //int          imageRating    = [_exportManager imageRatingAtIndex:imageNum];
 
@@ -195,7 +238,7 @@
                                                                  andPath:newPath 
                                                                  andParameters:[NSMutableDictionary 
                                                                                 dictionaryWithObjects:[NSArray arrayWithObjects:
-                                                                                                       [_exportManager imageTitleAtIndex:imageNum],
+                                                                                                       exportName,
                                                                                                        [_exportManager imageCommentsAtIndex:imageNum], nil] 
                                                                                 forKeys:[NSArray arrayWithObjects:@"title", @"description", nil ]]];
             [addPhotoQueue addObject:item];
@@ -327,10 +370,13 @@
 }
 -(void)done
 {
-    GalleryAlbum *selectedAlbum;
-    selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
-    
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
+    if( [showGalleryOnCompletion state] == NSOnState )
+    {
+        GalleryAlbum *selectedAlbum;
+        selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
+
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
+    }
     
     [self lockProgress];
     [_progress.message autorelease];
@@ -475,6 +521,32 @@
     return album.displayName;
 }
 
+/************************************************************
+ Methods to enable the browser
+ ************************************************************/
+-(IBAction)select320Size:(id)sender{[self enableCustomSizeSettings:NO];}
+-(IBAction)select640Size:(id)sender{[self enableCustomSizeSettings:NO];}
+-(IBAction)select1280Size:(id)sender{[self enableCustomSizeSettings:NO];}
+-(IBAction)selectQuarterSize:(id)sender{[self enableCustomSizeSettings:NO];}
+-(IBAction)selectHalfSize:(id)sender{[self enableCustomSizeSettings:NO];}
+-(IBAction)selectFullSize:(id)sender{[self enableCustomSizeSettings:NO];}
+-(IBAction)selectCustomSize:(id)sender{[self enableCustomSizeSettings:YES];}
+
+-(void)enableCustomSizeSettings:(BOOL)bEnable
+{
+    [maxWidth setEnabled:bEnable];
+    [maxHeight setEnabled:bEnable];    
+}
+
+
+-(IBAction)selectUseTitle:(id)sender{[self enableSequentialPrefix:NO];};
+-(IBAction)selectUseFileName:(id)sender{[self enableSequentialPrefix:NO];};
+-(IBAction)selectUseSequential:(id)sender{[self enableSequentialPrefix:YES];};
+
+-(void)enableSequentialPrefix:(BOOL)bEnable
+{
+    [sequentialPrefix setEnabled:bEnable];
+}
 
 
 @end

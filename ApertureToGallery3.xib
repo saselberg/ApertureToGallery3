@@ -312,7 +312,7 @@
 											<int key="NSvFlags">256</int>
 											<string key="NSFrameSize">{358, 82}</string>
 											<reference key="NSSuperview" ref="738638258"/>
-											<reference key="NSNextKeyView" ref="531646212"/>
+											<reference key="NSNextKeyView" ref="240978558"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTableHeaderView" key="NSHeaderView" id="899996796">
 												<reference key="NSNextResponder" ref="531646212"/>
@@ -495,7 +495,7 @@
 							</array>
 							<string key="NSFrame">{{20, 80}, {360, 100}}</string>
 							<reference key="NSSuperview" ref="360913563"/>
-							<reference key="NSNextKeyView" ref="738638258"/>
+							<reference key="NSNextKeyView" ref="531646212"/>
 							<int key="NSsFlags">562</int>
 							<reference key="NSVScroller" ref="240978558"/>
 							<reference key="NSHScroller" ref="389638562"/>
@@ -572,6 +572,7 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{336, 12}, {50, 32}}</string>
 							<reference key="NSSuperview" ref="360913563"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="915209989">
 								<int key="NSCellFlags">67239424</int>
@@ -627,7 +628,7 @@
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<object class="NSView" key="NSWindowView" id="126760305">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSTextField" id="124228537">
@@ -839,7 +840,6 @@
 						</object>
 					</array>
 					<string key="NSFrame">{{7, 11}, {400, 200}}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="124228537"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
@@ -854,7 +854,7 @@
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<object class="NSView" key="NSWindowView" id="476122630">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSTextField" id="1017878077">
@@ -993,7 +993,6 @@
 						</object>
 					</array>
 					<string key="NSFrame">{{7, 11}, {400, 200}}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="184481845"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
@@ -1019,6 +1018,7 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{290, 12}, {96, 32}}</string>
 							<reference key="NSSuperview" ref="1045435939"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="348076127">
 								<int key="NSCellFlags">67239424</int>
@@ -1054,14 +1054,14 @@
 						<object class="NSTextField" id="796466020">
 							<reference key="NSNextResponder" ref="1045435939"/>
 							<int key="NSvFlags">269</int>
-							<string key="NSFrame">{{164, 141}, {73, 14}}</string>
+							<string key="NSFrame">{{154, 141}, {94, 14}}</string>
 							<reference key="NSSuperview" ref="1045435939"/>
 							<reference key="NSNextKeyView" ref="870383792"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="795168600">
 								<int key="NSCellFlags">68288064</int>
-								<int key="NSCellFlags2">272761856</int>
-								<string key="NSContents">Version 0.61</string>
+								<int key="NSCellFlags2">138544128</int>
+								<string key="NSContents">Version 0.61.01</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="796466020"/>
 								<reference key="NSBackgroundColor" ref="779195697"/>
@@ -2299,7 +2299,161 @@
 			<nil key="sourceID"/>
 			<int key="maxID">164</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">ApertureToGallery3</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addGalleryInformation:">id</string>
+						<string key="clickDonate:">id</string>
+						<string key="clickGoGitHub:">id</string>
+						<string key="getApiKey:">id</string>
+						<string key="hideAbout:">id</string>
+						<string key="hideAddAlbum:">id</string>
+						<string key="hideGalleryInformation:">id</string>
+						<string key="hideManageGalleries:">id</string>
+						<string key="makeAlbum:">id</string>
+						<string key="showAbout:">id</string>
+						<string key="showAddAlbum:">id</string>
+						<string key="showGalleryInformation:">id</string>
+						<string key="showManageGalleries:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addGalleryInformation:">
+							<string key="name">addGalleryInformation:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="clickDonate:">
+							<string key="name">clickDonate:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="clickGoGitHub:">
+							<string key="name">clickGoGitHub:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="getApiKey:">
+							<string key="name">getApiKey:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="hideAbout:">
+							<string key="name">hideAbout:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="hideAddAlbum:">
+							<string key="name">hideAddAlbum:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="hideGalleryInformation:">
+							<string key="name">hideGalleryInformation:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="hideManageGalleries:">
+							<string key="name">hideManageGalleries:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="makeAlbum:">
+							<string key="name">makeAlbum:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showAbout:">
+							<string key="name">showAbout:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showAddAlbum:">
+							<string key="name">showAddAlbum:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showGalleryInformation:">
+							<string key="name">showGalleryInformation:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showManageGalleries:">
+							<string key="name">showManageGalleries:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="aboutWindow">NSWindow</string>
+						<string key="addAlbumWindow">NSWindow</string>
+						<string key="albumName">NSTextField</string>
+						<string key="albumTitle">NSTextField</string>
+						<string key="browser">NSBrowser</string>
+						<string key="firstView">NSView</string>
+						<string key="galleryDirectoryController">NSArrayController</string>
+						<string key="galleryDirectoryTableView">NSTableView</string>
+						<string key="galleryInformationWindow">NSWindow</string>
+						<string key="lastView">NSView</string>
+						<string key="manageGalleriesWindow">NSWindow</string>
+						<string key="newGalleryPassword">NSTextField</string>
+						<string key="progressWindow">NSWindow</string>
+						<string key="settingsView">NSView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="aboutWindow">
+							<string key="name">aboutWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="addAlbumWindow">
+							<string key="name">addAlbumWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="albumName">
+							<string key="name">albumName</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="albumTitle">
+							<string key="name">albumTitle</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="browser">
+							<string key="name">browser</string>
+							<string key="candidateClassName">NSBrowser</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="firstView">
+							<string key="name">firstView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="galleryDirectoryController">
+							<string key="name">galleryDirectoryController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="galleryDirectoryTableView">
+							<string key="name">galleryDirectoryTableView</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="galleryInformationWindow">
+							<string key="name">galleryInformationWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lastView">
+							<string key="name">lastView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="manageGalleriesWindow">
+							<string key="name">manageGalleriesWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newGalleryPassword">
+							<string key="name">newGalleryPassword</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="progressWindow">
+							<string key="name">progressWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="settingsView">
+							<string key="name">settingsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ApertureToGallery3.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

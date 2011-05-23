@@ -50,6 +50,34 @@
     NSMutableArray *galleryDirectory;
     NSString       *galleryApiKey;
     BOOL           running;
+    
+    IBOutlet NSPopUpButton *kindPopupButton;
+    IBOutlet NSMenuItem    *kindJpegLow;
+    IBOutlet NSMenuItem    *kindJpegMedium;
+    IBOutlet NSMenuItem    *kindJpegHigh;
+    IBOutlet NSMenuItem    *kindJpegMaximum;
+    IBOutlet NSMenuItem    *kindPng;
+    
+    IBOutlet NSPopUpButton *sizePopupButton;
+    IBOutlet NSMenuItem    *size320;
+    IBOutlet NSMenuItem    *size640;
+    IBOutlet NSMenuItem    *size1280;
+    IBOutlet NSMenuItem    *sizeQuarter;
+    IBOutlet NSMenuItem    *sizeHalf;
+    IBOutlet NSMenuItem    *sizeFullSize;
+    IBOutlet NSMenuItem    *sizeCustom;
+    IBOutlet NSTextField   *maxWidth;
+    IBOutlet NSTextField   *maxHeight;
+    
+    IBOutlet NSPopUpButton *namePopupButton;
+    IBOutlet NSMenuItem    *nameTitle;
+    IBOutlet NSMenuItem    *nameFilename;
+    IBOutlet NSMenuItem    *nameSequential;
+    IBOutlet NSTextField   *sequentialPrefix;
+    
+    IBOutlet NSButton      *includeMetaData;
+    IBOutlet NSButton      *showGalleryOnCompletion;
+
 }
 
 @property (retain) RestfulGallery   *gallery;
@@ -91,4 +119,23 @@
 
 -(IBAction)showAddAlbum:(id)sender;
 -(IBAction)hideAddAlbum:(id)sender;
+
+
+-(IBAction)select320Size:(id)sender;
+-(IBAction)select640Size:(id)sender;
+-(IBAction)select1280Size:(id)sender;
+-(IBAction)selectQuarterSize:(id)sender;
+-(IBAction)selectHalfSize:(id)sender;
+-(IBAction)selectFullSize:(id)sender;
+-(IBAction)selectCustomSize:(id)sender;
+-(void)enableCustomSizeSettings:(BOOL)bEnable;
+
+
+-(IBAction)selectUseTitle:(id)sender;
+-(IBAction)selectUseFileName:(id)sender;
+-(IBAction)selectUseSequential:(id)sender;
+-(void)enableSequentialPrefix:(BOOL)bEnable;
+
+
+
 @end

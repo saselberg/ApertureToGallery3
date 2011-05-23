@@ -7,26 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D20DDC0F1381D92100EDF8E9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
-		D20DDC151381D92100EDF8E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D20DDC131381D92100EDF8E9 /* InfoPlist.strings */; };
-		D20DDC181381D92100EDF8E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DDC171381D92100EDF8E9 /* main.m */; };
-		D20DDC1B1381D92100EDF8E9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D20DDC191381D92100EDF8E9 /* Credits.rtf */; };
-		D20DDC1E1381D92100EDF8E9 /* TestHarnessAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DDC1D1381D92100EDF8E9 /* TestHarnessAppDelegate.m */; };
-		D20DDC211381D92100EDF8E9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D20DDC1F1381D92100EDF8E9 /* MainMenu.xib */; };
-		D20DDC3E1381ED5400EDF8E9 /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; };
-		D20DDC401381ED5400EDF8E9 /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; };
-		D20DDC421381ED5400EDF8E9 /* GalleryConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1D136F870B002ADF41 /* GalleryConnection.m */; };
-		D20DDC441381ED5400EDF8E9 /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; };
-		D20DDC461381ED5400EDF8E9 /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; };
-		D20DDC491381ED8200EDF8E9 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */; };
-		D20DDC4B1381ED8200EDF8E9 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F00136F86E9002ADF41 /* SBJsonParser.m */; };
-		D20DDC4D1381ED8200EDF8E9 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */; };
-		D20DDC4F1381ED8200EDF8E9 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */; };
-		D20DDC511381ED8200EDF8E9 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */; };
-		D20DDC531381ED8200EDF8E9 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */; };
-		D20DDC551381ED8200EDF8E9 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */; };
-		D20DDC571381ED8200EDF8E9 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */; };
-		D20DDC591381ED8200EDF8E9 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */; };
 		D2A08CBB13896E8A009659CC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
 		D2A08CC113896E8A009659CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2A08CBF13896E8A009659CC /* InfoPlist.strings */; };
 		D2A08CC413896E8A009659CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A08CC313896E8A009659CC /* main.m */; };
@@ -89,15 +69,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D20DDC0D1381D92100EDF8E9 /* TestHarness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHarness.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D20DDC121381D92100EDF8E9 /* TestHarness-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestHarness-Info.plist"; sourceTree = "<group>"; };
-		D20DDC141381D92100EDF8E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D20DDC161381D92100EDF8E9 /* TestHarness-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestHarness-Prefix.pch"; sourceTree = "<group>"; };
-		D20DDC171381D92100EDF8E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D20DDC1A1381D92100EDF8E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		D20DDC1C1381D92100EDF8E9 /* TestHarnessAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHarnessAppDelegate.h; sourceTree = "<group>"; };
-		D20DDC1D1381D92100EDF8E9 /* TestHarnessAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHarnessAppDelegate.m; sourceTree = "<group>"; };
-		D20DDC201381D92100EDF8E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D2A08CB913896E8A009659CC /* AppleToGallery3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleToGallery3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A08CBE13896E8A009659CC /* AppleToGallery3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppleToGallery3-Info.plist"; sourceTree = "<group>"; };
 		D2A08CC013896E8A009659CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -168,14 +139,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D20DDC0A1381D92100EDF8E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D20DDC0F1381D92100EDF8E9 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D2A08CB613896E8A009659CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -205,29 +168,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D20DDC101381D92100EDF8E9 /* TestHarness */ = {
-			isa = PBXGroup;
-			children = (
-				D20DDC1C1381D92100EDF8E9 /* TestHarnessAppDelegate.h */,
-				D20DDC1D1381D92100EDF8E9 /* TestHarnessAppDelegate.m */,
-				D20DDC1F1381D92100EDF8E9 /* MainMenu.xib */,
-				D20DDC111381D92100EDF8E9 /* Supporting Files */,
-			);
-			path = TestHarness;
-			sourceTree = "<group>";
-		};
-		D20DDC111381D92100EDF8E9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D20DDC121381D92100EDF8E9 /* TestHarness-Info.plist */,
-				D20DDC131381D92100EDF8E9 /* InfoPlist.strings */,
-				D20DDC161381D92100EDF8E9 /* TestHarness-Prefix.pch */,
-				D20DDC171381D92100EDF8E9 /* main.m */,
-				D20DDC191381D92100EDF8E9 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		D2A08CBC13896E8A009659CC /* AppleToGallery3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,7 +197,6 @@
 				D2C00F2E136F8710002ADF41 /* Restful Gallery */,
 				D2C00EFB136F86E9002ADF41 /* JSON */,
 				D2C00EEF136F864D002ADF41 /* ApertureToGallery3 */,
-				D20DDC101381D92100EDF8E9 /* TestHarness */,
 				D2D00ED513856512006E199E /* iPhotoToGallery3 */,
 				D2A08CBC13896E8A009659CC /* AppleToGallery3 */,
 				D2C00EE8136F864D002ADF41 /* Frameworks */,
@@ -269,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				D2C00EE6136F864D002ADF41 /* ApertureToGallery3.ApertureExport */,
-				D20DDC0D1381D92100EDF8E9 /* TestHarness.app */,
 				D2D00ED313856512006E199E /* iPhotoToGallery3.iPhotoExporter */,
 				D2A08CB913896E8A009659CC /* AppleToGallery3.app */,
 			);
@@ -413,23 +351,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D20DDC0C1381D92100EDF8E9 /* TestHarness */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D20DDC361381D92200EDF8E9 /* Build configuration list for PBXNativeTarget "TestHarness" */;
-			buildPhases = (
-				D20DDC091381D92100EDF8E9 /* Sources */,
-				D20DDC0A1381D92100EDF8E9 /* Frameworks */,
-				D20DDC0B1381D92100EDF8E9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TestHarness;
-			productName = TestHarness;
-			productReference = D20DDC0D1381D92100EDF8E9 /* TestHarness.app */;
-			productType = "com.apple.product-type.application";
-		};
 		D2A08CB813896E8A009659CC /* AppleToGallery3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2A08CD013896E8A009659CC /* Build configuration list for PBXNativeTarget "AppleToGallery3" */;
@@ -499,7 +420,6 @@
 			projectRoot = "";
 			targets = (
 				D2C00EE5136F864D002ADF41 /* ApertureToGallery3 */,
-				D20DDC0C1381D92100EDF8E9 /* TestHarness */,
 				D2D00ED213856512006E199E /* iPhotoToGallery3 */,
 				D2A08CB813896E8A009659CC /* AppleToGallery3 */,
 			);
@@ -507,16 +427,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D20DDC0B1381D92100EDF8E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D20DDC151381D92100EDF8E9 /* InfoPlist.strings in Resources */,
-				D20DDC1B1381D92100EDF8E9 /* Credits.rtf in Resources */,
-				D20DDC211381D92100EDF8E9 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D2A08CB713896E8A009659CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,29 +458,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D20DDC091381D92100EDF8E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D20DDC491381ED8200EDF8E9 /* NSObject+JSON.m in Sources */,
-				D20DDC4B1381ED8200EDF8E9 /* SBJsonParser.m in Sources */,
-				D20DDC4D1381ED8200EDF8E9 /* SBJsonStreamParser.m in Sources */,
-				D20DDC4F1381ED8200EDF8E9 /* SBJsonStreamParserAdapter.m in Sources */,
-				D20DDC511381ED8200EDF8E9 /* SBJsonStreamParserState.m in Sources */,
-				D20DDC531381ED8200EDF8E9 /* SBJsonStreamWriter.m in Sources */,
-				D20DDC551381ED8200EDF8E9 /* SBJsonStreamWriterState.m in Sources */,
-				D20DDC571381ED8200EDF8E9 /* SBJsonTokeniser.m in Sources */,
-				D20DDC591381ED8200EDF8E9 /* SBJsonWriter.m in Sources */,
-				D20DDC3E1381ED5400EDF8E9 /* AddPhotoQueueItem.m in Sources */,
-				D20DDC401381ED5400EDF8E9 /* GalleryAlbum.m in Sources */,
-				D20DDC421381ED5400EDF8E9 /* GalleryConnection.m in Sources */,
-				D20DDC441381ED5400EDF8E9 /* GalleryInfo.m in Sources */,
-				D20DDC461381ED5400EDF8E9 /* RestfulGallery.m in Sources */,
-				D20DDC181381D92100EDF8E9 /* main.m in Sources */,
-				D20DDC1E1381D92100EDF8E9 /* TestHarnessAppDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D2A08CB513896E8A009659CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -642,30 +529,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D20DDC131381D92100EDF8E9 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D20DDC141381D92100EDF8E9 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D20DDC191381D92100EDF8E9 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D20DDC1A1381D92100EDF8E9 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		D20DDC1F1381D92100EDF8E9 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D20DDC201381D92100EDF8E9 /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		D2A08CBF13896E8A009659CC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -709,45 +572,11 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D20DDC371381D92200EDF8E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TestHarness/TestHarness-Prefix.pch";
-				INFOPLIST_FILE = "TestHarness/TestHarness-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		D20DDC381381D92200EDF8E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TestHarness/TestHarness-Prefix.pch";
-				INFOPLIST_FILE = "TestHarness/TestHarness-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 		D2A08CCE13896E8A009659CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -764,7 +593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -817,6 +646,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -825,6 +655,7 @@
 				INFOPLIST_FILE = "ApertureToGallery3/ApertureToGallery3-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Application Support/Aperture/Plug-Ins/Export/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = ApertureExport;
 			};
 			name = Debug;
@@ -833,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -841,6 +673,7 @@
 				INFOPLIST_FILE = "ApertureToGallery3/ApertureToGallery3-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Application Support/Aperture/Plug-Ins/Export/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = ApertureExport;
 			};
 			name = Release;
@@ -849,7 +682,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -860,7 +693,8 @@
 				INSTALL_PATH = "$(HOME)/Library/Application Support/iPhoto/Plugins";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = "";
+				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = iPhotoExporter;
 			};
 			name = Debug;
@@ -869,7 +703,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -880,7 +714,8 @@
 				INSTALL_PATH = "$(HOME)/Library/Application Support/iPhoto/Plugins";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = "";
+				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = iPhotoExporter;
 			};
 			name = Release;
@@ -888,15 +723,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D20DDC361381D92200EDF8E9 /* Build configuration list for PBXNativeTarget "TestHarness" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D20DDC371381D92200EDF8E9 /* Debug */,
-				D20DDC381381D92200EDF8E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D2A08CD013896E8A009659CC /* Build configuration list for PBXNativeTarget "AppleToGallery3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
