@@ -185,7 +185,6 @@
             case 1: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityMed;  break;
             case 2: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityHigh; break;
             case 3: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityMax;  break;
-            case 4: imageOptions.format = kQTFileTypePNG;                                       break;
             default: imageOptions.format = kQTFileTypeJPEG; break;
         }
 

@@ -56,7 +56,6 @@
     IBOutlet NSMenuItem    *kindJpegMedium;
     IBOutlet NSMenuItem    *kindJpegHigh;
     IBOutlet NSMenuItem    *kindJpegMaximum;
-    IBOutlet NSMenuItem    *kindPng;
     
     IBOutlet NSPopUpButton *sizePopupButton;
     IBOutlet NSMenuItem    *size320;
