@@ -109,7 +109,7 @@
 {
     // Get UTF8 String as a NSString from NSData response
     NSString *galleryResponseString = [[[NSString alloc] initWithData:myData encoding:NSUTF8StringEncoding] autorelease];
-    NSMutableDictionary *newResults = [NSMutableDictionary new];
+    NSMutableDictionary *newResults = [[NSMutableDictionary new] autorelease];
     
     // Testing is received string is a json object. i.e. bounded by {}
     if( [galleryResponseString length] >= 1 )
