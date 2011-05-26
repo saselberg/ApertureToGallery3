@@ -96,7 +96,6 @@
 -(void)got:(NSMutableDictionary *)myResults;
 -(void)updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 -(void)processAddPhotoQueue;
--(void)startExportInNewThread;
 -(void)done;
 
 @end

@@ -90,6 +90,8 @@
             [fileManager createDirectoryAtPath:tempDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
 		}
         addPhotoQueue = [[NSMutableArray alloc] init];
+        photoCount     = [NSNumber numberWithInteger:0];
+        uploadedPhotos = [NSNumber numberWithInteger:0];
 	}	
     
 	return self;
@@ -318,26 +320,9 @@
         photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
         uploadedPhotos = [NSNumber numberWithInteger:0];
 
-        [NSThread detachNewThreadSelector:@selector(startExportInNewThread) toTarget:self withObject:nil];
+        [self processAddPhotoQueue];
     }
 }
-// this is necessary as the NSURLConnection does not work well except in NSDefaultRunLoopMode - which is not the modal panel run mode.
--(void)startExportInNewThread
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    [self processAddPhotoQueue];
-    running = YES;
-    while(running) {
-        if( ![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:100000]] )
-        {
-            break;
-        }
-    }    
-    [pool release];    
-}
-
-
-
 
 - (void)exportManagerShouldCancelExport
 {
@@ -378,7 +363,7 @@
         }
         else
         {
-            [self performSelectorOnMainThread:@selector(done) withObject:nil waitUntilDone:YES];
+            [self done];
             running = NO;
         }
     }
