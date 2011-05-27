@@ -71,6 +71,8 @@
 @property (retain) GalleryAlbum     *rootGalleryAlbum;
 @property (retain) NSMutableArray   *galleryDirectory;
 @property (retain) NSString         *galleryApiKey;
+@property (retain) NSNumber         *photoCount;
+@property (retain) NSNumber         *uploadedPhotos;
 @property          BOOL             cancel;
 
 
@@ -96,6 +98,7 @@
 -(void)got:(NSMutableDictionary *)myResults;
 -(void)updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 -(void)processAddPhotoQueue;
+-(void)startExportInNewThread;
 -(void)done;
 
 @end

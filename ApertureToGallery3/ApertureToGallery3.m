@@ -15,6 +15,8 @@
 @synthesize rootGalleryAlbum;
 @synthesize galleryApiKey;
 @synthesize cancel;
+@synthesize uploadedPhotos;
+@synthesize photoCount;
 
 //---------------------------------------------------------
 // initWithAPIManager:
@@ -90,8 +92,6 @@
             [fileManager createDirectoryAtPath:tempDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
 		}
         addPhotoQueue = [[NSMutableArray alloc] init];
-        photoCount     = [NSNumber numberWithInteger:0];
-        uploadedPhotos = [NSNumber numberWithInteger:0];
 	}	
     
 	return self;
@@ -108,11 +108,13 @@
     self.rootGalleryAlbum         = nil;
     self.galleryApiKey            = nil;
     self.galleryDirectory         = nil;
+    self.photoCount               = nil;
+    self.uploadedPhotos           = nil;
     [addPhotoQueue release];
     
     [preferences release];
     preferences = nil;
-
+    
     // Clean up the temporary files
     [[NSFileManager defaultManager] removeItemAtPath:tempDirectoryPath error:nil];
 	[tempDirectoryPath release];
@@ -317,17 +319,33 @@
             [addPhotoQueue addObject:item];
             [item release];
         }
-        photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
-        uploadedPhotos = [NSNumber numberWithInteger:0];
-
+        self.photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
+        self.uploadedPhotos = [NSNumber numberWithInteger:0];
+        
+//        [NSThread detachNewThreadSelector:@selector(startExportInNewThread) toTarget:self withObject:nil];
         [self processAddPhotoQueue];
     }
+}
+
+// this is necessary as the NSURLConnection does not work well except in NSDefaultRunLoopMode - which is not the modal panel run mode.
+-(void)startExportInNewThread
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    [self processAddPhotoQueue];
+    running = YES;
+    while(running) {
+        if( ![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:100000]] )
+        {
+            break;
+        }
+    }    
+    [pool release];    
 }
 
 - (void)exportManagerShouldCancelExport
 {
 	// You must call [_exportManager shouldCancelExport] here or elsewhere before Aperture will cancel the export process
-	// NOTE: You should assume that your plug-in will be deallocated immediately following this call. Be sure you have cleaned up
+	// NOTE: You should assume that your plug-in will be deallocated immediately following this call. Be sure you have cleaned up		
 	// any callbacks or running threads before calling.
   
     self.cancel = true;
@@ -337,7 +355,7 @@
 
 - (void)got:(NSMutableDictionary *)myResults;
 {
-    uploadedPhotos = [NSNumber numberWithInteger:1+[uploadedPhotos integerValue]];
+    self.uploadedPhotos = [NSNumber numberWithInteger:1+[uploadedPhotos integerValue]];
     [self processAddPhotoQueue];
 }
 
@@ -347,7 +365,7 @@
 	exportProgress.currentValue = totalBytesWritten;
 	exportProgress.totalValue = totalBytesExpectedToWrite;
     [exportProgress.message autorelease];
-	exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", [uploadedPhotos intValue] + 1, [photoCount intValue]] retain];
+    exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", [self.uploadedPhotos intValue] + 1, [self.photoCount intValue]] retain];
 	[self unlockProgress];
 }
 
@@ -363,6 +381,7 @@
         }
         else
         {
+//            [self performSelectorOnMainThread:@selector(done) withObject:nil waitUntilDone:YES];
             [self done];
             running = NO;
         }

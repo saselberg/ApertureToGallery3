@@ -105,6 +105,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{18, 233}, {442, 135}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="742944011"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSBrowserCell" key="NSCellPrototype">
@@ -132,6 +133,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{15, 385}, {304, 17}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="525925230"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="520082193">
@@ -169,6 +171,7 @@
 											<int key="NSvFlags">12</int>
 											<string key="NSFrame">{{2, 369}, {474, 5}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="328991384"/>
 											<string key="NSOffsets">{0, 0}</string>
 											<object class="NSTextFieldCell" key="NSTitleCell">
@@ -200,6 +203,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{318, 375}, {148, 32}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="199722914"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="269590939">
@@ -221,6 +225,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{12, 193}, {96, 32}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="872535318"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="487838138">
@@ -242,6 +247,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{113, 193}, {96, 32}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="963278954"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="192650856">
@@ -263,6 +269,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{363, 193}, {111, 32}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="475016083"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="618188412">
@@ -284,6 +291,7 @@
 											<int key="NSvFlags">10</int>
 											<string key="NSFrame">{{2, 178}, {474, 5}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="734810710"/>
 											<string key="NSOffsets">{0, 0}</string>
 											<object class="NSTextFieldCell" key="NSTitleCell">
@@ -307,6 +315,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{61, 143}, {38, 17}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="770818068"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="457058911">
@@ -324,6 +333,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{61, 118}, {38, 17}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="570038613"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="993240814">
@@ -341,6 +351,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{101, 93}, {38, 14}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="971581369"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="150402357">
@@ -362,6 +373,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{206, 93}, {49, 14}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="712800305"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="936526742">
@@ -379,6 +391,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{28, 68}, {71, 17}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="751226022"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="351589580">
@@ -396,6 +409,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{101, 46}, {110, 14}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="990356871"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="789764308">
@@ -413,6 +427,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{102, 20}, {130, 18}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="251006371"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="341814352">
@@ -441,6 +456,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{261, 20}, {201, 18}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="878170500">
 												<int key="NSCellFlags">-2080244224</int>
@@ -463,6 +479,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{101, 137}, {362, 26}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="490764608"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSPopUpButtonCell" key="NSCell" id="479029435">
@@ -547,6 +564,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{101, 112}, {362, 26}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="775876506"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSPopUpButtonCell" key="NSCell" id="699014518">
@@ -667,6 +685,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{140, 91}, {50, 19}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="988240021"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="991095290">
@@ -690,6 +709,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{251, 91}, {50, 19}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="674118907"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="503441195">
@@ -708,6 +728,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{199, 44}, {261, 19}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="115129894"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="142689726">
@@ -726,6 +747,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{101, 62}, {362, 26}}</string>
 											<reference key="NSSuperview" ref="23514155"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="351712990"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSPopUpButtonCell" key="NSCell" id="679903863">
@@ -802,11 +824,13 @@
 									</object>
 									<string key="NSFrame">{{1, 1}, {478, 414}}</string>
 									<reference key="NSSuperview" ref="857104952"/>
+									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="157704861"/>
 								</object>
 							</object>
 							<string key="NSFrame">{{10, 8}, {480, 430}}</string>
 							<reference key="NSSuperview" ref="414427165"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="23514155"/>
 							<string key="NSOffsets">{0, 0}</string>
 							<object class="NSTextFieldCell" key="NSTitleCell">
@@ -829,6 +853,7 @@
 					</object>
 					<string key="NSFrame">{{7, 11}, {500, 450}}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="857104952"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
@@ -1555,7 +1580,7 @@
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<object class="NSView" key="NSWindowView" id="121432045">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1564,6 +1589,7 @@
 							<int key="NSvFlags">34</int>
 							<string key="NSFrame">{{0, 58}, {400, 5}}</string>
 							<reference key="NSSuperview" ref="121432045"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="221428584"/>
 							<string key="NSOffsets">{0, 0}</string>
 							<object class="NSTextFieldCell" key="NSTitleCell">
@@ -1587,6 +1613,7 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{290, 12}, {96, 32}}</string>
 							<reference key="NSSuperview" ref="121432045"/>
+							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="836979390">
 								<int key="NSCellFlags">67239424</int>
@@ -1607,6 +1634,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{121, 65}, {158, 32}}</string>
 							<reference key="NSSuperview" ref="121432045"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="194720906"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="133584751">
@@ -1628,6 +1656,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{117, 170}, {167, 17}}</string>
 							<reference key="NSSuperview" ref="121432045"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="819918720"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="753839147">
@@ -1645,12 +1674,13 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{154, 155}, {94, 14}}</string>
 							<reference key="NSSuperview" ref="121432045"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="573477641"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="32826506">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">138544128</int>
-								<string key="NSContents">Version 0.60.02</string>
+								<string key="NSContents">Version 0.62.02</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="819918720"/>
 								<reference key="NSBackgroundColor" ref="796026323"/>
@@ -1662,6 +1692,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{153, 140}, {94, 14}}</string>
 							<reference key="NSSuperview" ref="121432045"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="711668299"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="621421889">
@@ -1679,6 +1710,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{99, 109}, {203, 17}}</string>
 							<reference key="NSSuperview" ref="121432045"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="297593155"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="946489003">
@@ -1701,6 +1733,8 @@
 						</object>
 					</object>
 					<string key="NSFrame">{{7, 11}, {400, 200}}</string>
+					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="163140377"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
@@ -3719,7 +3753,473 @@
 			<nil key="sourceID"/>
 			<int key="maxID">1091</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">iPhotoToGallery3</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addGalleryInformation:</string>
+							<string>clickDonate:</string>
+							<string>clickGoGitHub:</string>
+							<string>getApiKey:</string>
+							<string>hideAbout:</string>
+							<string>hideAddAlbum:</string>
+							<string>hideGalleryInformation:</string>
+							<string>hideManageGalleries:</string>
+							<string>makeAlbum:</string>
+							<string>select1280Size:</string>
+							<string>select320Size:</string>
+							<string>select640Size:</string>
+							<string>selectCustomSize:</string>
+							<string>selectFullSize:</string>
+							<string>selectHalfSize:</string>
+							<string>selectQuarterSize:</string>
+							<string>selectUseFileName:</string>
+							<string>selectUseSequential:</string>
+							<string>selectUseTitle:</string>
+							<string>showAbout:</string>
+							<string>showAddAlbum:</string>
+							<string>showGalleryInformation:</string>
+							<string>showManageGalleries:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addGalleryInformation:</string>
+							<string>clickDonate:</string>
+							<string>clickGoGitHub:</string>
+							<string>getApiKey:</string>
+							<string>hideAbout:</string>
+							<string>hideAddAlbum:</string>
+							<string>hideGalleryInformation:</string>
+							<string>hideManageGalleries:</string>
+							<string>makeAlbum:</string>
+							<string>select1280Size:</string>
+							<string>select320Size:</string>
+							<string>select640Size:</string>
+							<string>selectCustomSize:</string>
+							<string>selectFullSize:</string>
+							<string>selectHalfSize:</string>
+							<string>selectQuarterSize:</string>
+							<string>selectUseFileName:</string>
+							<string>selectUseSequential:</string>
+							<string>selectUseTitle:</string>
+							<string>showAbout:</string>
+							<string>showAddAlbum:</string>
+							<string>showGalleryInformation:</string>
+							<string>showManageGalleries:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">addGalleryInformation:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clickDonate:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clickGoGitHub:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">getApiKey:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">hideAbout:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">hideAddAlbum:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">hideGalleryInformation:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">hideManageGalleries:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">makeAlbum:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">select1280Size:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">select320Size:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">select640Size:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectCustomSize:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectFullSize:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectHalfSize:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectQuarterSize:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectUseFileName:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectUseSequential:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectUseTitle:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showAbout:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showAddAlbum:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showGalleryInformation:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showManageGalleries:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aboutWindow</string>
+							<string>addAlbumWindow</string>
+							<string>albumName</string>
+							<string>albumTitle</string>
+							<string>browser</string>
+							<string>firstView</string>
+							<string>galleryDirectoryController</string>
+							<string>galleryDirectoryTableView</string>
+							<string>galleryInformationWindow</string>
+							<string>includeMetaData</string>
+							<string>kindJpegHigh</string>
+							<string>kindJpegLow</string>
+							<string>kindJpegMaximum</string>
+							<string>kindJpegMedium</string>
+							<string>kindPopupButton</string>
+							<string>manageGalleriesWindow</string>
+							<string>maxHeight</string>
+							<string>maxWidth</string>
+							<string>nameFilename</string>
+							<string>namePopupButton</string>
+							<string>nameSequential</string>
+							<string>nameTitle</string>
+							<string>newGalleryPassword</string>
+							<string>sequentialPrefix</string>
+							<string>settingsBox</string>
+							<string>showGalleryOnCompletion</string>
+							<string>size1280</string>
+							<string>size320</string>
+							<string>size640</string>
+							<string>sizeCustom</string>
+							<string>sizeFullSize</string>
+							<string>sizeHalf</string>
+							<string>sizePopupButton</string>
+							<string>sizeQuarter</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSWindow</string>
+							<string>NSWindow</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSBrowser</string>
+							<string>NSControl</string>
+							<string>NSArrayController</string>
+							<string>NSTableView</string>
+							<string>NSWindow</string>
+							<string>NSButton</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSPopUpButton</string>
+							<string>NSWindow</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSMenuItem</string>
+							<string>NSPopUpButton</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSBox</string>
+							<string>NSButton</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSPopUpButton</string>
+							<string>NSMenuItem</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aboutWindow</string>
+							<string>addAlbumWindow</string>
+							<string>albumName</string>
+							<string>albumTitle</string>
+							<string>browser</string>
+							<string>firstView</string>
+							<string>galleryDirectoryController</string>
+							<string>galleryDirectoryTableView</string>
+							<string>galleryInformationWindow</string>
+							<string>includeMetaData</string>
+							<string>kindJpegHigh</string>
+							<string>kindJpegLow</string>
+							<string>kindJpegMaximum</string>
+							<string>kindJpegMedium</string>
+							<string>kindPopupButton</string>
+							<string>manageGalleriesWindow</string>
+							<string>maxHeight</string>
+							<string>maxWidth</string>
+							<string>nameFilename</string>
+							<string>namePopupButton</string>
+							<string>nameSequential</string>
+							<string>nameTitle</string>
+							<string>newGalleryPassword</string>
+							<string>sequentialPrefix</string>
+							<string>settingsBox</string>
+							<string>showGalleryOnCompletion</string>
+							<string>size1280</string>
+							<string>size320</string>
+							<string>size640</string>
+							<string>sizeCustom</string>
+							<string>sizeFullSize</string>
+							<string>sizeHalf</string>
+							<string>sizePopupButton</string>
+							<string>sizeQuarter</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">aboutWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">addAlbumWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">albumName</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">albumTitle</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">browser</string>
+								<string key="candidateClassName">NSBrowser</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">firstView</string>
+								<string key="candidateClassName">NSControl</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">galleryDirectoryController</string>
+								<string key="candidateClassName">NSArrayController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">galleryDirectoryTableView</string>
+								<string key="candidateClassName">NSTableView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">galleryInformationWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">includeMetaData</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">kindJpegHigh</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">kindJpegLow</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">kindJpegMaximum</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">kindJpegMedium</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">kindPopupButton</string>
+								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">manageGalleriesWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">maxHeight</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">maxWidth</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">nameFilename</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">namePopupButton</string>
+								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">nameSequential</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">nameTitle</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">newGalleryPassword</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">sequentialPrefix</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">settingsBox</string>
+								<string key="candidateClassName">NSBox</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">showGalleryOnCompletion</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">size1280</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">size320</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">size640</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">sizeCustom</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">sizeFullSize</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">sizeHalf</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">sizePopupButton</string>
+								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">sizeQuarter</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/iPhotoToGallery3.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">iPhotoToGallery3ExportBox</string>
+					<string key="superclassName">NSBox</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">mPlugin</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">mPlugin</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">mPlugin</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/iPhotoToGallery3ExportBox.h</string>
+					</object>
+				</object>
+			</object>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
