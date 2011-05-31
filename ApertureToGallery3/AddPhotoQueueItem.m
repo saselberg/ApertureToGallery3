@@ -14,11 +14,13 @@
 @synthesize parameters;
 @synthesize url;
 @synthesize isPhoto;
+@synthesize uploadAttempts;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        self.uploadAttempts = [NSNumber numberWithInt:0];
     }
     
     return self;

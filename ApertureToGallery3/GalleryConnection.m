@@ -83,7 +83,8 @@
     _error = [anError retain];
     
     [self.results setValue:@"ERROR"   forKey:@"RESPONSE_TYPE"];
-    [self.results setValue:_error forKey:@"ERROR"];
+    [self.results setValue:_error forKey:@"ERROR"];    
+    [self.results setValue:[NSNumber numberWithBool:YES] forKey:@"HAS_ERROR"];
 
     _isRunning = false;    
     [self.delegate got:self.results];
@@ -124,6 +125,7 @@
             [newResults addEntriesFromDictionary:[parser objectWithString:galleryResponseString error:nil]];             
             [newResults setValue:@"JSON" forKey:@"RESPONSE_TYPE"];
             
+            
             [parser release];
             parser = nil;
         }
@@ -156,7 +158,17 @@
         
     }
     
-    [newResults setValue:_error forKey:@"ERROR"];
+    [newResults setValue:_error forKey:@"ERROR"];  // connection errors rather than syntax errors
+    if( [newResults objectForKey:@"errors"] != nil ){
+        [newResults setValue:[NSNumber numberWithBool:YES] forKey:@"HAS_ERROR"];
+    } else {
+        [newResults setValue:[NSNumber numberWithBool:NO] forKey:@"HAS_ERROR"];
+
+    }
+     
+
+    
+    
     
     return newResults;
 }

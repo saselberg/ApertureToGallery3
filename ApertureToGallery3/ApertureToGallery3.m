@@ -15,8 +15,9 @@
 @synthesize rootGalleryAlbum;
 @synthesize galleryApiKey;
 @synthesize cancel;
-@synthesize uploadedPhotos;
-@synthesize photoCount;
+//@synthesize uploadedPhotos;
+//@synthesize photoCount;
+@synthesize currentItem;
 
 //---------------------------------------------------------
 // initWithAPIManager:
@@ -91,7 +92,12 @@
             [fileManager removeItemAtPath:tempDirectoryPath error:nil];
             [fileManager createDirectoryAtPath:tempDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
 		}
-        addPhotoQueue = [[NSMutableArray alloc] init];
+        
+        addPhotoQueue    = [[NSMutableArray alloc] init];
+        retryPhotoQueue  = [[NSMutableArray alloc] init];
+        donePhotoQueue   = [[NSMutableArray alloc] init];
+        errorPhotoQueue  = [[NSMutableArray alloc] init];
+        uploadRetries    = [NSNumber numberWithInt:2];
 	}	
     
 	return self;
@@ -108,9 +114,12 @@
     self.rootGalleryAlbum         = nil;
     self.galleryApiKey            = nil;
     self.galleryDirectory         = nil;
-    self.photoCount               = nil;
-    self.uploadedPhotos           = nil;
+//    self.photoCount               = nil;
+//    self.uploadedPhotos           = nil;
     [addPhotoQueue release];
+    [retryPhotoQueue release];
+    [donePhotoQueue release];
+    [errorPhotoQueue release];
     
     [preferences release];
     preferences = nil;
@@ -319,8 +328,8 @@
             [addPhotoQueue addObject:item];
             [item release];
         }
-        self.photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
-        self.uploadedPhotos = [NSNumber numberWithInteger:0];
+//        self.photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
+//        self.uploadedPhotos = [NSNumber numberWithInteger:0];
         
 //        [NSThread detachNewThreadSelector:@selector(startExportInNewThread) toTarget:self withObject:nil];
         [self processAddPhotoQueue];
@@ -355,7 +364,23 @@
 
 - (void)got:(NSMutableDictionary *)myResults;
 {
-    self.uploadedPhotos = [NSNumber numberWithInteger:1+[uploadedPhotos integerValue]];
+    if( [[myResults valueForKey:@"HAS_ERROR"] boolValue] )
+    {
+        if( ( [currentItem.uploadAttempts intValue] ) >= [uploadRetries intValue] )
+        {
+            [errorPhotoQueue addObject:currentItem];
+        } 
+        else
+        {
+            currentItem.uploadAttempts = [NSNumber numberWithInt:[currentItem.uploadAttempts intValue] + 1 ];
+            [retryPhotoQueue addObject:currentItem];
+        }
+    }
+    else
+    {
+        [donePhotoQueue addObject:currentItem];
+    }
+    
     [self processAddPhotoQueue];
 }
 
@@ -365,7 +390,20 @@
 	exportProgress.currentValue = totalBytesWritten;
 	exportProgress.totalValue = totalBytesExpectedToWrite;
     [exportProgress.message autorelease];
-    exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", [self.uploadedPhotos intValue] + 1, [self.photoCount intValue]] retain];
+    if( [currentItem.uploadAttempts intValue] > 0 ){
+        exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d (retry %d)", 
+                                   [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
+                                   [addPhotoQueue count]  + [retryPhotoQueue count] 
+                                   + [donePhotoQueue count] + [errorPhotoQueue count] + 1,
+                                   + [currentItem.uploadAttempts intValue] ] retain];
+    } else {
+        exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", 
+                                   [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
+                                   [addPhotoQueue count]  + [retryPhotoQueue count] 
+                                   + [donePhotoQueue count] + [errorPhotoQueue count] + 1] retain];
+        
+    }
+    
 	[self unlockProgress];
 }
 
@@ -373,9 +411,16 @@
 {
     if( !self.cancel )
     {
-        if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+        
+        if( [[NSNumber numberWithInteger:[retryPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
-            AddPhotoQueueItem *currentItem = [[[addPhotoQueue objectAtIndex:0] retain] autorelease];
+            self.currentItem = [retryPhotoQueue objectAtIndex:0];
+            [retryPhotoQueue removeObjectAtIndex:0];
+            [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+        }
+        else if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+        {
+            self.currentItem = [addPhotoQueue objectAtIndex:0];
             [addPhotoQueue removeObjectAtIndex:0];
             [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
         }
@@ -390,8 +435,28 @@
 
 - (void) done
 {
+    AddPhotoQueueItem* info;
+    NSMutableArray* errorNames = [NSMutableArray arrayWithCapacity:[errorPhotoQueue count]];
+    
     GalleryAlbum *selectedAlbum;
     selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
+    
+    if( [errorPhotoQueue count] > 0 )
+    {
+        NSEnumerator* enumerator = [errorPhotoQueue objectEnumerator];
+        while ((info = [enumerator nextObject])) {
+            [errorNames addObject:[info.path lastPathComponent]];
+        }
+        
+        NSString* errorMessage     = [NSString stringWithFormat:@"Failed to upload %d images:", [errorPhotoQueue count]];
+        NSString* errorDescription = [NSString stringWithFormat:[errorNames componentsJoinedByString:@"\n"]];
+        NSAlert* alert = [NSAlert alertWithMessageText:errorMessage  
+                 defaultButton:nil 
+                 alternateButton:nil 
+                 otherButton:nil
+                 informativeTextWithFormat:errorDescription];
+        [alert runModal];
+    }
     
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
     [_exportManager shouldFinishExport];        
