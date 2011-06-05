@@ -328,9 +328,6 @@
             [addPhotoQueue addObject:item];
             [item release];
         }
-//        self.photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
-//        self.uploadedPhotos = [NSNumber numberWithInteger:0];
-        
 //        [NSThread detachNewThreadSelector:@selector(startExportInNewThread) toTarget:self withObject:nil];
         [self processAddPhotoQueue];
     }
@@ -389,21 +386,6 @@
     [self lockProgress];
 	exportProgress.currentValue = totalBytesWritten;
 	exportProgress.totalValue = totalBytesExpectedToWrite;
-    [exportProgress.message autorelease];
-    if( [currentItem.uploadAttempts intValue] > 0 ){
-        exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d (retry %d)", 
-                                   [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
-                                   [addPhotoQueue count]  + [retryPhotoQueue count] 
-                                   + [donePhotoQueue count] + [errorPhotoQueue count] + 1,
-                                   + [currentItem.uploadAttempts intValue] ] retain];
-    } else {
-        exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", 
-                                   [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
-                                   [addPhotoQueue count]  + [retryPhotoQueue count] 
-                                   + [donePhotoQueue count] + [errorPhotoQueue count] + 1] retain];
-        
-    }
-    
 	[self unlockProgress];
 }
 
@@ -411,18 +393,36 @@
 {
     if( !self.cancel )
     {
-        
         if( [[NSNumber numberWithInteger:[retryPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
+            [self lockProgress];
+            exportProgress.currentValue = 0;
+            [exportProgress.message autorelease];
+            exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d (retry %d)", 
+                                       [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
+                                       [addPhotoQueue count]  + [retryPhotoQueue count] 
+                                       + [donePhotoQueue count] + [errorPhotoQueue count],
+                                       + [currentItem.uploadAttempts intValue] ] retain];
+            [self unlockProgress];
+            
             self.currentItem = [retryPhotoQueue objectAtIndex:0];
             [retryPhotoQueue removeObjectAtIndex:0];
             [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
         }
         else if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
+            [self lockProgress];
+            exportProgress.currentValue = 0;
+            [exportProgress.message autorelease];
+            exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", 
+                                       [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
+                                       [addPhotoQueue count]  + [retryPhotoQueue count] 
+                                       + [donePhotoQueue count] + [errorPhotoQueue count]] retain];
+            [self unlockProgress];
+
             self.currentItem = [addPhotoQueue objectAtIndex:0];
             [addPhotoQueue removeObjectAtIndex:0];
-            [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+            [gallery addPhotoAtPath:currentItem.path toUrl:self.currentItem.url withParameters:currentItem.parameters];
         }
         else
         {

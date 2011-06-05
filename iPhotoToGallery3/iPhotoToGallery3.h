@@ -34,8 +34,6 @@
     IBOutlet NSTableView       *galleryDirectoryTableView;    
     IBOutlet NSArrayController *galleryDirectoryController;
 
-    NSNumber            *photoCount; 
-    NSNumber            *uploadedPhotos;
     NSMutableDictionary *preferences;
     NSNumber            *selectedGalleryIndex;
     NSDictionary        *userDefaults;
@@ -44,6 +42,12 @@
     NSString *tempDirectoryPath;
     NSMutableArray *exportedImagePaths;
     NSMutableArray *addPhotoQueue;  
+    NSMutableArray *retryPhotoQueue;
+    NSMutableArray *donePhotoQueue;
+    NSMutableArray *errorPhotoQueue;
+    NSNumber       *uploadRetries;
+    
+    AddPhotoQueueItem *currentItem;
     
     RestfulGallery *gallery;
     GalleryAlbum   *rootGalleryAlbum;
@@ -83,6 +87,7 @@
 @property (retain) GalleryAlbum     *rootGalleryAlbum;
 @property (retain) NSMutableArray   *galleryDirectory;
 @property (retain) NSString         *galleryApiKey;
+@property (retain) AddPhotoQueueItem *currentItem;
 
 
 // overrides

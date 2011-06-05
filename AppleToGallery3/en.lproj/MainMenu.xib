@@ -2426,7 +2426,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="923313368">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">138544128</int>
-								<string key="NSContents">Version 0.62.01</string>
+								<string key="NSContents">Version 0.62.02</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="274067642"/>
 								<reference key="NSBackgroundColor" ref="1038702736"/>

@@ -13,6 +13,7 @@
 @synthesize galleryDirectory;
 @synthesize rootGalleryAlbum;
 @synthesize galleryApiKey;
+@synthesize currentItem;
 
 - (id)initWithExportImageObj:(id <ExportImageProtocol>)obj
 {
@@ -23,7 +24,12 @@
 		_progressLock = [[NSLock alloc] init];
         
         cancel = NO;
-        addPhotoQueue = [[NSMutableArray alloc] init];
+        addPhotoQueue    = [[NSMutableArray alloc] init];
+        retryPhotoQueue  = [[NSMutableArray alloc] init];
+        donePhotoQueue   = [[NSMutableArray alloc] init];
+        errorPhotoQueue  = [[NSMutableArray alloc] init];
+        uploadRetries    = [NSNumber numberWithInt:2];
+
         self.gallery  = [[RestfulGallery alloc] init]; 
         self.gallery.delegate = self;
         //self.gallery.bVerbose = true;
@@ -101,6 +107,9 @@
     self.galleryApiKey            = nil;
     self.galleryDirectory         = nil;
     [addPhotoQueue release];
+    [retryPhotoQueue release];
+    [donePhotoQueue release];
+    [errorPhotoQueue release];
     
     [preferences release];
     preferences = nil;
@@ -155,6 +164,25 @@
 - (void)startExport:(NSString *)path{cancel=NO;[_exportManager startExport];}
 - (void)cancelExport{
     cancel = YES;
+    
+    for( int i = 0; i < [addPhotoQueue count]; i++ ){
+        [errorPhotoQueue removeObjectAtIndex:i];
+    }
+    
+    for( int i = 0; i < [retryPhotoQueue count]; i++ ){
+        [donePhotoQueue removeObjectAtIndex:i];
+    }
+
+    for( int i = 0; i < [donePhotoQueue count]; i++ ){
+        [donePhotoQueue removeObjectAtIndex:i];
+    }
+
+    for( int i = 0; i < [donePhotoQueue count]; i++ ){
+        [donePhotoQueue removeObjectAtIndex:i];
+    }
+    
+    
+    
     [self.gallery cancel];
 }
 - (void)performExport:(NSString *)path
@@ -244,12 +272,9 @@
             [item release];
             
             [self lockProgress];
-            _progress.currentItem = imageNum + 1;
+            _progress.currentItem = (imageNum + 1);
             [self unlockProgress];
         }
-        
-        photoCount     = [NSNumber numberWithInteger:[addPhotoQueue count]];
-        uploadedPhotos = [NSNumber numberWithInteger:0];
         
         [NSThread detachNewThreadSelector:@selector(startExportInNewThread) toTarget:self withObject:nil];
     }
@@ -348,17 +373,38 @@
 {
     if( !cancel )
     {
-        if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+        if( [[NSNumber numberWithInteger:[retryPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
             [self lockProgress];
             _progress.currentItem = 0;
+            _progress.totalItems = 100*( [addPhotoQueue count] + [retryPhotoQueue count] + [donePhotoQueue count] + [errorPhotoQueue count] );
             [_progress.message autorelease];
-            _progress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", [uploadedPhotos intValue]+1, [photoCount intValue]] retain];
+            _progress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d (retry %d)", 
+                                       [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
+                                       [addPhotoQueue count]  + [retryPhotoQueue count] 
+                                       + [donePhotoQueue count] + [errorPhotoQueue count],
+                                       + [currentItem.uploadAttempts intValue] ] retain];
             [self unlockProgress];
-
-            AddPhotoQueueItem *currentItem = [[[addPhotoQueue objectAtIndex:0] retain] autorelease];
-            [addPhotoQueue removeObjectAtIndex:0];
+            
+            self.currentItem = [retryPhotoQueue objectAtIndex:0];
+            [retryPhotoQueue removeObjectAtIndex:0];
             [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+        }
+        else if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+        {
+            [self lockProgress];
+            _progress.currentItem = 0;
+            _progress.totalItems = 100*( [addPhotoQueue count] + [retryPhotoQueue count] + [donePhotoQueue count] + [errorPhotoQueue count] );
+            [_progress.message autorelease];
+            _progress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", 
+                                       [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
+                                       [addPhotoQueue count]  + [retryPhotoQueue count] 
+                                       + [donePhotoQueue count] + [errorPhotoQueue count]] retain];
+            [self unlockProgress];
+            
+            self.currentItem = [addPhotoQueue objectAtIndex:0];
+            [addPhotoQueue removeObjectAtIndex:0];
+            [gallery addPhotoAtPath:currentItem.path toUrl:self.currentItem.url withParameters:currentItem.parameters];
         }
         else
         {
@@ -369,6 +415,9 @@
 }
 -(void)done
 {
+    AddPhotoQueueItem* info;
+    NSMutableArray* errorNames = [NSMutableArray arrayWithCapacity:[errorPhotoQueue count]];
+
     if( [showGalleryOnCompletion state] == NSOnState )
     {
         GalleryAlbum *selectedAlbum;
@@ -377,6 +426,39 @@
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
     }
     
+    if( [errorPhotoQueue count] > 0 )
+    {
+        NSEnumerator* enumerator = [errorPhotoQueue objectEnumerator];
+        while ((info = [enumerator nextObject])) {
+            [errorNames addObject:[info.path lastPathComponent]];
+        }
+        
+        NSString* errorMessage     = [NSString stringWithFormat:@"Failed to upload %d images:", [errorPhotoQueue count]];
+        NSString* errorDescription = [NSString stringWithFormat:[errorNames componentsJoinedByString:@"\n"]];
+        NSAlert* alert = [NSAlert alertWithMessageText:errorMessage  
+                                         defaultButton:nil 
+                                       alternateButton:nil 
+                                           otherButton:nil
+                             informativeTextWithFormat:errorDescription];
+        [alert runModal];
+    }
+
+    for( int i = 0; i < [addPhotoQueue count]; i++ ){
+        [errorPhotoQueue removeObjectAtIndex:i];
+    }
+    
+    for( int i = 0; i < [retryPhotoQueue count]; i++ ){
+        [donePhotoQueue removeObjectAtIndex:i];
+    }
+
+    for( int i = 0; i < [errorPhotoQueue count]; i++ ){
+        [errorPhotoQueue removeObjectAtIndex:i];
+    }
+
+    for( int i = 0; i < [donePhotoQueue count]; i++ ){
+        [donePhotoQueue removeObjectAtIndex:i];
+    }
+
     [self lockProgress];
     [_progress.message autorelease];
     _progress.message = nil;
@@ -386,14 +468,30 @@
 }
 - (void)got:(NSMutableDictionary *)myResults;
 {
-    uploadedPhotos = [NSNumber numberWithInteger:1+[uploadedPhotos integerValue]];
+    if( [[myResults valueForKey:@"HAS_ERROR"] boolValue] )
+    {
+        if( ( [currentItem.uploadAttempts intValue] ) >= [uploadRetries intValue] )
+        {
+            [errorPhotoQueue addObject:currentItem];
+        } 
+        else
+        {
+            currentItem.uploadAttempts = [NSNumber numberWithInt:[currentItem.uploadAttempts intValue] + 1 ];
+            [retryPhotoQueue addObject:currentItem];
+        }
+    }
+    else
+    {
+        [donePhotoQueue addObject:currentItem];
+    }
+    
     [self processAddPhotoQueue];
 }
 
 - (void) updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
     [self lockProgress];
-    _progress.currentItem = [uploadedPhotos doubleValue] + ((double)totalBytesWritten)/((double)totalBytesExpectedToWrite);
+    _progress.currentItem = 100.0*((double)[errorPhotoQueue count] + (double)[donePhotoQueue count] + ((double)totalBytesWritten)/((double)totalBytesExpectedToWrite));
 	[self unlockProgress];
 }
 

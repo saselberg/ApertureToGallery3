@@ -81,7 +81,9 @@
     [request setValue:@"post"    forHTTPHeaderField:@"X-Gallery-Request-Method"];
 	[request setHTTPMethod:@"POST"];
     
-    NSString *requestString = [NSString stringWithFormat:@"user=%@&password=%@", username, password];
+    NSString *requestString = [NSString stringWithFormat:@"user=%@&password=%@", 
+                               [username stringByAddingPercentEscapesUsingEncoding:_encoding], 
+                               [password stringByAddingPercentEscapesUsingEncoding:_encoding]];
     NSData   *requestData   = [requestString dataUsingEncoding:_encoding allowLossyConversion:YES];
 	[request setHTTPBody:requestData];
     
@@ -189,7 +191,6 @@
     
        _data = [NSURLConnection sendSynchronousRequest:request returningResponse:&_response error:&_error];
         self.results = [_galleryConnection parseRequest:_data];
-
     }
 }
 
