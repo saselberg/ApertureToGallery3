@@ -292,4 +292,97 @@
     }
 }
 
+- (void) waterMarkImage:(NSString *)myBaseImageName with:(NSString *)myWaterMarkImageName andTransformIndex:(NSInteger)indexOfSelectedItem
+{    
+    CIImage *_baseImage   = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:myBaseImageName]];
+    CIImage *_resultImage = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:myWaterMarkImageName]];
+    
+    NSAffineTransform *transform = [NSAffineTransform transform];
+    BOOL executeTransform        = NO;
+    BOOL addWatermark            = YES;
+    
+    switch( indexOfSelectedItem )
+    {
+        case 0: addWatermark = NO; break;
+        case 2: [transform scaleXBy:([_baseImage extent].size.width/[_resultImage extent].size.width)
+                                yBy:([_baseImage extent].size.height/[_resultImage extent].size.height)];
+            executeTransform = YES;
+            break;
+        case 4: [transform translateXBy:0
+                                    yBy:[_baseImage extent].size.height - [_resultImage extent].size.height];
+            executeTransform = YES;
+            break;
+        case 5: [transform translateXBy:([_baseImage extent].size.width - [_resultImage extent].size.width)/2
+                                    yBy:[_baseImage extent].size.height - [_resultImage extent].size.height];
+            executeTransform = YES;
+            break;
+        case 6: [transform translateXBy:[_baseImage extent].size.width - [_resultImage extent].size.width
+                                    yBy:[_baseImage extent].size.height - [_resultImage extent].size.height];
+            executeTransform = YES;
+            break;
+        case 7: [transform translateXBy:0
+                                    yBy:([_baseImage extent].size.height - [_resultImage extent].size.height)/2];
+            executeTransform = YES;
+            break;
+        case 8: [transform translateXBy:([_baseImage extent].size.width - [_resultImage extent].size.width)/2
+                                    yBy:([_baseImage extent].size.height - [_resultImage extent].size.height)/2];
+            executeTransform = YES;
+            break;
+        case 9: [transform translateXBy:[_baseImage extent].size.width - [_resultImage extent].size.width
+                                    yBy:([_baseImage extent].size.height - [_resultImage extent].size.height)/2];
+            executeTransform = YES;
+            break;
+        case 10: [transform translateXBy:0
+                                     yBy:0];
+            executeTransform = YES;
+            break;
+        case 11: [transform translateXBy:([_baseImage extent].size.width - [_resultImage extent].size.width)/2
+                                     yBy:0];
+            executeTransform = YES;
+            break;
+        case 12: [transform translateXBy:[_baseImage extent].size.width - [_resultImage extent].size.width
+                                     yBy:0];
+            executeTransform = YES;
+            break;
+        default: break;
+    }
+    
+    if( executeTransform )
+    {
+        CIFilter* _affineTransformFilter = [CIFilter filterWithName:@"CIAffineTransform"];
+        [_affineTransformFilter setValue:_resultImage forKey:@"inputImage"];
+        [_affineTransformFilter setValue:transform forKey:@"inputTransform"];
+        _resultImage = [_affineTransformFilter valueForKey:@"outputImage"];        
+    }
+    
+    if( addWatermark )
+    {
+        CIFilter* _softLightFilter = [CIFilter filterWithName:@"CISoftLightBlendMode"];
+        [_softLightFilter setDefaults];
+        [_softLightFilter setValue:_baseImage forKey:@"inputBackgroundImage"];
+        [_softLightFilter setValue:_resultImage forKey:@"inputImage"];
+        _resultImage = [_softLightFilter valueForKey: @"outputImage" ];
+    } else {
+        _resultImage = _baseImage;
+    }
+    
+    CGRect ourRect = [_baseImage extent];
+    NSBitmapImageRep* bitmap = [NSBitmapImageRep imageRepWithContentsOfFile:myBaseImageName] ;
+    
+    NSGraphicsContext* graphicsContext = [NSGraphicsContext graphicsContextWithBitmapImageRep: bitmap];
+    [NSGraphicsContext saveGraphicsState];
+    [NSGraphicsContext setCurrentContext: graphicsContext];
+    NSRectFill(NSMakeRect(0.0f, 0.0f, [bitmap pixelsWide], [bitmap pixelsHigh]));
+    
+    CGRect fromRect = [_resultImage extent];
+    [[graphicsContext CIContext] drawImage:_resultImage inRect:CGRectMake(0.0f, 0.0f,ourRect.size.width, ourRect.size.height) fromRect:fromRect];
+    
+    [NSGraphicsContext restoreGraphicsState];    
+    
+    NSData *imageData = [bitmap representationUsingType:NSJPEGFileType properties:nil];
+    [imageData writeToFile:myBaseImageName atomically:NO];
+    
+    return;
+}
+
 @end

@@ -18,6 +18,7 @@
 //@synthesize uploadedPhotos;
 //@synthesize photoCount;
 @synthesize currentItem;
+@synthesize watermarkImageName;
 
 //---------------------------------------------------------
 // initWithAPIManager:
@@ -59,6 +60,8 @@
             } else {
                 selectedGalleryIndex = [NSNumber numberWithInteger:0];                
             }
+            
+            
         } else {
             preferences = [[NSMutableDictionary alloc] init];
             self.galleryDirectory = [NSMutableArray arrayWithCapacity:0];
@@ -160,7 +163,25 @@
                 self.gallery.url           = selectedGallery.url;
                 self.gallery.bGalleryValid = false;
             }
-		}
+            
+            if( [preferences valueForKey:@"SELECTED_WATERMARK_MODE"] )
+            {
+                [watermarkMenu selectItemAtIndex:[[preferences valueForKey:@"SELECTED_WATERMARK_MODE"] integerValue]];
+                if( [[preferences valueForKey:@"SELECTED_WATERMARK_MODE"] intValue] == 0 )
+                {
+                    [self enableWatermark:NO];
+                }
+            } else {
+                [watermarkMenu selectItemAtIndex:0];                
+                [self enableWatermark:NO];
+            }
+
+            if( [preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"] )
+            {
+                [waterMarkImageNameTextField setStringValue:[preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"]];
+            }
+        
+        }
         [myNib release];        
 	}
 	
@@ -302,11 +323,35 @@
 	[self unlockProgress];    
 }
 
+- (void) watermarkImages
+{
+    if( [watermarkMenu indexOfSelectedItem] > 0 )
+    {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if( [fileManager fileExistsAtPath:self.watermarkImageName] )
+        {
+            NSFileManager *fileManager2 = [NSFileManager defaultManager];
+            BOOL isDirectory;
+            [fileManager2 fileExistsAtPath:tempDirectoryPath isDirectory:&isDirectory];
+            if (isDirectory)
+            {
+                NSArray *contents = [fileManager2 contentsOfDirectoryAtPath:tempDirectoryPath error:nil];
+                for (int i = 0; i < [contents count]; i++)
+                {
+                    NSString *tempFilePath = [NSString stringWithFormat:@"%@%@", tempDirectoryPath, [contents objectAtIndex:i]];
+                    [self.gallery waterMarkImage:tempFilePath with:self.watermarkImageName andTransformIndex:[watermarkMenu indexOfSelectedItem]];
+                }
+            }
+        }
+    }
+}
 - (void)exportManagerDidFinishExport
 {
     // You must call [_exportManager shouldFinishExport] before Aperture will put away the progress window and complete the export.
 	// NOTE: You should assume that your plug-in will be deallocated immediately following this call. Be sure you have cleaned up
 	// any callbacks or running threads before calling. 
+    
+    [self watermarkImages];
     
     GalleryAlbum *selectedAlbum;
     selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
@@ -564,6 +609,41 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://saselberg.github.com/ApertureToGallery3"]];
 }
 
+- (IBAction)selectWatermarkImage:(id)sender {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    [openPanel setTreatsFilePackagesAsDirectories:NO];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setCanChooseDirectories:NO];
+    [openPanel setCanChooseFiles:YES];
+    [openPanel beginSheetModalForWindow:[_exportManager window] completionHandler:^(NSInteger result) {
+        if (result == NSOKButton) {
+            [openPanel orderOut:self]; // close panel before we might present an error
+            self.watermarkImageName = [openPanel filename];
+            [waterMarkImageNameTextField setStringValue:self.watermarkImageName];
+            [self savePreferences];
+        }
+    }];        
+}
+
+-(IBAction)selectNoWatermark:(id)sender{[self enableWatermark:NO];}
+-(IBAction)selectScaledWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopRightWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleRightWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomRightWatermark:(id)sender{[self enableWatermark:YES];}
+
+-(void)enableWatermark:(BOOL)bEnable
+{
+    [waterMarkImageNameTextField setEnabled:bEnable];
+    [browseForWaterMarkButton    setEnabled:bEnable];
+    [self savePreferences];
+}
+
 
 /************************************************************
  /  Manage window sheets
@@ -680,6 +760,8 @@
 - (void)savePreferences {
     [preferences setObject:[NSKeyedArchiver archivedDataWithRootObject:galleryDirectory] forKey:@"GALLERY_DIRECTORY"];    
     [preferences setObject:selectedGalleryIndex forKey:@"SELECTED_GALLERY_INDEX"];
+    [preferences setObject:[NSNumber numberWithInteger:[watermarkMenu indexOfSelectedItem]] forKey:@"SELECTED_WATERMARK_MODE"];
+    [preferences setObject:[waterMarkImageNameTextField stringValue] forKey:@"SELECTED_WATERMARK_IMAGE"];
     
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle bundleForClass: [self class]] bundleIdentifier]];
     [[NSUserDefaults standardUserDefaults] setPersistentDomain:preferences forName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];

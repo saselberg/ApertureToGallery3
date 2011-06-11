@@ -11,6 +11,7 @@
 #import "GalleryConnection.h"
 #import "URLCallDelegate.h"
 #import "AddPhotoQueueItem.h"
+#import <Quartz/Quartz.h>
 
 @interface RestfulGallery : NSObject <URLCallDelegate> {
     NSError*             _error;
@@ -50,4 +51,6 @@
 - (void)addMovieAtPath:(NSString *)imagePath toUrl:(NSString *)restUrl withParameters:(NSMutableDictionary *)parameters;
 - (void)addItemIsPhoto:(BOOL)isPhoto AtPath:(NSString *)imagePath toUrl:(NSString *)restUrl withParameters:(NSMutableDictionary *)parameters;
 - (BOOL)galleryValid;
+- (void) waterMarkImage:(NSString *)myBaseImageName with:(NSString *)myWaterMarkImageName andTransformIndex:(NSInteger)indexOfSelectedItem;
+
 @end

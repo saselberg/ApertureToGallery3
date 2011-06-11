@@ -52,6 +52,11 @@
     IBOutlet NSWindow *aboutWindow;
     IBOutlet NSWindow *progressWindow;
     
+    IBOutlet NSPopUpButton *watermarkMenu;
+    IBOutlet NSTextField   *waterMarkImageNameTextField;
+    NSString               *waterMarkImageName;
+    IBOutlet NSButton      *browseForWaterMarkButton;
+    
     NSMutableDictionary *preferences;
     NSNumber            *selectedGalleryIndex;
     NSDictionary        *userDefaults;
@@ -81,6 +86,8 @@
 //@property (retain) NSNumber          *photoCount;
 //@property (retain) NSNumber          *uploadedPhotos;
 @property          BOOL              cancel;
+@property (retain) NSString          *watermarkImageName;
+
 
 
 -(IBAction)makeAlbum:(id)sender;
@@ -101,12 +108,29 @@
 -(IBAction)showAddAlbum:(id)sender;
 -(IBAction)hideAddAlbum:(id)sender;
 
+-(IBAction)selectWatermarkImage:(id)sender;
+
+-(IBAction)selectNoWatermark:(id)sender;
+-(IBAction)selectScaledWatermark:(id)sender;
+-(IBAction)selectTopLeftWatermark:(id)sender;
+-(IBAction)selectTopCenterWatermark:(id)sender;
+-(IBAction)selectTopRightWatermark:(id)sender;
+-(IBAction)selectMiddleLeftWatermark:(id)sender;
+-(IBAction)selectMiddleCenterWatermark:(id)sender;
+-(IBAction)selectMiddleRightWatermark:(id)sender;
+-(IBAction)selectBottomLeftWatermark:(id)sender;
+-(IBAction)selectBottomCenterWatermark:(id)sender;
+-(IBAction)selectBottomRightWatermark:(id)sender;
+-(void)enableWatermark:(BOOL)bEnable;
+
+
 -(void)savePreferences;
 -(void)got:(NSMutableDictionary *)myResults;
 -(void)updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 -(void)processAddPhotoQueue;
 -(void)startExportInNewThread;
 -(void)done;
+
 
 @end
 

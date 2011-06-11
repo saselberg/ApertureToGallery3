@@ -66,6 +66,9 @@
 		D2D00EEC13856805006E199E /* iPhotoToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D00EEB13856805006E199E /* iPhotoToGallery3.m */; };
 		D2D00EEF138568BF006E199E /* iPhotoToGallery3ExportBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D00EEE138568BF006E199E /* iPhotoToGallery3ExportBox.m */; };
 		D2D1C623138621CE00662456 /* iPhotoToGallery3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D1C622138621CE00662456 /* iPhotoToGallery3.xib */; };
+		D2D4AA6613A3ED39007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
+		D2D4AA6713A3ED43007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
+		D2D4AA6813A3F447007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +139,7 @@
 		D2D00EF113856B94006E199E /* ExportPluginBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportPluginBoxProtocol.h; path = ../../../Desktop/Interface/ExportPluginBoxProtocol.h; sourceTree = "<group>"; };
 		D2D00EF213856B94006E199E /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportPluginProtocol.h; path = ../../../Desktop/Interface/ExportPluginProtocol.h; sourceTree = "<group>"; };
 		D2D1C622138621CE00662456 /* iPhotoToGallery3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhotoToGallery3.xib; sourceTree = "<group>"; };
+		D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A08CBB13896E8A009659CC /* Cocoa.framework in Frameworks */,
+				D2D4AA6713A3ED43007F3A53 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +158,7 @@
 			files = (
 				D2C00F33136F88F1002ADF41 /* PluginManager.framework in Frameworks */,
 				D2C00EEA136F864D002ADF41 /* Cocoa.framework in Frameworks */,
+				D2D4AA6813A3F447007F3A53 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +168,7 @@
 			files = (
 				D2BA095C1388347D006250A8 /* QuickTime.framework in Frameworks */,
 				D2D00ED413856512006E199E /* Cocoa.framework in Frameworks */,
+				D2D4AA6613A3ED39007F3A53 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +224,7 @@
 		D2C00EE8136F864D002ADF41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */,
 				D2BA095B1388347D006250A8 /* QuickTime.framework */,
 				D2C00F32136F88F1002ADF41 /* PluginManager.framework */,
 				D2C00EE9136F864D002ADF41 /* Cocoa.framework */,
