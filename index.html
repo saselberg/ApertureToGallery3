@@ -27,6 +27,7 @@
 <h2>Outline</h2>
 <ul>
   <li><a href="#Intro">Introduction</a></li>
+  <li><a href="#Instructions">Instructions</a></li>
   <li><a href="#Requirements">Requirements</a></li>
   <li><a href="#Downloads">Download Package</a></li>
   <li><a href="#Support">Source Code</a></li>
@@ -36,6 +37,12 @@
 <p>This is a plugin for Apple Aperture to export to Gallery 3. The current release has plenty of bugs for sure, and very minimal error checking - but it works at least on my system.</p>
 <p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8XJS7R8SCZMVU">Please consider making a donation.</a></p>
 <p>If you have bugs or comments, please use the <a href="http://github.com/saselberg/ApertureToGallery3">ApertureToGallery3git hub home page</a> to connect with the author and user community.</p>
+<h2><a name="Instructions"></a>Instructions</h2>
+<p>Most of the functionality is very obvious, but there are some places where additional explaination is useful:</p>
+<ul>
+  <li><strong>Adding a Gallery</strong> - When adding a gallery, use the full url such as http://www.server.com/gallery3. Don't include the &quot;index.php&quot; portion of the url. When adding a gallery, the plugin needs a name - which could be anything useful for you, the url, the login name, and the API key. The password is only required to automatically retrieve the API key and will not be saved.</li>
+  <li><strong>Watermarks</strong> - As of version 0.65.07, the ability to automatically apply a watermark is included. The resulting file will be a jpeg. The watermark image will be blended using a SoftLightBlendFilter. In theory, 50% gray will not cause the underlying image to be dodged or burned. Experimentally, I found that creating a 50% gray background with some text did quit a bit of dodgeing; I found that 27% gray worked better. This may have to do with the changing color space.</li>
+</ul>
 <h2> <a name="Requirements"></a>Requirements</h2>
 <p>This package takes at least OS 10.6 and requires Apple Aperture.</p>
 <h2><a name="Downloads"></a>Downloads</h2>
@@ -52,7 +59,7 @@
 <hr>
 <p><a href="mailto:saselberg@gmail.com">Feedback on this page</a><br>
   Updated on 
-  <!-- #BeginDate format:Am1 -->May 8, 2011<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->June 11, 2011<!-- #EndDate -->
 </p>
 </body>
 <!-- InstanceEnd --></html>
