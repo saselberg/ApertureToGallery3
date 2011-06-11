@@ -80,6 +80,12 @@
     
     IBOutlet NSButton      *includeMetaData;
     IBOutlet NSButton      *showGalleryOnCompletion;
+    
+    IBOutlet NSPopUpButton *watermarkMenu;
+    IBOutlet NSTextField   *waterMarkImageNameTextField;
+    NSString               *waterMarkImageName;
+    IBOutlet NSButton      *browseForWaterMarkButton;
+
 
 }
 
@@ -88,6 +94,7 @@
 @property (retain) NSMutableArray   *galleryDirectory;
 @property (retain) NSString         *galleryApiKey;
 @property (retain) AddPhotoQueueItem *currentItem;
+@property (retain) NSString          *waterMarkImageName;
 
 
 // overrides
@@ -140,6 +147,19 @@
 -(IBAction)selectUseSequential:(id)sender;
 -(void)enableSequentialPrefix:(BOOL)bEnable;
 
+-(IBAction)selectWatermarkImage:(id)sender;
 
+-(IBAction)selectNoWatermark:(id)sender;
+-(IBAction)selectScaledWatermark:(id)sender;
+-(IBAction)selectTopLeftWatermark:(id)sender;
+-(IBAction)selectTopCenterWatermark:(id)sender;
+-(IBAction)selectTopRightWatermark:(id)sender;
+-(IBAction)selectMiddleLeftWatermark:(id)sender;
+-(IBAction)selectMiddleCenterWatermark:(id)sender;
+-(IBAction)selectMiddleRightWatermark:(id)sender;
+-(IBAction)selectBottomLeftWatermark:(id)sender;
+-(IBAction)selectBottomCenterWatermark:(id)sender;
+-(IBAction)selectBottomRightWatermark:(id)sender;
+-(void)enableWatermark:(BOOL)bEnable;
 
 @end

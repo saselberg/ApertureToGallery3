@@ -14,6 +14,7 @@
 @synthesize rootGalleryAlbum;
 @synthesize galleryApiKey;
 @synthesize currentItem;
+@synthesize waterMarkImageName;
 
 - (id)initWithExportImageObj:(id <ExportImageProtocol>)obj
 {
@@ -93,6 +94,23 @@
         self.gallery.galleryApiKey = selectedGallery.key;
         self.gallery.url           = selectedGallery.url;
         self.gallery.bGalleryValid = false;
+    }
+    
+    if( [preferences valueForKey:@"SELECTED_WATERMARK_MODE"] )
+    {
+        [watermarkMenu selectItemAtIndex:[[preferences valueForKey:@"SELECTED_WATERMARK_MODE"] integerValue]];
+        if( [[preferences valueForKey:@"SELECTED_WATERMARK_MODE"] intValue] == 0 )
+        {
+            [self enableWatermark:NO];
+        }
+    } else {
+        [watermarkMenu selectItemAtIndex:0];                
+        [self enableWatermark:NO];
+    }
+    
+    if( [preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"] )
+    {
+        [waterMarkImageNameTextField setStringValue:[preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"]];
     }
     
     [kindPopupButton selectItemAtIndex:3];
@@ -189,6 +207,9 @@
 {    
     NSSize originalSize;
     NSString *exportName;
+    BOOL addWatermark = NO;
+    
+
     
     if( gallery.bGalleryValid )
     {
@@ -205,6 +226,11 @@
         GalleryAlbum *selectedAlbum;
         selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
         
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if( [watermarkMenu indexOfSelectedItem] > 0 && [fileManager fileExistsAtPath:self.waterMarkImageName] )
+        {
+            addWatermark = YES;
+        }        
         
         ImageExportOptions imageOptions;
         switch( [kindPopupButton indexOfSelectedItem ] )
@@ -260,7 +286,9 @@
             //int          imageRating    = [_exportManager imageRatingAtIndex:imageNum];
 
             [_exportManager exportImageAtIndex:imageNum dest:newPath options:&imageOptions];
-
+            
+            [self.gallery waterMarkImage:newPath with:self.waterMarkImageName andTransformIndex:[watermarkMenu indexOfSelectedItem]];
+            
             AddPhotoQueueItem *item = [[AddPhotoQueueItem alloc] initWithUrl:selectedAlbum.url 
                                                                  andPath:newPath 
                                                                  andParameters:[NSMutableDictionary 
@@ -298,9 +326,46 @@
 - (void)savePreferences {
     [preferences setObject:[NSKeyedArchiver archivedDataWithRootObject:galleryDirectory] forKey:@"GALLERY_DIRECTORY"];    
     [preferences setObject:selectedGalleryIndex forKey:@"SELECTED_GALLERY_INDEX"];
+    [preferences setObject:[NSNumber numberWithInteger:[watermarkMenu indexOfSelectedItem]] forKey:@"SELECTED_WATERMARK_MODE"];
+    [preferences setObject:[waterMarkImageNameTextField stringValue] forKey:@"SELECTED_WATERMARK_IMAGE"];
     
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle bundleForClass: [self class]] bundleIdentifier]];
     [[NSUserDefaults standardUserDefaults] setPersistentDomain:preferences forName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
+}
+
+- (IBAction)selectWatermarkImage:(id)sender {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    [openPanel setTreatsFilePackagesAsDirectories:NO];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setCanChooseDirectories:NO];
+    [openPanel setCanChooseFiles:YES];
+    [openPanel beginSheetModalForWindow:[_exportManager window] completionHandler:^(NSInteger result) {
+        if (result == NSOKButton) {
+            [openPanel orderOut:self]; // close panel before we might present an error
+            self.waterMarkImageName = [openPanel filename];
+            [waterMarkImageNameTextField setStringValue:self.waterMarkImageName];
+            [self savePreferences];
+        }
+    }];        
+}
+
+-(IBAction)selectNoWatermark:(id)sender{[self enableWatermark:NO];}
+-(IBAction)selectScaledWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopRightWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleRightWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomRightWatermark:(id)sender{[self enableWatermark:YES];}
+
+-(void)enableWatermark:(BOOL)bEnable
+{
+    [waterMarkImageNameTextField setEnabled:bEnable];
+    [browseForWaterMarkButton    setEnabled:bEnable];
+    [self savePreferences];
 }
 
 /************************************************************

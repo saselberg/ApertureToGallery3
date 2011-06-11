@@ -18,7 +18,7 @@
 //@synthesize uploadedPhotos;
 //@synthesize photoCount;
 @synthesize currentItem;
-@synthesize watermarkImageName;
+@synthesize waterMarkImageName;
 
 //---------------------------------------------------------
 // initWithAPIManager:
@@ -328,7 +328,7 @@
     if( [watermarkMenu indexOfSelectedItem] > 0 )
     {
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        if( [fileManager fileExistsAtPath:self.watermarkImageName] )
+        if( [fileManager fileExistsAtPath:self.waterMarkImageName] )
         {
             NSFileManager *fileManager2 = [NSFileManager defaultManager];
             BOOL isDirectory;
@@ -339,7 +339,7 @@
                 for (int i = 0; i < [contents count]; i++)
                 {
                     NSString *tempFilePath = [NSString stringWithFormat:@"%@%@", tempDirectoryPath, [contents objectAtIndex:i]];
-                    [self.gallery waterMarkImage:tempFilePath with:self.watermarkImageName andTransformIndex:[watermarkMenu indexOfSelectedItem]];
+                    [self.gallery waterMarkImage:tempFilePath with:self.waterMarkImageName andTransformIndex:[watermarkMenu indexOfSelectedItem]];
                 }
             }
         }
@@ -618,8 +618,8 @@
     [openPanel beginSheetModalForWindow:[_exportManager window] completionHandler:^(NSInteger result) {
         if (result == NSOKButton) {
             [openPanel orderOut:self]; // close panel before we might present an error
-            self.watermarkImageName = [openPanel filename];
-            [waterMarkImageNameTextField setStringValue:self.watermarkImageName];
+            self.waterMarkImageName = [openPanel filename];
+            [waterMarkImageNameTextField setStringValue:self.waterMarkImageName];
             [self savePreferences];
         }
     }];        

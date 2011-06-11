@@ -86,7 +86,7 @@
 //@property (retain) NSNumber          *photoCount;
 //@property (retain) NSNumber          *uploadedPhotos;
 @property          BOOL              cancel;
-@property (retain) NSString          *watermarkImageName;
+@property (retain) NSString          *waterMarkImageName;
 
 
 
@@ -109,7 +109,6 @@
 -(IBAction)hideAddAlbum:(id)sender;
 
 -(IBAction)selectWatermarkImage:(id)sender;
-
 -(IBAction)selectNoWatermark:(id)sender;
 -(IBAction)selectScaledWatermark:(id)sender;
 -(IBAction)selectTopLeftWatermark:(id)sender;
@@ -130,6 +129,8 @@
 -(void)processAddPhotoQueue;
 -(void)startExportInNewThread;
 -(void)done;
+-(void)watermarkImages;
+
 
 
 @end
