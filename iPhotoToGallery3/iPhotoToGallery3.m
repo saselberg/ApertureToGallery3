@@ -111,11 +111,18 @@
     if( [preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"] )
     {
         [waterMarkImageNameTextField setStringValue:[preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"]];
+        self.waterMarkImageName = [preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"];
     }
     
     [kindPopupButton selectItemAtIndex:3];
     [sizePopupButton selectItemAtIndex:5];
     [namePopupButton selectItemAtIndex:0];
+    
+    Version *versionTracker = [[[Version alloc] init] autorelease];
+    [versionLabel setStringValue:[NSString stringWithFormat:@"Version %03.1f-%03.1f", 
+                                  [versionTracker.iPhotoToGalleryVersion doubleValue], 
+                                  [versionTracker.RestfulGalleryVersion doubleValue] ] ];
+
 }
 
 - (void)dealloc
@@ -124,6 +131,8 @@
     self.rootGalleryAlbum         = nil;
     self.galleryApiKey            = nil;
     self.galleryDirectory         = nil;
+    self.currentItem              = nil;
+    self.waterMarkImageName       = nil;
     [addPhotoQueue release];
     [retryPhotoQueue release];
     [donePhotoQueue release];
@@ -209,8 +218,6 @@
     NSString *exportName;
     BOOL addWatermark = NO;
     
-
-    
     if( gallery.bGalleryValid )
     {
         cancel = false;
@@ -287,7 +294,10 @@
 
             [_exportManager exportImageAtIndex:imageNum dest:newPath options:&imageOptions];
             
-            [self.gallery waterMarkImage:newPath with:self.waterMarkImageName andTransformIndex:[watermarkMenu indexOfSelectedItem]];
+            if( addWatermark )
+            {
+                [self.gallery waterMarkImage:newPath with:self.waterMarkImageName andTransformIndex:[watermarkMenu indexOfSelectedItem]];                
+            }
             
             AddPhotoQueueItem *item = [[AddPhotoQueueItem alloc] initWithUrl:selectedAlbum.url 
                                                                  andPath:newPath 

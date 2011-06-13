@@ -11,6 +11,7 @@
 #import "ExportPluginProtocol.h"
 #import "GalleryAlbum.h"
 #import "GalleryInfo.h"
+#import "Version.h"
 
 @interface iPhotoToGallery3 : NSObject <ExportPluginProtocol, URLCallDelegate> {
     id <ExportImageProtocol> _exportManager;
@@ -26,9 +27,10 @@
     IBOutlet NSWindow *addAlbumWindow;
     IBOutlet NSWindow *aboutWindow;
 
-    IBOutlet NSTextField         *albumName;
-    IBOutlet NSTextField         *albumTitle;
-    IBOutlet NSTextField         *newGalleryPassword;
+    IBOutlet NSTextField *albumName;
+    IBOutlet NSTextField *albumTitle;
+    IBOutlet NSTextField *newGalleryPassword;
+    IBOutlet NSTextField *versionLabel;
     
     IBOutlet NSBrowser         *browser;
     IBOutlet NSTableView       *galleryDirectoryTableView;    

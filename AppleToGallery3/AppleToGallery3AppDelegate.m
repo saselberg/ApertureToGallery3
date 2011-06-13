@@ -13,6 +13,8 @@
 @synthesize galleryDirectory;
 @synthesize rootGalleryAlbum;
 @synthesize galleryApiKey;
+@synthesize currentItem;
+@synthesize waterMarkImageName;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -23,8 +25,13 @@
     self = [super init];
     if( self )
     { 
+        addPhotoQueue    = [[NSMutableArray alloc] init];
+        retryPhotoQueue  = [[NSMutableArray alloc] init];
+        donePhotoQueue   = [[NSMutableArray alloc] init];
+        errorPhotoQueue  = [[NSMutableArray alloc] init];
+        uploadRetries    = [NSNumber numberWithInt:2];
+
         
-        addPhotoQueue = [[NSMutableArray alloc] init];
         self.gallery  = [[RestfulGallery alloc] init]; 
         self.gallery.delegate = self;
         userDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
@@ -46,6 +53,31 @@
             self.galleryDirectory = [NSMutableArray arrayWithCapacity:0];
             selectedGalleryIndex = [NSNumber numberWithInteger:0];
         }
+        
+        tempDirectoryPath = [[NSString stringWithFormat:@"%@/AppleToGallery3Export/", NSTemporaryDirectory()] retain];
+		
+		// If it doesn't exist, create it
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		BOOL isDirectory;
+		if (![fileManager fileExistsAtPath:tempDirectoryPath isDirectory:&isDirectory])
+		{
+            [fileManager createDirectoryAtPath:tempDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
+		}
+		else if (isDirectory) // If a folder already exists, empty it.
+		{
+            NSArray *contents = [fileManager contentsOfDirectoryAtPath:tempDirectoryPath error:nil];
+			int i;
+			for (i = 0; i < [contents count]; i++)
+			{
+				NSString *tempFilePath = [NSString stringWithFormat:@"%@%@", tempDirectoryPath, [contents objectAtIndex:i]];
+                [fileManager removeItemAtPath:tempFilePath error:nil];
+			}
+		}
+		else // Delete the old file and create a new directory
+		{
+            [fileManager removeItemAtPath:tempDirectoryPath error:nil];
+            [fileManager createDirectoryAtPath:tempDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
+		}
     }
     return self;
 }
@@ -57,7 +89,16 @@
     self.rootGalleryAlbum         = nil;
     self.galleryApiKey            = nil;
     self.galleryDirectory         = nil;
+    self.currentItem              = nil;
+    self.waterMarkImageName       = nil;
     [addPhotoQueue release];
+    [retryPhotoQueue release];
+    [donePhotoQueue release];
+    [errorPhotoQueue release];
+
+    // Clean up the temporary files
+    [[NSFileManager defaultManager] removeItemAtPath:tempDirectoryPath error:nil];
+	[tempDirectoryPath release];
     
     [preferences release];
     preferences = nil;
@@ -79,6 +120,31 @@
         [totalProgresssIndicator setMinValue:0.0];
         [totalProgresssIndicator setMaxValue:1.0];
     }
+    
+    if( [preferences valueForKey:@"SELECTED_WATERMARK_MODE"] )
+    {
+        [watermarkMenu selectItemAtIndex:[[preferences valueForKey:@"SELECTED_WATERMARK_MODE"] integerValue]];
+        if( [[preferences valueForKey:@"SELECTED_WATERMARK_MODE"] intValue] == 0 )
+        {
+            [self enableWatermark:NO];
+        }
+    } else {
+        [watermarkMenu selectItemAtIndex:0];                
+        [self enableWatermark:NO];
+    }
+    
+    if( [preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"] )
+    {
+        [waterMarkImageNameTextField setStringValue:[preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"]];
+        self.waterMarkImageName = [preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"];
+    }
+    
+    
+    Version *versionTracker = [[[Version alloc] init] autorelease];
+    [versionLabel setStringValue:[NSString stringWithFormat:@"Version %03.1f-%03.1f", 
+                                  [versionTracker.AppleToGalleryVersion doubleValue], 
+                                  [versionTracker.RestfulGalleryVersion doubleValue] ] ];
+
 }
 
 
@@ -248,36 +314,44 @@
     GalleryAlbum *selectedAlbum;
     selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
     
+    
+    //First, copy files to temporary directory.  This is not necessary in general, but mimics
+    //the behavior of the Aperture and iPhoto plugins.  Also important to support the watermarking
+    //feature
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL isDirectory;
     [fileManager fileExistsAtPath:fileNode isDirectory:&isDirectory];
-    
     if(isDirectory){
         NSArray *contents = [fileManager contentsOfDirectoryAtPath:fileNode error:nil];
         int i;
         for (i = 0; i < [contents count]; i++)
         {
-            NSString *tempFilePath = [NSString stringWithFormat:@"%@/%@", fileNode, [contents objectAtIndex:i]];
-            AddPhotoQueueItem *item = [[AddPhotoQueueItem alloc] initWithUrl:selectedAlbum.url andPath:tempFilePath 
-                                                               andParameters:[NSMutableDictionary 
-                                                                              dictionaryWithObjects:[NSArray arrayWithObjects:[tempFilePath lastPathComponent], @"", nil] 
-                                                                              forKeys:[NSArray arrayWithObjects:@"title", @"description", nil ]]];
-            [addPhotoQueue addObject:item];
-            [item release];
+            NSData *fileContents = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", fileNode, [contents objectAtIndex:i]]];
+            [fileContents writeToFile:[NSString stringWithFormat:@"%@/%@", tempDirectoryPath, [contents objectAtIndex:i]] atomically:NO];
         }
     }
     else {
-        AddPhotoQueueItem *item = [[AddPhotoQueueItem alloc] initWithUrl:selectedAlbum.url andPath:fileNode 
+        NSData *fileContents = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@", fileNode ]];
+        [fileContents writeToFile:[NSString stringWithFormat:@"%@/%@", tempDirectoryPath, [fileNode lastPathComponent]] atomically:NO];
+    }
+    
+    [self watermarkImages];
+    
+    NSArray *contents = [fileManager contentsOfDirectoryAtPath:tempDirectoryPath error:nil];
+    int i;
+    for (i = 0; i < [contents count]; i++)
+    {
+        NSString *tempFilePath = [NSString stringWithFormat:@"%@/%@", tempDirectoryPath, [contents objectAtIndex:i]];
+        AddPhotoQueueItem *item = [[AddPhotoQueueItem alloc] initWithUrl:selectedAlbum.url andPath:tempFilePath 
                                                            andParameters:[NSMutableDictionary 
-                                                                          dictionaryWithObjects:[NSArray arrayWithObjects:[fileNode lastPathComponent], @"", nil] 
+                                                                          dictionaryWithObjects:[NSArray arrayWithObjects:[tempFilePath lastPathComponent], @"", nil] 
                                                                           forKeys:[NSArray arrayWithObjects:@"title", @"description", nil ]]];
         [addPhotoQueue addObject:item];
         [item release];
     }
     
-    photoCount = [NSNumber numberWithInteger:[addPhotoQueue count]];
-    uploadedPhotos = [NSNumber numberWithInteger:0];
-    [totalProgresssIndicator setMaxValue:[photoCount doubleValue]];
+    [totalProgresssIndicator setMaxValue:[addPhotoQueue count]];
     [NSApp beginSheet:progressWindow modalForWindow:mainWindow modalDelegate:self didEndSelector:NULL contextInfo:nil];  
     
     [NSThread detachNewThreadSelector:@selector(startExportInNewThread) toTarget:self withObject:nil];
@@ -302,28 +376,56 @@
 
 - (void)got:(NSMutableDictionary *)myResults;
 {
-    //    NSLog( @"%@",myResults );
-    //    NSLog( @"Done!" );
-    uploadedPhotos = [NSNumber numberWithInteger:1+[uploadedPhotos integerValue]];
+    if( [[myResults valueForKey:@"HAS_ERROR"] boolValue] )
+    {
+        if( ( [self.currentItem.uploadAttempts intValue] ) >= [uploadRetries intValue] )
+        {
+            [errorPhotoQueue addObject:currentItem];
+        } 
+        else
+        {
+            currentItem.uploadAttempts = [NSNumber numberWithInt:[currentItem.uploadAttempts intValue] + 1 ];
+            [retryPhotoQueue addObject:currentItem];
+        }
+    }
+    else
+    {
+        [donePhotoQueue addObject:currentItem];
+    }
+    
     [self processAddPhotoQueue];
 }
 
 - (void) updateTotalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
     [currentProgresssIndicator setDoubleValue:((double)totalBytesWritten)/((double)totalBytesExpectedToWrite) ];
-    [totalProgresssIndicator setDoubleValue:[uploadedPhotos doubleValue] + ((double)totalBytesWritten)/((double)totalBytesExpectedToWrite) ];
+    [totalProgresssIndicator setDoubleValue:(double)([donePhotoQueue count] + [errorPhotoQueue count]) + ((double)totalBytesWritten)/((double)totalBytesExpectedToWrite) ];
 }
 
 - (void) processAddPhotoQueue
 {
     if( !cancel )
     {
-        if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+        if( [[NSNumber numberWithInteger:[retryPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
-            AddPhotoQueueItem *currentItem = [[[addPhotoQueue objectAtIndex:0] retain] autorelease];
+            self.currentItem = [retryPhotoQueue objectAtIndex:0];
+            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %d of %d\n\n%@",
+                                      ([donePhotoQueue count] + [errorPhotoQueue count] + 1), 
+                                      ([addPhotoQueue count] + [retryPhotoQueue count] + [donePhotoQueue count] + [errorPhotoQueue count]),
+                                      [self.currentItem.path lastPathComponent] ]];
+            [retryPhotoQueue removeObjectAtIndex:0];
+            [gallery addPhotoAtPath:self.currentItem.path toUrl:self.currentItem.url withParameters:self.currentItem.parameters];
+
+        }
+        else if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
+        {
+            self.currentItem = [addPhotoQueue objectAtIndex:0];
+            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %d of %d\n\n%@",
+                                      ([donePhotoQueue count] + [errorPhotoQueue count] + 1), 
+                                      ([addPhotoQueue count] + [retryPhotoQueue count] + [donePhotoQueue count] + [errorPhotoQueue count]),
+                                      [self.currentItem.path lastPathComponent] ]];
             [addPhotoQueue removeObjectAtIndex:0];
-            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %d of %d\n\n%@", ([photoCount intValue]- [addPhotoQueue count]), [photoCount intValue], currentItem.path ]];
-            [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+            [gallery addPhotoAtPath:self.currentItem.path toUrl:self.currentItem.url withParameters:self.currentItem.parameters];
         }
         else
         {
@@ -334,12 +436,32 @@
 }
 
 - (void) done
-{
+{    
+    AddPhotoQueueItem* info;
+    NSMutableArray* errorNames = [NSMutableArray arrayWithCapacity:[errorPhotoQueue count]];
+
     [progressWindow orderOut:nil];
     [NSApp endSheet:progressWindow];     
     
     GalleryAlbum *selectedAlbum;
     selectedAlbum = (GalleryAlbum *)[browser itemAtIndexPath:[browser selectionIndexPath]];
+    
+    if( [errorPhotoQueue count] > 0 )
+    {
+        NSEnumerator* enumerator = [errorPhotoQueue objectEnumerator];
+        while ((info = [enumerator nextObject])) {
+            [errorNames addObject:[info.path lastPathComponent]];
+        }
+        
+        NSString* errorMessage     = [NSString stringWithFormat:@"Failed to upload %d images:", [errorPhotoQueue count]];
+        NSString* errorDescription = [NSString stringWithFormat:[errorNames componentsJoinedByString:@"\n"]];
+        NSAlert* alert = [NSAlert alertWithMessageText:errorMessage  
+                                         defaultButton:nil 
+                                       alternateButton:nil 
+                                           otherButton:nil
+                             informativeTextWithFormat:errorDescription];
+        [alert runModal];
+    }
     
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[selectedAlbum webUrl]]];
     
@@ -354,6 +476,65 @@
     [aboutWindow orderOut:nil];
     [NSApp endSheet:aboutWindow];     
 }
+
+- (void) watermarkImages
+{
+    if( [watermarkMenu indexOfSelectedItem] > 0 )
+    {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if( [fileManager fileExistsAtPath:self.waterMarkImageName] )
+        {
+            NSFileManager *fileManager2 = [NSFileManager defaultManager];
+            BOOL isDirectory;
+            [fileManager2 fileExistsAtPath:tempDirectoryPath isDirectory:&isDirectory];
+            if (isDirectory)
+            {
+                NSArray *contents = [fileManager2 contentsOfDirectoryAtPath:tempDirectoryPath error:nil];
+                for (int i = 0; i < [contents count]; i++)
+                {
+                    NSString *tempFilePath = [NSString stringWithFormat:@"%@%@", tempDirectoryPath, [contents objectAtIndex:i]];
+                    [self.gallery waterMarkImage:tempFilePath with:self.waterMarkImageName andTransformIndex:[watermarkMenu indexOfSelectedItem]];
+                }
+            }
+        }
+    }
+}
+
+- (IBAction)selectWatermarkImage:(id)sender {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    [openPanel setTreatsFilePackagesAsDirectories:NO];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setCanChooseDirectories:NO];
+    [openPanel setCanChooseFiles:YES];
+    [openPanel beginSheetModalForWindow:mainWindow completionHandler:^(NSInteger result) {
+        if (result == NSOKButton) {
+            [openPanel orderOut:self]; // close panel before we might present an error
+            self.waterMarkImageName = [openPanel filename];
+            [waterMarkImageNameTextField setStringValue:self.waterMarkImageName];
+            [self savePreferences];
+        }
+    }];        
+}
+
+-(IBAction)selectNoWatermark:(id)sender{[self enableWatermark:NO];}
+-(IBAction)selectScaledWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectTopRightWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectMiddleRightWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomLeftWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomCenterWatermark:(id)sender{[self enableWatermark:YES];}
+-(IBAction)selectBottomRightWatermark:(id)sender{[self enableWatermark:YES];}
+
+-(void)enableWatermark:(BOOL)bEnable
+{
+    [waterMarkImageNameTextField setEnabled:bEnable];
+    [browseForWaterMarkButton    setEnabled:bEnable];
+    [self savePreferences];
+}
+
 
 /************************************************************
  /  Methods to enable the browser
@@ -400,7 +581,9 @@
 - (void)savePreferences {
     [preferences setObject:[NSKeyedArchiver archivedDataWithRootObject:galleryDirectory] forKey:@"GALLERY_DIRECTORY"];    
     [preferences setObject:selectedGalleryIndex forKey:@"SELECTED_GALLERY_INDEX"];
-    
+    [preferences setObject:[NSNumber numberWithInteger:[watermarkMenu indexOfSelectedItem]] forKey:@"SELECTED_WATERMARK_MODE"];
+    [preferences setObject:[waterMarkImageNameTextField stringValue] forKey:@"SELECTED_WATERMARK_IMAGE"];
+
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle bundleForClass: [self class]] bundleIdentifier]];
     [[NSUserDefaults standardUserDefaults] setPersistentDomain:preferences forName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
 }

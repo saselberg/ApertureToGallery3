@@ -10,13 +10,16 @@
 #import "RestfulGallery.h"
 #import "GalleryAlbum.h"
 #import "GalleryInfo.h"
+#import "Version.h"
 
 @interface AppleToGallery3AppDelegate : NSObject <NSApplicationDelegate, URLCallDelegate> {
     
-    IBOutlet NSTextField         *albumName;
-    IBOutlet NSTextField         *albumTitle;
-    IBOutlet NSTextField         *newGalleryPassword;
-    IBOutlet NSTextField         *progress;
+    IBOutlet NSTextField *albumName;
+    IBOutlet NSTextField *albumTitle;
+    IBOutlet NSTextField *newGalleryPassword;
+    IBOutlet NSTextField *progress;
+    IBOutlet NSTextField *versionLabel;
+
     IBOutlet NSProgressIndicator *currentProgresssIndicator;
     IBOutlet NSProgressIndicator *totalProgresssIndicator;
     
@@ -31,9 +34,11 @@
     IBOutlet NSWindow *aboutWindow;
     IBOutlet NSWindow *progressWindow;
     
-    
-    NSNumber            *photoCount; 
-    NSNumber            *uploadedPhotos;
+    IBOutlet NSPopUpButton *watermarkMenu;
+    IBOutlet NSTextField   *waterMarkImageNameTextField;
+    NSString               *waterMarkImageName;
+    IBOutlet NSButton      *browseForWaterMarkButton;
+
     NSMutableDictionary *preferences;
     NSNumber            *selectedGalleryIndex;
     NSDictionary        *userDefaults;
@@ -42,6 +47,12 @@
     NSString *tempDirectoryPath;
     NSMutableArray *exportedImagePaths;
     NSMutableArray *addPhotoQueue;  
+    NSMutableArray *retryPhotoQueue;
+    NSMutableArray *donePhotoQueue;
+    NSMutableArray *errorPhotoQueue;
+    NSNumber       *uploadRetries;
+    AddPhotoQueueItem *currentItem;
+
     BOOL           running;
     BOOL           cancel;
     
@@ -55,6 +66,8 @@
 @property (retain) GalleryAlbum     *rootGalleryAlbum;
 @property (retain) NSMutableArray   *galleryDirectory;
 @property (retain) NSString         *galleryApiKey;
+@property (retain) AddPhotoQueueItem *currentItem;
+@property (retain) NSString          *waterMarkImageName;
 
 - (void) processAddPhotoQueue;
 - (void) got:(NSMutableDictionary *)results;
@@ -79,11 +92,29 @@
 
 -(IBAction)quit:(id)sender;
 -(IBAction)cancel:(id)sender;
-- (void)savePreferences;
 -(IBAction)selectImageDirectory:(id)sender;
+-(IBAction)selectWatermarkImage:(id)sender;
+-(IBAction)selectNoWatermark:(id)sender;
+-(IBAction)selectScaledWatermark:(id)sender;
+-(IBAction)selectTopLeftWatermark:(id)sender;
+-(IBAction)selectTopCenterWatermark:(id)sender;
+-(IBAction)selectTopRightWatermark:(id)sender;
+-(IBAction)selectMiddleLeftWatermark:(id)sender;
+-(IBAction)selectMiddleCenterWatermark:(id)sender;
+-(IBAction)selectMiddleRightWatermark:(id)sender;
+-(IBAction)selectBottomLeftWatermark:(id)sender;
+-(IBAction)selectBottomCenterWatermark:(id)sender;
+-(IBAction)selectBottomRightWatermark:(id)sender;
+
+- (void)savePreferences;
 - (void)exportPhotos:(NSString*)fileNode;
 - (void)done;
 - (void)startExportInNewThread;
+- (void)watermarkImages;
+- (void)enableWatermark:(BOOL)bEnable;
+
+
+
 
 @end
 

@@ -69,6 +69,9 @@
 		D2D4AA6613A3ED39007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
 		D2D4AA6713A3ED43007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
 		D2D4AA6813A3F447007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
+		D2DA4FFB13A5D37700E429E2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA4FFA13A5D37700E429E2 /* Version.m */; };
+		D2DA4FFC13A5D37700E429E2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA4FFA13A5D37700E429E2 /* Version.m */; };
+		D2DA4FFD13A5D37700E429E2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA4FFA13A5D37700E429E2 /* Version.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +143,8 @@
 		D2D00EF213856B94006E199E /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportPluginProtocol.h; path = ../../../Desktop/Interface/ExportPluginProtocol.h; sourceTree = "<group>"; };
 		D2D1C622138621CE00662456 /* iPhotoToGallery3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhotoToGallery3.xib; sourceTree = "<group>"; };
 		D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		D2DA4FF913A5D37700E429E2 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		D2DA4FFA13A5D37700E429E2 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +311,8 @@
 				D2C00F21136F870B002ADF41 /* GalleryInfo.m */,
 				D2C00F22136F870B002ADF41 /* RestfulGallery.h */,
 				D2C00F23136F870B002ADF41 /* RestfulGallery.m */,
+				D2DA4FF913A5D37700E429E2 /* Version.h */,
+				D2DA4FFA13A5D37700E429E2 /* Version.m */,
 			);
 			name = "Restful Gallery";
 			path = ApertureToGallery3;
@@ -486,6 +493,7 @@
 				D2CD375413896FEC0034543F /* SBJsonStreamWriterState.m in Sources */,
 				D2CD375513896FEC0034543F /* SBJsonTokeniser.m in Sources */,
 				D2CD375613896FEC0034543F /* SBJsonWriter.m in Sources */,
+				D2DA4FFD13A5D37700E429E2 /* Version.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +516,7 @@
 				D2C00F2B136F870B002ADF41 /* GalleryInfo.m in Sources */,
 				D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */,
 				D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */,
+				D2DA4FFB13A5D37700E429E2 /* Version.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +540,7 @@
 				D2BA095813879463006250A8 /* SBJsonStreamWriterState.m in Sources */,
 				D2BA095913879463006250A8 /* SBJsonTokeniser.m in Sources */,
 				D2BA095A13879463006250A8 /* SBJsonWriter.m in Sources */,
+				D2DA4FFC13A5D37700E429E2 /* Version.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

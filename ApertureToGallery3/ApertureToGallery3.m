@@ -117,6 +117,8 @@
     self.rootGalleryAlbum         = nil;
     self.galleryApiKey            = nil;
     self.galleryDirectory         = nil;
+    self.currentItem              = nil;
+    self.waterMarkImageName       = nil;
 //    self.photoCount               = nil;
 //    self.uploadedPhotos           = nil;
     [addPhotoQueue release];
@@ -179,8 +181,13 @@
             if( [preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"] )
             {
                 [waterMarkImageNameTextField setStringValue:[preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"]];
+                self.waterMarkImageName = [preferences valueForKey:@"SELECTED_WATERMARK_IMAGE"];
             }
-        
+            
+            Version *versionTracker = [[[Version alloc] init] autorelease];
+            [versionLabel setStringValue:[NSString stringWithFormat:@"Version %03.1f-%03.1f", 
+                                          [versionTracker.ApertureToGalleryVersion doubleValue], 
+                                          [versionTracker.RestfulGalleryVersion doubleValue] ] ];
         }
         [myNib release];        
 	}
@@ -408,13 +415,13 @@
 {
     if( [[myResults valueForKey:@"HAS_ERROR"] boolValue] )
     {
-        if( ( [currentItem.uploadAttempts intValue] ) >= [uploadRetries intValue] )
+        if( ( [self.currentItem.uploadAttempts intValue] ) >= [uploadRetries intValue] )
         {
             [errorPhotoQueue addObject:currentItem];
         } 
         else
         {
-            currentItem.uploadAttempts = [NSNumber numberWithInt:[currentItem.uploadAttempts intValue] + 1 ];
+            self.currentItem.uploadAttempts = [NSNumber numberWithInt:[self.currentItem.uploadAttempts intValue] + 1 ];
             [retryPhotoQueue addObject:currentItem];
         }
     }
@@ -452,7 +459,7 @@
             
             self.currentItem = [retryPhotoQueue objectAtIndex:0];
             [retryPhotoQueue removeObjectAtIndex:0];
-            [gallery addPhotoAtPath:currentItem.path toUrl:currentItem.url withParameters:currentItem.parameters];
+            [gallery addPhotoAtPath:self.currentItem.path toUrl:self.currentItem.url withParameters:self.currentItem.parameters];
         }
         else if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
@@ -467,7 +474,7 @@
 
             self.currentItem = [addPhotoQueue objectAtIndex:0];
             [addPhotoQueue removeObjectAtIndex:0];
-            [gallery addPhotoAtPath:currentItem.path toUrl:self.currentItem.url withParameters:currentItem.parameters];
+            [gallery addPhotoAtPath:self.currentItem.path toUrl:self.currentItem.url withParameters:self.currentItem.parameters];
         }
         else
         {

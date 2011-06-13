@@ -14,6 +14,7 @@
 #import "GalleryInfo.h"
 #import "RestfulGallery.h"
 #import "AddPhotoQueueItem.h"
+#import "Version.h"
 
 @interface ApertureToGallery3 : NSObject <ApertureExportPlugIn, URLCallDelegate>
 {
@@ -41,6 +42,7 @@
     IBOutlet NSTextField *albumName;
     IBOutlet NSTextField *albumTitle;
     IBOutlet NSTextField *newGalleryPassword;
+    IBOutlet NSTextField *versionLabel;
     
     IBOutlet NSBrowser         *browser;
     IBOutlet NSTableView       *galleryDirectoryTableView;    
