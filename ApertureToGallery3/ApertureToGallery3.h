@@ -54,6 +54,12 @@
     IBOutlet NSWindow *aboutWindow;
     IBOutlet NSWindow *progressWindow;
     
+    RestfulGallery *gallery;
+    NSMutableArray *galleryDirectory;
+    GalleryAlbum   *rootGalleryAlbum;
+    NSString       *galleryApiKey;
+    BOOL           cancel;
+    
     IBOutlet NSPopUpButton *watermarkMenu;
     IBOutlet NSTextField   *waterMarkImageNameTextField;
     NSString               *waterMarkImageName;
