@@ -75,6 +75,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D236CBCE13FE1C3D00C8343A /* ExportImageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportImageProtocol.h; sourceTree = "<group>"; };
+		D236CBCF13FE1C3D00C8343A /* ExportPluginBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginBoxProtocol.h; sourceTree = "<group>"; };
+		D236CBD013FE1C3D00C8343A /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginProtocol.h; sourceTree = "<group>"; };
 		D2A08CB913896E8A009659CC /* AppleToGallery3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleToGallery3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A08CBE13896E8A009659CC /* AppleToGallery3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppleToGallery3-Info.plist"; sourceTree = "<group>"; };
 		D2A08CC013896E8A009659CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -138,9 +141,6 @@
 		D2D00EEB13856805006E199E /* iPhotoToGallery3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhotoToGallery3.m; sourceTree = "<group>"; };
 		D2D00EED138568BF006E199E /* iPhotoToGallery3ExportBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhotoToGallery3ExportBox.h; sourceTree = "<group>"; };
 		D2D00EEE138568BF006E199E /* iPhotoToGallery3ExportBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhotoToGallery3ExportBox.m; sourceTree = "<group>"; };
-		D2D00EF013856B94006E199E /* ExportImageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportImageProtocol.h; path = ../../../Desktop/Interface/ExportImageProtocol.h; sourceTree = "<group>"; };
-		D2D00EF113856B94006E199E /* ExportPluginBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportPluginBoxProtocol.h; path = ../../../Desktop/Interface/ExportPluginBoxProtocol.h; sourceTree = "<group>"; };
-		D2D00EF213856B94006E199E /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportPluginProtocol.h; path = ../../../Desktop/Interface/ExportPluginProtocol.h; sourceTree = "<group>"; };
 		D2D1C622138621CE00662456 /* iPhotoToGallery3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhotoToGallery3.xib; sourceTree = "<group>"; };
 		D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		D2DA4FF913A5D37700E429E2 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
@@ -356,9 +356,9 @@
 		D2D00EE913856791006E199E /* iPhotoHeaders */ = {
 			isa = PBXGroup;
 			children = (
-				D2D00EF013856B94006E199E /* ExportImageProtocol.h */,
-				D2D00EF113856B94006E199E /* ExportPluginBoxProtocol.h */,
-				D2D00EF213856B94006E199E /* ExportPluginProtocol.h */,
+				D236CBCE13FE1C3D00C8343A /* ExportImageProtocol.h */,
+				D236CBCF13FE1C3D00C8343A /* ExportPluginBoxProtocol.h */,
+				D236CBD013FE1C3D00C8343A /* ExportPluginProtocol.h */,
 			);
 			name = iPhotoHeaders;
 			sourceTree = "<group>";
@@ -664,7 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -673,7 +673,7 @@
 				INFOPLIST_FILE = "ApertureToGallery3/ApertureToGallery3-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Application Support/Aperture/Plug-Ins/Export/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = x86_64;
+				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = ApertureExport;
 			};
 			name = Debug;
@@ -682,7 +682,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -691,7 +691,7 @@
 				INFOPLIST_FILE = "ApertureToGallery3/ApertureToGallery3-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Application Support/Aperture/Plug-Ins/Export/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = x86_64;
+				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = ApertureExport;
 			};
 			name = Release;
