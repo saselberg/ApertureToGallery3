@@ -18,10 +18,10 @@
 {
     self = [super init];
     if (self) {
-        self.iPhotoToGalleryVersion   = [NSNumber numberWithDouble:1.0];
+        self.iPhotoToGalleryVersion   = [NSNumber numberWithDouble:1.1];
         self.RestfulGalleryVersion    = [NSNumber numberWithDouble:1.0];
-        self.AppleToGalleryVersion    = [NSNumber numberWithDouble:1.0];
-        self.ApertureToGalleryVersion = [NSNumber numberWithDouble:1.0];
+        self.AppleToGalleryVersion    = [NSNumber numberWithDouble:1.1];
+        self.ApertureToGalleryVersion = [NSNumber numberWithDouble:1.1];
     }
     
     return self;

@@ -302,7 +302,7 @@
     [openPanel beginSheetModalForWindow:mainWindow completionHandler:^(NSInteger result) {
         if (result == NSOKButton) {
             [openPanel orderOut:self]; // close panel before we might present an error
-            [self exportPhotos:[openPanel filename]];
+            [self exportPhotos:[[openPanel URL] path]];
         }
     }];
 }
@@ -509,7 +509,7 @@
     [openPanel beginSheetModalForWindow:mainWindow completionHandler:^(NSInteger result) {
         if (result == NSOKButton) {
             [openPanel orderOut:self]; // close panel before we might present an error
-            self.waterMarkImageName = [openPanel filename];
+            self.waterMarkImageName = [[openPanel URL] path];
             [waterMarkImageNameTextField setStringValue:self.waterMarkImageName];
             [self savePreferences];
         }

@@ -625,7 +625,7 @@
     [openPanel beginSheetModalForWindow:[_exportManager window] completionHandler:^(NSInteger result) {
         if (result == NSOKButton) {
             [openPanel orderOut:self]; // close panel before we might present an error
-            self.waterMarkImageName = [openPanel filename];
+            self.waterMarkImageName = [[openPanel URL] path];
             [waterMarkImageNameTextField setStringValue:self.waterMarkImageName];
             [self savePreferences];
         }
