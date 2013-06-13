@@ -241,12 +241,12 @@ again: while (i < len) {
 			break;			
 			
 		case '+':
-			self.error = [NSString stringWithFormat:@"Leading + is illegal in numbers at offset %u", tokenStart];
+			self.error = [NSString stringWithFormat:@"Leading + is illegal in numbers at offset %lu", (unsigned long)tokenStart];
 			return sbjson_token_error;
 			break;			
 	}
 	
-	self.error = [NSString stringWithFormat:@"Unrecognised leading character at offset %u", tokenStart];
+	self.error = [NSString stringWithFormat:@"Unrecognised leading character at offset %lu", (unsigned long)tokenStart];
 	return sbjson_token_error;
 }
 
@@ -275,7 +275,7 @@ again: while (i < len) {
 		return sbjson_token_eof;
 	
 	if (strncmp(bufbytes + tokenStart, utf8, len)) {
-		NSString *format = [NSString stringWithFormat:@"Expected '%%s' but found '%%.%us'.", len];
+		NSString *format = [NSString stringWithFormat:@"Expected '%%s' but found '%%.%lus'.", (unsigned long)len];
 		self.error = [NSString stringWithFormat:format, utf8, bufbytes + tokenStart];
 		return sbjson_token_error;
 	}
@@ -427,7 +427,7 @@ again: while (i < len) {
 						break;
 					}
 					default:
-						self.error = [NSString stringWithFormat:@"Broken escape character at index %u in token starting at offset %u", idx-1, tokenStart];
+						self.error = [NSString stringWithFormat:@"Broken escape character at index %lu in token starting at offset %lu", idx-1, (unsigned long)tokenStart];
 						return sbjson_token_error;
 						break;
 				}
@@ -463,7 +463,7 @@ again: while (i < len) {
 	if (*c == '0') {
 		c++;
 		if (isDigit(c)) {
-			self.error = [NSString stringWithFormat:@"Leading zero is illegal in number at offset %u", tokenStart];
+			self.error = [NSString stringWithFormat:@"Leading zero is illegal in number at offset %lu", (unsigned long)tokenStart];
 			return sbjson_token_error;
 		}
 	}
@@ -476,7 +476,7 @@ again: while (i < len) {
 		c++;
 		
 		if (!isDigit(c) && *c) {
-			self.error = [NSString stringWithFormat:@"No digits after decimal point at offset %u", tokenStart];
+			self.error = [NSString stringWithFormat:@"No digits after decimal point at offset %lu", (unsigned long)tokenStart];
 			return sbjson_token_error;
 		}
 		
@@ -491,7 +491,7 @@ again: while (i < len) {
 			c++;
 	
 		if (!isDigit(c) && *c) {
-			self.error = [NSString stringWithFormat:@"No digits after exponent mark at offset %u", tokenStart];
+			self.error = [NSString stringWithFormat:@"No digits after exponent mark at offset %lu", (unsigned long)tokenStart];
 			return sbjson_token_error;
 		}
 		

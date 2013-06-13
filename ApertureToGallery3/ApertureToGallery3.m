@@ -450,8 +450,8 @@
             [self lockProgress];
             exportProgress.currentValue = 0;
             [exportProgress.message autorelease];
-            exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d (retry %d)", 
-                                       [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
+            exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %ld of %ld (retry %d)", 
+                                       [donePhotoQueue count] + [errorPhotoQueue count] + 1,
                                        [addPhotoQueue count]  + [retryPhotoQueue count] 
                                        + [donePhotoQueue count] + [errorPhotoQueue count],
                                        + [currentItem.uploadAttempts intValue] ] retain];
@@ -466,7 +466,7 @@
             [self lockProgress];
             exportProgress.currentValue = 0;
             [exportProgress.message autorelease];
-            exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %d of %d", 
+            exportProgress.message = [[NSString stringWithFormat:@"Step 2 of 2: Uploading Image %ld of %ld", 
                                        [donePhotoQueue count] + [errorPhotoQueue count] + 1, 
                                        [addPhotoQueue count]  + [retryPhotoQueue count] 
                                        + [donePhotoQueue count] + [errorPhotoQueue count]] retain];
@@ -500,7 +500,7 @@
             [errorNames addObject:[info.path lastPathComponent]];
         }
         
-        NSString* errorMessage     = [NSString stringWithFormat:@"Failed to upload %d images:", [errorPhotoQueue count]];
+        NSString* errorMessage     = [NSString stringWithFormat:@"Failed to upload %ld images:", (unsigned long)[errorPhotoQueue count]];
         NSString* errorDescription = [NSString stringWithFormat:[errorNames componentsJoinedByString:@"\n"]];
         NSAlert* alert = [NSAlert alertWithMessageText:errorMessage  
                  defaultButton:nil 

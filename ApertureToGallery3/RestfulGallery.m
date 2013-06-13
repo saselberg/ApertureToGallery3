@@ -154,7 +154,7 @@
     {
        if( [self bVerbose] ){ NSLog( @"getting albums for item" ); }
        results = nil;
-       NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%d", self.url, [restItem integerValue]]] autorelease];
+       NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%ld", self.url, (long)[restItem integerValue]]] autorelease];
        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                            timeoutInterval:_standardTimeout];
@@ -205,7 +205,7 @@
        [parameters setObject:@"json"  forKey:@"output"];
        [parameters setObject:@"album" forKey:@"type"];
      
-       NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%d", self.url, [restItem integerValue]]] autorelease];
+       NSURL *localURL = [[[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/index.php/rest/item/%ld", self.url, (long)[restItem integerValue]]] autorelease];
        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:localURL
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                            timeoutInterval:_standardTimeout];

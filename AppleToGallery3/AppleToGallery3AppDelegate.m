@@ -409,7 +409,7 @@
         if( [[NSNumber numberWithInteger:[retryPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
             self.currentItem = [retryPhotoQueue objectAtIndex:0];
-            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %d of %d\n\n%@",
+            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %ld of %ld\n\n%@",
                                       ([donePhotoQueue count] + [errorPhotoQueue count] + 1), 
                                       ([addPhotoQueue count] + [retryPhotoQueue count] + [donePhotoQueue count] + [errorPhotoQueue count]),
                                       [self.currentItem.path lastPathComponent] ]];
@@ -420,7 +420,7 @@
         else if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
             self.currentItem = [addPhotoQueue objectAtIndex:0];
-            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %d of %d\n\n%@",
+            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %ld of %ld\n\n%@",
                                       ([donePhotoQueue count] + [errorPhotoQueue count] + 1), 
                                       ([addPhotoQueue count] + [retryPhotoQueue count] + [donePhotoQueue count] + [errorPhotoQueue count]),
                                       [self.currentItem.path lastPathComponent] ]];
@@ -453,7 +453,7 @@
             [errorNames addObject:[info.path lastPathComponent]];
         }
         
-        NSString* errorMessage     = [NSString stringWithFormat:@"Failed to upload %d images:", [errorPhotoQueue count]];
+        NSString* errorMessage     = [NSString stringWithFormat:@"Failed to upload %ld images:", (unsigned long)[errorPhotoQueue count]];
         NSString* errorDescription = [NSString stringWithFormat:[errorNames componentsJoinedByString:@"\n"]];
         NSAlert* alert = [NSAlert alertWithMessageText:errorMessage  
                                          defaultButton:nil 

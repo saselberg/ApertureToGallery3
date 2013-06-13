@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A44D698B176A41A700C569E4 /* FxPlug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D6989176A41A700C569E4 /* FxPlug.framework */; };
+		A44D698E176A42E000C569E4 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D698D176A42E000C569E4 /* PluginManager.framework */; };
+		A44D698F176A42E000C569E4 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D698D176A42E000C569E4 /* PluginManager.framework */; };
+		A44D6990176A42E000C569E4 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D698D176A42E000C569E4 /* PluginManager.framework */; };
 		D2A08CBB13896E8A009659CC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
 		D2A08CC113896E8A009659CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2A08CBF13896E8A009659CC /* InfoPlist.strings */; };
 		D2A08CC413896E8A009659CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A08CC313896E8A009659CC /* main.m */; };
@@ -45,7 +49,6 @@
 		D2C00F2B136F870B002ADF41 /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; };
 		D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; };
 		D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */; };
-		D2C00F33136F88F1002ADF41 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00F32136F88F1002ADF41 /* PluginManager.framework */; };
 		D2C00F39136F8CB3002ADF41 /* ApertureToGallery3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */; };
 		D2CD374813896FDB0034543F /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; };
 		D2CD374913896FDB0034543F /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; };
@@ -75,6 +78,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A44D6989176A41A700C569E4 /* FxPlug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FxPlug.framework; path = ../../../../Developer/Aperture/Examples/FxPlug/FxPlug.framework; sourceTree = "<group>"; };
+		A44D698A176A41A700C569E4 /* PluginManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginManager.framework; path = ../../../../Developer/Aperture/Examples/FxPlug/PluginManager.framework; sourceTree = "<group>"; };
+		A44D698D176A42E000C569E4 /* PluginManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginManager.framework; path = ../../../../Developer/Aperture/Examples/FxPlug/PluginManager.framework; sourceTree = "<group>"; };
 		D236CBCE13FE1C3D00C8343A /* ExportImageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportImageProtocol.h; sourceTree = "<group>"; };
 		D236CBCF13FE1C3D00C8343A /* ExportPluginBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginBoxProtocol.h; sourceTree = "<group>"; };
 		D236CBD013FE1C3D00C8343A /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginProtocol.h; sourceTree = "<group>"; };
@@ -128,7 +134,6 @@
 		D2C00F26136F870B002ADF41 /* URLCallDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCallDelegate.h; sourceTree = "<group>"; };
 		D2C00F2F136F873F002ADF41 /* ApertureToGallery3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureToGallery3.h; sourceTree = "<group>"; };
 		D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApertureToGallery3.m; sourceTree = "<group>"; };
-		D2C00F32136F88F1002ADF41 /* PluginManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginManager.framework; path = Library/Frameworks/PluginManager.framework; sourceTree = SDKROOT; };
 		D2C00F35136F8BD7002ADF41 /* ApertureExportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureExportManager.h; sourceTree = "<group>"; };
 		D2C00F36136F8BD7002ADF41 /* ApertureExportPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureExportPlugIn.h; sourceTree = "<group>"; };
 		D2C00F37136F8BD7002ADF41 /* ApertureSDKCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApertureSDKCommon.h; sourceTree = "<group>"; };
@@ -154,6 +159,7 @@
 			files = (
 				D2A08CBB13896E8A009659CC /* Cocoa.framework in Frameworks */,
 				D2D4AA6713A3ED43007F3A53 /* Quartz.framework in Frameworks */,
+				A44D6990176A42E000C569E4 /* PluginManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,9 +167,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2C00F33136F88F1002ADF41 /* PluginManager.framework in Frameworks */,
+				A44D698B176A41A700C569E4 /* FxPlug.framework in Frameworks */,
 				D2C00EEA136F864D002ADF41 /* Cocoa.framework in Frameworks */,
 				D2D4AA6813A3F447007F3A53 /* Quartz.framework in Frameworks */,
+				A44D698E176A42E000C569E4 /* PluginManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +181,7 @@
 				D2BA095C1388347D006250A8 /* QuickTime.framework in Frameworks */,
 				D2D00ED413856512006E199E /* Cocoa.framework in Frameworks */,
 				D2D4AA6613A3ED39007F3A53 /* Quartz.framework in Frameworks */,
+				A44D698F176A42E000C569E4 /* PluginManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +214,8 @@
 		D2C00EDB136F864D002ADF41 = {
 			isa = PBXGroup;
 			children = (
+				A44D6989176A41A700C569E4 /* FxPlug.framework */,
+				A44D698A176A41A700C569E4 /* PluginManager.framework */,
 				D2C00F2E136F8710002ADF41 /* Restful Gallery */,
 				D2C00EFB136F86E9002ADF41 /* JSON */,
 				D2C00EEF136F864D002ADF41 /* ApertureToGallery3 */,
@@ -229,9 +239,9 @@
 		D2C00EE8136F864D002ADF41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A44D698D176A42E000C569E4 /* PluginManager.framework */,
 				D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */,
 				D2BA095B1388347D006250A8 /* QuickTime.framework */,
-				D2C00F32136F88F1002ADF41 /* PluginManager.framework */,
 				D2C00EE9136F864D002ADF41 /* Cocoa.framework */,
 				D2C00EEB136F864D002ADF41 /* Other Frameworks */,
 			);
@@ -596,6 +606,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Developer/Aperture/Examples/FxPlug,
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -614,6 +628,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Developer/Aperture/Examples/FxPlug,
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppleToGallery3/AppleToGallery3-Prefix.pch";
@@ -627,9 +645,10 @@
 		D2C00EF6136F864D002ADF41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = /;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -638,25 +657,39 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = "";
+				HEADER_SEARCH_PATHS = (
+					/Developer/Aperture/Headers,
+					/Developer/Aperture/Headers/Export,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				PRODUCT_NAME = ApertureToGallery3;
+				SDKROOT = macosx10.8;
+				USER_HEADER_SEARCH_PATHS = /Developer/Aperture/Headers;
 			};
 			name = Debug;
 		};
 		D2C00EF7136F864D002ADF41 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = /;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = "";
-				SDKROOT = macosx;
+				HEADER_SEARCH_PATHS = (
+					/Developer/Aperture/Headers,
+					/Developer/Aperture/Headers/Export,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = ApertureToGallery3;
+				SDKROOT = macosx10.8;
+				USER_HEADER_SEARCH_PATHS = /Developer/Aperture/Headers;
 			};
 			name = Release;
 		};
@@ -666,6 +699,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Developer/Aperture/Examples/FxPlug,
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -685,6 +722,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Developer/Aperture/Examples/FxPlug,
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ApertureToGallery3/ApertureToGallery3-Prefix.pch";
@@ -702,6 +743,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Developer/Aperture/Examples/FxPlug,
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -724,6 +769,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Developer/Aperture/Examples/FxPlug,
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPhotoToGallery3/iPhotoToGallery3-Prefix.pch";
