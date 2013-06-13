@@ -7,63 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A44D698B176A41A700C569E4 /* FxPlug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D6989176A41A700C569E4 /* FxPlug.framework */; };
 		A44D698E176A42E000C569E4 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D698D176A42E000C569E4 /* PluginManager.framework */; };
 		A44D698F176A42E000C569E4 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D698D176A42E000C569E4 /* PluginManager.framework */; };
 		A44D6990176A42E000C569E4 /* PluginManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D698D176A42E000C569E4 /* PluginManager.framework */; };
+		A44D69A7176A556A00C569E4 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D6993176A556A00C569E4 /* SBJsonStreamWriterState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69A8176A556A00C569E4 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D6993176A556A00C569E4 /* SBJsonStreamWriterState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69A9176A556A00C569E4 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D6993176A556A00C569E4 /* SBJsonStreamWriterState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69AA176A556A00C569E4 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D6998176A556A00C569E4 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69AB176A556A00C569E4 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D6998176A556A00C569E4 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69AC176A556A00C569E4 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D6998176A556A00C569E4 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69AD176A556A00C569E4 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699A176A556A00C569E4 /* SBJsonStreamWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69AE176A556A00C569E4 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699A176A556A00C569E4 /* SBJsonStreamWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69AF176A556A00C569E4 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699A176A556A00C569E4 /* SBJsonStreamWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B0176A556A00C569E4 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699B176A556A00C569E4 /* SBJsonStreamParserAccumulator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B1176A556A00C569E4 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699B176A556A00C569E4 /* SBJsonStreamParserAccumulator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B2176A556A00C569E4 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699B176A556A00C569E4 /* SBJsonStreamParserAccumulator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B3176A556A00C569E4 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699E176A556A00C569E4 /* SBJsonStreamParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B4176A556A00C569E4 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699E176A556A00C569E4 /* SBJsonStreamParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B5176A556A00C569E4 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699E176A556A00C569E4 /* SBJsonStreamParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B6176A556A00C569E4 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699F176A556A00C569E4 /* SBJsonStreamParserAdapter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B7176A556A00C569E4 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699F176A556A00C569E4 /* SBJsonStreamParserAdapter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B8176A556A00C569E4 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D699F176A556A00C569E4 /* SBJsonStreamParserAdapter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69B9176A556A00C569E4 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A0176A556A00C569E4 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69BA176A556A00C569E4 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A0176A556A00C569E4 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69BB176A556A00C569E4 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A0176A556A00C569E4 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69BC176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A1176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69BD176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A1176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69BE176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A1176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69BF176A556A00C569E4 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A4176A556A00C569E4 /* SBJsonStreamParserState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69C0176A556A00C569E4 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A4176A556A00C569E4 /* SBJsonStreamParserState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69C1176A556A00C569E4 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A4176A556A00C569E4 /* SBJsonStreamParserState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69C2176A556A00C569E4 /* SBJsonStreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A5176A556A00C569E4 /* SBJsonStreamTokeniser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69C3176A556A00C569E4 /* SBJsonStreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A5176A556A00C569E4 /* SBJsonStreamTokeniser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A44D69C4176A556A00C569E4 /* SBJsonStreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = A44D69A5176A556A00C569E4 /* SBJsonStreamTokeniser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D2A08CBB13896E8A009659CC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
 		D2A08CC113896E8A009659CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2A08CBF13896E8A009659CC /* InfoPlist.strings */; };
-		D2A08CC413896E8A009659CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A08CC313896E8A009659CC /* main.m */; };
+		D2A08CC413896E8A009659CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A08CC313896E8A009659CC /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D2A08CC713896E8A009659CC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D2A08CC513896E8A009659CC /* Credits.rtf */; };
-		D2A08CCA13896E8A009659CC /* AppleToGallery3AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A08CC913896E8A009659CC /* AppleToGallery3AppDelegate.m */; };
+		D2A08CCA13896E8A009659CC /* AppleToGallery3AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A08CC913896E8A009659CC /* AppleToGallery3AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D2A08CCD13896E8A009659CC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2A08CCB13896E8A009659CC /* MainMenu.xib */; };
 		D2BA094C13879456006250A8 /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; };
 		D2BA094D13879456006250A8 /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; };
 		D2BA094E13879456006250A8 /* GalleryConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1D136F870B002ADF41 /* GalleryConnection.m */; };
 		D2BA094F13879456006250A8 /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; };
 		D2BA095013879456006250A8 /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; };
-		D2BA095213879463006250A8 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */; };
-		D2BA095313879463006250A8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F00136F86E9002ADF41 /* SBJsonParser.m */; };
-		D2BA095413879463006250A8 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */; };
-		D2BA095513879463006250A8 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */; };
-		D2BA095613879463006250A8 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */; };
-		D2BA095713879463006250A8 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */; };
-		D2BA095813879463006250A8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */; };
-		D2BA095913879463006250A8 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */; };
-		D2BA095A13879463006250A8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */; };
 		D2BA095C1388347D006250A8 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BA095B1388347D006250A8 /* QuickTime.framework */; };
 		D2C00EEA136F864D002ADF41 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
 		D2C00EF4136F864D002ADF41 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2C00EF2136F864D002ADF41 /* InfoPlist.strings */; };
-		D2C00F0F136F86E9002ADF41 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */; };
-		D2C00F10136F86E9002ADF41 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F00136F86E9002ADF41 /* SBJsonParser.m */; };
-		D2C00F11136F86E9002ADF41 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */; };
-		D2C00F12136F86E9002ADF41 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */; };
-		D2C00F13136F86E9002ADF41 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */; };
-		D2C00F14136F86E9002ADF41 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */; };
-		D2C00F15136F86E9002ADF41 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */; };
-		D2C00F16136F86E9002ADF41 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */; };
-		D2C00F17136F86E9002ADF41 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */; };
-		D2C00F27136F870B002ADF41 /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; };
-		D2C00F28136F870B002ADF41 /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; };
-		D2C00F29136F870B002ADF41 /* GalleryConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1D136F870B002ADF41 /* GalleryConnection.m */; };
-		D2C00F2B136F870B002ADF41 /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; };
-		D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; };
-		D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */; };
+		D2C00F27136F870B002ADF41 /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2C00F28136F870B002ADF41 /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2C00F29136F870B002ADF41 /* GalleryConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1D136F870B002ADF41 /* GalleryConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2C00F2B136F870B002ADF41 /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F30136F873F002ADF41 /* ApertureToGallery3.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D2C00F39136F8CB3002ADF41 /* ApertureToGallery3.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2C00F38136F8CB3002ADF41 /* ApertureToGallery3.xib */; };
-		D2CD374813896FDB0034543F /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; };
-		D2CD374913896FDB0034543F /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; };
-		D2CD374A13896FDB0034543F /* GalleryConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1D136F870B002ADF41 /* GalleryConnection.m */; };
-		D2CD374B13896FDB0034543F /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; };
-		D2CD374C13896FDB0034543F /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; };
-		D2CD374E13896FEC0034543F /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */; };
-		D2CD374F13896FEC0034543F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F00136F86E9002ADF41 /* SBJsonParser.m */; };
-		D2CD375013896FEC0034543F /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */; };
-		D2CD375113896FEC0034543F /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */; };
-		D2CD375213896FEC0034543F /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */; };
-		D2CD375313896FEC0034543F /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */; };
-		D2CD375413896FEC0034543F /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */; };
-		D2CD375513896FEC0034543F /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */; };
-		D2CD375613896FEC0034543F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */; };
+		D2CD374813896FDB0034543F /* AddPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2CD374913896FDB0034543F /* GalleryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1B136F870B002ADF41 /* GalleryAlbum.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2CD374A13896FDB0034543F /* GalleryConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F1D136F870B002ADF41 /* GalleryConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2CD374B13896FDB0034543F /* GalleryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F21136F870B002ADF41 /* GalleryInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2CD374C13896FDB0034543F /* RestfulGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C00F23136F870B002ADF41 /* RestfulGallery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D2D00ED413856512006E199E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C00EE9136F864D002ADF41 /* Cocoa.framework */; };
 		D2D00EDA13856513006E199E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D00ED813856513006E199E /* InfoPlist.strings */; };
 		D2D00EEC13856805006E199E /* iPhotoToGallery3.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D00EEB13856805006E199E /* iPhotoToGallery3.m */; };
@@ -72,18 +74,34 @@
 		D2D4AA6613A3ED39007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
 		D2D4AA6713A3ED43007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
 		D2D4AA6813A3F447007F3A53 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D4AA6413A3ED1B007F3A53 /* Quartz.framework */; };
-		D2DA4FFB13A5D37700E429E2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA4FFA13A5D37700E429E2 /* Version.m */; };
+		D2DA4FFB13A5D37700E429E2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA4FFA13A5D37700E429E2 /* Version.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D2DA4FFC13A5D37700E429E2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA4FFA13A5D37700E429E2 /* Version.m */; };
-		D2DA4FFD13A5D37700E429E2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA4FFA13A5D37700E429E2 /* Version.m */; };
+		D2DA4FFD13A5D37700E429E2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA4FFA13A5D37700E429E2 /* Version.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A44D6989176A41A700C569E4 /* FxPlug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FxPlug.framework; path = ../../../../Developer/Aperture/Examples/FxPlug/FxPlug.framework; sourceTree = "<group>"; };
-		A44D698A176A41A700C569E4 /* PluginManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginManager.framework; path = ../../../../Developer/Aperture/Examples/FxPlug/PluginManager.framework; sourceTree = "<group>"; };
 		A44D698D176A42E000C569E4 /* PluginManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginManager.framework; path = ../../../../Developer/Aperture/Examples/FxPlug/PluginManager.framework; sourceTree = "<group>"; };
-		D236CBCE13FE1C3D00C8343A /* ExportImageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportImageProtocol.h; sourceTree = "<group>"; };
-		D236CBCF13FE1C3D00C8343A /* ExportPluginBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginBoxProtocol.h; sourceTree = "<group>"; };
-		D236CBD013FE1C3D00C8343A /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginProtocol.h; sourceTree = "<group>"; };
+		A44D6992176A556A00C569E4 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		A44D6993176A556A00C569E4 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		A44D6994176A556A00C569E4 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		A44D6995176A556A00C569E4 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		A44D6996176A556A00C569E4 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		A44D6997176A556A00C569E4 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		A44D6998176A556A00C569E4 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		A44D6999176A556A00C569E4 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		A44D699A176A556A00C569E4 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		A44D699B176A556A00C569E4 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		A44D699C176A556A00C569E4 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		A44D699D176A556A00C569E4 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		A44D699E176A556A00C569E4 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		A44D699F176A556A00C569E4 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		A44D69A0176A556A00C569E4 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		A44D69A1176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		A44D69A2176A556A00C569E4 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		A44D69A3176A556A00C569E4 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		A44D69A4176A556A00C569E4 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		A44D69A5176A556A00C569E4 /* SBJsonStreamTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamTokeniser.m; sourceTree = "<group>"; };
+		A44D69A6176A556A00C569E4 /* SBJsonStreamTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamTokeniser.h; sourceTree = "<group>"; };
 		D2A08CB913896E8A009659CC /* AppleToGallery3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleToGallery3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A08CBE13896E8A009659CC /* AppleToGallery3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppleToGallery3-Info.plist"; sourceTree = "<group>"; };
 		D2A08CC013896E8A009659CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -102,25 +120,6 @@
 		D2C00EF1136F864D002ADF41 /* ApertureToGallery3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ApertureToGallery3-Info.plist"; sourceTree = "<group>"; };
 		D2C00EF3136F864D002ADF41 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2C00EF5136F864D002ADF41 /* ApertureToGallery3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ApertureToGallery3-Prefix.pch"; sourceTree = "<group>"; };
-		D2C00EFC136F86E9002ADF41 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		D2C00EFD136F86E9002ADF41 /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
-		D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
-		D2C00EFF136F86E9002ADF41 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		D2C00F00136F86E9002ADF41 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		D2C00F01136F86E9002ADF41 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
-		D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
-		D2C00F03136F86E9002ADF41 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
-		D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
-		D2C00F05136F86E9002ADF41 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
-		D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
-		D2C00F07136F86E9002ADF41 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
-		D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
-		D2C00F09136F86E9002ADF41 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
-		D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
-		D2C00F0B136F86E9002ADF41 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
-		D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
-		D2C00F0D136F86E9002ADF41 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		D2C00F18136F870B002ADF41 /* AddPhotoQueueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhotoQueueItem.h; sourceTree = "<group>"; };
 		D2C00F19136F870B002ADF41 /* AddPhotoQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhotoQueueItem.m; sourceTree = "<group>"; };
 		D2C00F1A136F870B002ADF41 /* GalleryAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryAlbum.h; sourceTree = "<group>"; };
@@ -167,7 +166,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A44D698B176A41A700C569E4 /* FxPlug.framework in Frameworks */,
 				D2C00EEA136F864D002ADF41 /* Cocoa.framework in Frameworks */,
 				D2D4AA6813A3F447007F3A53 /* Quartz.framework in Frameworks */,
 				A44D698E176A42E000C569E4 /* PluginManager.framework in Frameworks */,
@@ -188,6 +186,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A44D6991176A554000C569E4 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				A44D6992176A556A00C569E4 /* SBJson.h */,
+				A44D6993176A556A00C569E4 /* SBJsonStreamWriterState.m */,
+				A44D6994176A556A00C569E4 /* SBJsonStreamWriterState.h */,
+				A44D6995176A556A00C569E4 /* SBJsonStreamParserState.h */,
+				A44D6996176A556A00C569E4 /* SBJsonStreamWriterAccumulator.h */,
+				A44D6997176A556A00C569E4 /* SBJsonStreamWriter.h */,
+				A44D6998176A556A00C569E4 /* SBJsonParser.m */,
+				A44D6999176A556A00C569E4 /* SBJsonParser.h */,
+				A44D699A176A556A00C569E4 /* SBJsonStreamWriter.m */,
+				A44D699B176A556A00C569E4 /* SBJsonStreamParserAccumulator.m */,
+				A44D699C176A556A00C569E4 /* SBJsonStreamParser.h */,
+				A44D699D176A556A00C569E4 /* SBJsonStreamParserAdapter.h */,
+				A44D699E176A556A00C569E4 /* SBJsonStreamParser.m */,
+				A44D699F176A556A00C569E4 /* SBJsonStreamParserAdapter.m */,
+				A44D69A0176A556A00C569E4 /* SBJsonWriter.m */,
+				A44D69A1176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m */,
+				A44D69A2176A556A00C569E4 /* SBJsonWriter.h */,
+				A44D69A3176A556A00C569E4 /* SBJsonStreamParserAccumulator.h */,
+				A44D69A4176A556A00C569E4 /* SBJsonStreamParserState.m */,
+				A44D69A5176A556A00C569E4 /* SBJsonStreamTokeniser.m */,
+				A44D69A6176A556A00C569E4 /* SBJsonStreamTokeniser.h */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
 		D2A08CBC13896E8A009659CC /* AppleToGallery3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,10 +240,8 @@
 		D2C00EDB136F864D002ADF41 = {
 			isa = PBXGroup;
 			children = (
-				A44D6989176A41A700C569E4 /* FxPlug.framework */,
-				A44D698A176A41A700C569E4 /* PluginManager.framework */,
+				A44D6991176A554000C569E4 /* JSON */,
 				D2C00F2E136F8710002ADF41 /* Restful Gallery */,
-				D2C00EFB136F86E9002ADF41 /* JSON */,
 				D2C00EEF136F864D002ADF41 /* ApertureToGallery3 */,
 				D2D00ED513856512006E199E /* iPhotoToGallery3 */,
 				D2A08CBC13896E8A009659CC /* AppleToGallery3 */,
@@ -280,33 +304,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D2C00EFB136F86E9002ADF41 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				D2C00EFC136F86E9002ADF41 /* JSON.h */,
-				D2C00EFD136F86E9002ADF41 /* NSObject+JSON.h */,
-				D2C00EFE136F86E9002ADF41 /* NSObject+JSON.m */,
-				D2C00EFF136F86E9002ADF41 /* SBJsonParser.h */,
-				D2C00F00136F86E9002ADF41 /* SBJsonParser.m */,
-				D2C00F01136F86E9002ADF41 /* SBJsonStreamParser.h */,
-				D2C00F02136F86E9002ADF41 /* SBJsonStreamParser.m */,
-				D2C00F03136F86E9002ADF41 /* SBJsonStreamParserAdapter.h */,
-				D2C00F04136F86E9002ADF41 /* SBJsonStreamParserAdapter.m */,
-				D2C00F05136F86E9002ADF41 /* SBJsonStreamParserState.h */,
-				D2C00F06136F86E9002ADF41 /* SBJsonStreamParserState.m */,
-				D2C00F07136F86E9002ADF41 /* SBJsonStreamWriter.h */,
-				D2C00F08136F86E9002ADF41 /* SBJsonStreamWriter.m */,
-				D2C00F09136F86E9002ADF41 /* SBJsonStreamWriterState.h */,
-				D2C00F0A136F86E9002ADF41 /* SBJsonStreamWriterState.m */,
-				D2C00F0B136F86E9002ADF41 /* SBJsonTokeniser.h */,
-				D2C00F0C136F86E9002ADF41 /* SBJsonTokeniser.m */,
-				D2C00F0D136F86E9002ADF41 /* SBJsonWriter.h */,
-				D2C00F0E136F86E9002ADF41 /* SBJsonWriter.m */,
-			);
-			name = JSON;
-			path = ApertureToGallery3/JSON;
-			sourceTree = "<group>";
-		};
 		D2C00F2E136F8710002ADF41 /* Restful Gallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,7 +345,6 @@
 				D2D00EEE138568BF006E199E /* iPhotoToGallery3ExportBox.m */,
 				D2D1C622138621CE00662456 /* iPhotoToGallery3.xib */,
 				D2D00ED613856513006E199E /* Supporting Files */,
-				D2D00EE913856791006E199E /* iPhotoHeaders */,
 			);
 			path = iPhotoToGallery3;
 			sourceTree = "<group>";
@@ -361,16 +357,6 @@
 				D2D00EDB13856513006E199E /* iPhotoToGallery3-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D2D00EE913856791006E199E /* iPhotoHeaders */ = {
-			isa = PBXGroup;
-			children = (
-				D236CBCE13FE1C3D00C8343A /* ExportImageProtocol.h */,
-				D236CBCF13FE1C3D00C8343A /* ExportPluginBoxProtocol.h */,
-				D236CBD013FE1C3D00C8343A /* ExportPluginProtocol.h */,
-			);
-			name = iPhotoHeaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,6 +418,9 @@
 /* Begin PBXProject section */
 		D2C00EDD136F864D002ADF41 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
 			buildConfigurationList = D2C00EE0136F864D002ADF41 /* Build configuration list for PBXProject "ApertureToGallery3" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -494,16 +483,17 @@
 				D2CD374A13896FDB0034543F /* GalleryConnection.m in Sources */,
 				D2CD374B13896FDB0034543F /* GalleryInfo.m in Sources */,
 				D2CD374C13896FDB0034543F /* RestfulGallery.m in Sources */,
-				D2CD374E13896FEC0034543F /* NSObject+JSON.m in Sources */,
-				D2CD374F13896FEC0034543F /* SBJsonParser.m in Sources */,
-				D2CD375013896FEC0034543F /* SBJsonStreamParser.m in Sources */,
-				D2CD375113896FEC0034543F /* SBJsonStreamParserAdapter.m in Sources */,
-				D2CD375213896FEC0034543F /* SBJsonStreamParserState.m in Sources */,
-				D2CD375313896FEC0034543F /* SBJsonStreamWriter.m in Sources */,
-				D2CD375413896FEC0034543F /* SBJsonStreamWriterState.m in Sources */,
-				D2CD375513896FEC0034543F /* SBJsonTokeniser.m in Sources */,
-				D2CD375613896FEC0034543F /* SBJsonWriter.m in Sources */,
 				D2DA4FFD13A5D37700E429E2 /* Version.m in Sources */,
+				A44D69A9176A556A00C569E4 /* SBJsonStreamWriterState.m in Sources */,
+				A44D69AC176A556A00C569E4 /* SBJsonParser.m in Sources */,
+				A44D69AF176A556A00C569E4 /* SBJsonStreamWriter.m in Sources */,
+				A44D69B2176A556A00C569E4 /* SBJsonStreamParserAccumulator.m in Sources */,
+				A44D69B5176A556A00C569E4 /* SBJsonStreamParser.m in Sources */,
+				A44D69B8176A556A00C569E4 /* SBJsonStreamParserAdapter.m in Sources */,
+				A44D69BB176A556A00C569E4 /* SBJsonWriter.m in Sources */,
+				A44D69BE176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				A44D69C1176A556A00C569E4 /* SBJsonStreamParserState.m in Sources */,
+				A44D69C4176A556A00C569E4 /* SBJsonStreamTokeniser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,15 +501,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2C00F0F136F86E9002ADF41 /* NSObject+JSON.m in Sources */,
-				D2C00F10136F86E9002ADF41 /* SBJsonParser.m in Sources */,
-				D2C00F11136F86E9002ADF41 /* SBJsonStreamParser.m in Sources */,
-				D2C00F12136F86E9002ADF41 /* SBJsonStreamParserAdapter.m in Sources */,
-				D2C00F13136F86E9002ADF41 /* SBJsonStreamParserState.m in Sources */,
-				D2C00F14136F86E9002ADF41 /* SBJsonStreamWriter.m in Sources */,
-				D2C00F15136F86E9002ADF41 /* SBJsonStreamWriterState.m in Sources */,
-				D2C00F16136F86E9002ADF41 /* SBJsonTokeniser.m in Sources */,
-				D2C00F17136F86E9002ADF41 /* SBJsonWriter.m in Sources */,
 				D2C00F27136F870B002ADF41 /* AddPhotoQueueItem.m in Sources */,
 				D2C00F28136F870B002ADF41 /* GalleryAlbum.m in Sources */,
 				D2C00F29136F870B002ADF41 /* GalleryConnection.m in Sources */,
@@ -527,6 +508,16 @@
 				D2C00F2C136F870B002ADF41 /* RestfulGallery.m in Sources */,
 				D2C00F31136F873F002ADF41 /* ApertureToGallery3.m in Sources */,
 				D2DA4FFB13A5D37700E429E2 /* Version.m in Sources */,
+				A44D69A7176A556A00C569E4 /* SBJsonStreamWriterState.m in Sources */,
+				A44D69AA176A556A00C569E4 /* SBJsonParser.m in Sources */,
+				A44D69AD176A556A00C569E4 /* SBJsonStreamWriter.m in Sources */,
+				A44D69B0176A556A00C569E4 /* SBJsonStreamParserAccumulator.m in Sources */,
+				A44D69B3176A556A00C569E4 /* SBJsonStreamParser.m in Sources */,
+				A44D69B6176A556A00C569E4 /* SBJsonStreamParserAdapter.m in Sources */,
+				A44D69B9176A556A00C569E4 /* SBJsonWriter.m in Sources */,
+				A44D69BC176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				A44D69BF176A556A00C569E4 /* SBJsonStreamParserState.m in Sources */,
+				A44D69C2176A556A00C569E4 /* SBJsonStreamTokeniser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,16 +532,17 @@
 				D2BA094E13879456006250A8 /* GalleryConnection.m in Sources */,
 				D2BA094F13879456006250A8 /* GalleryInfo.m in Sources */,
 				D2BA095013879456006250A8 /* RestfulGallery.m in Sources */,
-				D2BA095213879463006250A8 /* NSObject+JSON.m in Sources */,
-				D2BA095313879463006250A8 /* SBJsonParser.m in Sources */,
-				D2BA095413879463006250A8 /* SBJsonStreamParser.m in Sources */,
-				D2BA095513879463006250A8 /* SBJsonStreamParserAdapter.m in Sources */,
-				D2BA095613879463006250A8 /* SBJsonStreamParserState.m in Sources */,
-				D2BA095713879463006250A8 /* SBJsonStreamWriter.m in Sources */,
-				D2BA095813879463006250A8 /* SBJsonStreamWriterState.m in Sources */,
-				D2BA095913879463006250A8 /* SBJsonTokeniser.m in Sources */,
-				D2BA095A13879463006250A8 /* SBJsonWriter.m in Sources */,
 				D2DA4FFC13A5D37700E429E2 /* Version.m in Sources */,
+				A44D69A8176A556A00C569E4 /* SBJsonStreamWriterState.m in Sources */,
+				A44D69AB176A556A00C569E4 /* SBJsonParser.m in Sources */,
+				A44D69AE176A556A00C569E4 /* SBJsonStreamWriter.m in Sources */,
+				A44D69B1176A556A00C569E4 /* SBJsonStreamParserAccumulator.m in Sources */,
+				A44D69B4176A556A00C569E4 /* SBJsonStreamParser.m in Sources */,
+				A44D69B7176A556A00C569E4 /* SBJsonStreamParserAdapter.m in Sources */,
+				A44D69BA176A556A00C569E4 /* SBJsonWriter.m in Sources */,
+				A44D69BD176A556A00C569E4 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				A44D69C0176A556A00C569E4 /* SBJsonStreamParserState.m in Sources */,
+				A44D69C3176A556A00C569E4 /* SBJsonStreamTokeniser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,7 +596,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -617,6 +610,7 @@
 				INFOPLIST_FILE = "AppleToGallery3/AppleToGallery3-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -625,7 +619,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -638,6 +633,7 @@
 				INFOPLIST_FILE = "AppleToGallery3/AppleToGallery3-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -646,6 +642,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = /;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -656,6 +656,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/Developer/Aperture/Headers,
@@ -664,7 +665,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = ApertureToGallery3;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = /Developer/Aperture/Headers;
 			};
 			name = Debug;
@@ -673,6 +674,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = /;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -680,6 +685,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/Developer/Aperture/Headers,
@@ -688,7 +694,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = ApertureToGallery3;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = /Developer/Aperture/Headers;
 			};
 			name = Release;
@@ -697,7 +703,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -710,7 +717,7 @@
 				INFOPLIST_FILE = "ApertureToGallery3/ApertureToGallery3-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Application Support/Aperture/Plug-Ins/Export/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "x86_64 i386";
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = ApertureExport;
 			};
 			name = Debug;
@@ -719,7 +726,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -732,7 +740,7 @@
 				INFOPLIST_FILE = "ApertureToGallery3/ApertureToGallery3-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Application Support/Aperture/Plug-Ins/Export/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "x86_64 i386";
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = ApertureExport;
 			};
 			name = Release;
@@ -741,7 +749,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -752,12 +761,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPhotoToGallery3/iPhotoToGallery3-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/Developer/Aperture/Headers,
+					/Developer/Aperture/Headers/Export,
+					/Developer/iPhoto/Interface,
+				);
 				INFOPLIST_FILE = "iPhotoToGallery3/iPhotoToGallery3-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Application Support/iPhoto/Plugins";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				VALID_ARCHS = i386;
+				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = iPhotoExporter;
 			};
 			name = Debug;
@@ -766,7 +780,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -777,12 +792,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPhotoToGallery3/iPhotoToGallery3-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/Developer/Aperture/Headers,
+					/Developer/Aperture/Headers/Export,
+					/Developer/iPhoto/Interface,
+				);
 				INFOPLIST_FILE = "iPhotoToGallery3/iPhotoToGallery3-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Application Support/iPhoto/Plugins";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				VALID_ARCHS = i386;
+				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = iPhotoExporter;
 			};
 			name = Release;

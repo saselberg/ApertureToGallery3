@@ -1,10 +1,19 @@
 //
 //  GalleryConnection.m
-//  Tutorial
-//
-//  Created by Scott Selberg on 3/27/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+
+/*
+ Copyright (C) 2013 Scott Selberg
+ 
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ */
 
 #import "GalleryConnection.h"
 
@@ -31,21 +40,21 @@
 
 - (void)dealloc
 {
-    [_request release];
-    [_connection release];
-    [_mutableData release];
-    [_error release];
+      [_request release];
+      [_connection release];
+      [_mutableData release];
+      [_error release];
     
     _request = nil;
     _connection = nil;
     _mutableData = nil;
 
-    if( _response ){ [_response release]; _response = nil;}
-    if( _error    ){ [_error    release]; _error    = nil;}
+     if( _response ){ [_response release]; _response = nil;}
+      if( _error    ){ [_error    release]; _error    = nil;}
     
     self.results    = nil;
     self.delegate   = nil;
-    [super dealloc];
+        [super dealloc];
 }
 
 #pragma mark NSURLConnection
@@ -68,7 +77,7 @@
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)aResponse
 {
     if( self.bVerbose ){NSLog( @"Gallery Connection Did Received A Response" );}
-    _response = [aResponse retain];
+      _response = [aResponse retain];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)someData
@@ -80,7 +89,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)anError
 {
     if( self.bVerbose ){NSLog( @"Gallery Connection Failed with Error" );}
-    _error = [anError retain];
+      _error = [anError retain];
     
     [self.results setValue:@"ERROR"   forKey:@"RESPONSE_TYPE"];
     [self.results setValue:_error forKey:@"ERROR"];    
@@ -110,6 +119,7 @@
 {
     // Get UTF8 String as a NSString from NSData response
     NSString *galleryResponseString = [[[NSString alloc] initWithData:myData encoding:NSUTF8StringEncoding] autorelease];
+    
     NSMutableDictionary *newResults = [[NSMutableDictionary new] autorelease];
     
     // Testing is received string is a json object. i.e. bounded by {}

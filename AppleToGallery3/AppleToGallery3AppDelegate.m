@@ -1,10 +1,21 @@
 //
-//  TestHarnessAppDelegate.m
-//  TestHarness
-//
+//  AppleToGallery3AppDelegate.m
+
 //  Created by Scott Selberg on 5/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+
+/*
+ Copyright (C) 2013 Scott Selberg
+ 
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ */
 
 #import "AppleToGallery3AppDelegate.h"
 
@@ -410,7 +421,7 @@
         {
             self.currentItem = [retryPhotoQueue objectAtIndex:0];
             [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %ld of %ld\n\n%@",
-                                      ([donePhotoQueue count] + [errorPhotoQueue count] + 1), 
+                                      ([donePhotoQueue count] + [errorPhotoQueue count] + 1),
                                       ([addPhotoQueue count] + [retryPhotoQueue count] + [donePhotoQueue count] + [errorPhotoQueue count]),
                                       [self.currentItem.path lastPathComponent] ]];
             [retryPhotoQueue removeObjectAtIndex:0];
@@ -420,7 +431,7 @@
         else if( [[NSNumber numberWithInteger:[addPhotoQueue count]] isGreaterThan:[NSNumber numberWithInteger:0]] )
         {
             self.currentItem = [addPhotoQueue objectAtIndex:0];
-            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %ld of %ld\n\n%@",
+            [progress setStringValue:[NSString stringWithFormat:@"Transfering Photo %lu of %lu\n\n%@",
                                       ([donePhotoQueue count] + [errorPhotoQueue count] + 1), 
                                       ([addPhotoQueue count] + [retryPhotoQueue count] + [donePhotoQueue count] + [errorPhotoQueue count]),
                                       [self.currentItem.path lastPathComponent] ]];

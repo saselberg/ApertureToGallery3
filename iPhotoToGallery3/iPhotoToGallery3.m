@@ -3,8 +3,20 @@
 //  ApertureToGallery3
 //
 //  Created by Scott Selberg on 5/19/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+
+/*
+ Copyright (C) 2013 Scott Selberg
+ 
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ */
 
 #import "iPhotoToGallery3.h"
 
@@ -242,11 +254,11 @@
         ImageExportOptions imageOptions;
         switch( [kindPopupButton indexOfSelectedItem ] )
         {
-            case 0: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityLow;  break;
-            case 1: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityMed;  break;
-            case 2: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityHigh; break;
-            case 3: imageOptions.format = kQTFileTypeJPEG; imageOptions.quality = EQualityMax;  break;
-            default: imageOptions.format = kQTFileTypeJPEG; break;
+            case 0: imageOptions.format = kUTTypeJPEG; imageOptions.quality = EQualityLow;  break;
+            case 1: imageOptions.format = kUTTypeJPEG; imageOptions.quality = EQualityMed;  break;
+            case 2: imageOptions.format = kUTTypeJPEG; imageOptions.quality = EQualityHigh; break;
+            case 3: imageOptions.format = kUTTypeJPEG; imageOptions.quality = EQualityMax;  break;
+            default: imageOptions.format = kUTTypeJPEG; break;
         }
 
         if( [includeMetaData state] == NSOnState )

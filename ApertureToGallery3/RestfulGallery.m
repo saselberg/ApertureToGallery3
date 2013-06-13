@@ -1,10 +1,19 @@
 //
 //  RestfulGallery.m
-//  Tutorial
-//
-//  Created by Scott Selberg on 3/26/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+
+/*
+ Copyright (C) 2013 Scott Selberg
+ 
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ */
 
 #import "RestfulGallery.h"
 
